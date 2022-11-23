@@ -3,7 +3,7 @@
   "rules": {
     "@next/next/no-img-element": "off",
     "unused-imports/no-unused-imports-ts": "error",
-    "@typescript-eslint/consistent-type-imports": "warn"
+    "@typescript-eslint/consistent-type-imports": "off"
   },
   "ignorePatterns": ["node_modules/", ".next/", ".github/"],
   "plugins": ["unused-imports", "@typescript-eslint"]
