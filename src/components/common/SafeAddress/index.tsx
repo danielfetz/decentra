@@ -23,7 +23,6 @@ const SafeAddress = (): ReactElement => {
   const currency = useAppSelector(selectCurrency)
   const { balances, loading: balancesLoading } = useBalances()
   const { safe, safeAddress, safeLoading } = useSafeInfo()
-  const { threshold, owners } = safe
   const chain = useCurrentChain()
   const settings = useAppSelector(selectSettings)
   const addressCopyText = settings.shortName.copy && chain ? `${chain.shortName}:${safeAddress}` : safeAddress
@@ -45,7 +44,7 @@ const SafeAddress = (): ReactElement => {
             {safeLoading ? (
               <Skeleton variant="circular" width={18} height={18} />
             ) : (
-              <SafeIcon address={safeAddress} threshold={threshold} owners={owners?.length} />
+              <SafeIcon address={safeAddress} />
             )}
           </div>
 
