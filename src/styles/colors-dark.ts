@@ -17,7 +17,7 @@ const darkPalette = {
   },
   border: {
     main: '#636669',
-    light: '#303033',
+    light: '#1f1f23',
     background: '#121312',
   },
   error: {
@@ -47,7 +47,7 @@ const darkPalette = {
   background: {
     default: '#000000',
     main: '#000000',
-    paper: '#1C1C1C',
+    paper: '#0e0e10',
     light: '#1B2A22',
   },
   logo: {
