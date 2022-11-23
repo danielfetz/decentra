@@ -41,11 +41,7 @@ const SafeAddress = (): ReactElement => {
           {safeLoading ? (
             <Skeleton variant="circular" width={18} height={18} />
           ) : (
-            <SafeIcon
-              address={safeAddress}
-              threshold={threshold}
-              owners={owners?.length}
-            />
+            <SafeIcon address={safeAddress} threshold={threshold} owners={owners?.length} />
           )}
         </div>
 
@@ -55,22 +51,13 @@ const SafeAddress = (): ReactElement => {
               <Skeleton variant="text" width={86} />
             </Typography>
           ) : (
-            <EthHashInfo
-              address={safeAddress}
-              shortAddress
-              showAvatar={false}
-            />
+            <EthHashInfo address={safeAddress} shortAddress showAvatar={false} />
           )}
         </div>
       </div>
     </div>
   </IconButton>
-  <Drawer
-    variant="temporary"
-    anchor="left"
-    open={isDrawerOpen}
-    onClose={onDrawerToggle}
-  >
+  <Drawer variant="temporary" anchor="left" open={isDrawerOpen} onClose={onDrawerToggle}>
     <div className={css.drawer}>
       <SafeList closeDrawer={() => setIsDrawerOpen(false)} />
     </div>
