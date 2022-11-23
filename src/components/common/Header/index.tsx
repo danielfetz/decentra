@@ -45,6 +45,10 @@ const Header = ({ onMenuToggle }: HeaderProps): ReactElement => {
       </div>
 
       <div className={classnames(css.element, css.hideMobile)}>
+        <SafeAddress />
+      </div>
+
+      <div className={classnames(css.element, css.hideMobile)}>
         <ChainSwitcher />
       </div>
 
