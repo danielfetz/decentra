@@ -1,9 +1,7 @@
 import type { ReactElement } from 'react'
 import Typography from '@mui/material/Typography'
-import type { IconButtonProps } from '@mui/material/IconButton'
 import Skeleton from '@mui/material/Skeleton'
 
-import { formatCurrency } from '@/utils/formatNumber'
 import useSafeInfo from '@/hooks/useSafeInfo'
 import SafeIcon from '@/components/common/SafeIcon'
 import useBalances from '@/hooks/useBalances'
