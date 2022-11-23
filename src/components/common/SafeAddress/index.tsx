@@ -34,7 +34,7 @@ const SafeAddress = (): ReactElement => {
     setIsDrawerOpen((prev) => !prev)
   }
   
-  const ExpandIcon = open ? ExpandLessIcon : ExpandMoreIcon  
+  const ExpandIcon = isDrawerOpen ? ExpandLessIcon : ExpandMoreIcon  
 
   return (
     <div className={css.container}>
