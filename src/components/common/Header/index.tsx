@@ -11,7 +11,6 @@ import SafeTokenWidget, { getSafeTokenAddress } from '@/components/common/SafeTo
 import NotificationCenter from '@/components/notification-center/NotificationCenter'
 import { AppRoutes } from '@/config/routes'
 import useChainId from '@/hooks/useChainId'
-import SafeLogo from '@/public/images/logo.svg'
 import Link from 'next/link'
 import useSafeAddress from '@/hooks/useSafeAddress'
 
@@ -39,7 +38,7 @@ const Header = ({ onMenuToggle }: HeaderProps): ReactElement => {
       <div className={classnames(css.element, css.hideMobile, css.logo)}>
         <Link href={logoHref} passHref>
           <a>
-            <SafeLogo alt="Safe logo" />
+            <h3>Decentra</h3>
           </a>
         </Link>
       </div>
