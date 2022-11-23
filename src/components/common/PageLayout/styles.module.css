@@ -1,3 +1,7 @@
+.header {
+  background-color: var(--color-background-main);
+}
+
 .main {
   background-color: var(--color-background-main);
   padding-top: var(--header-height);
