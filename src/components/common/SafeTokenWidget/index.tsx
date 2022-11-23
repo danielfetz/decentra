@@ -54,7 +54,7 @@ const SafeTokenWidget = () => {
                 disabled={url === undefined}
               >
                 <SafeTokenIcon />
-                <Typography lineHeight="16px" fontWeight={700}>
+                <Typography fontSize="14px" fontWeight={700}>
                   {flooredSafeBalance}
                 </Typography>
               </ButtonBase>
