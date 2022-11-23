@@ -13,6 +13,10 @@ import css from './styles.module.css'
 import { selectSettings } from '@/store/settingsSlice'
 import { useCurrentChain } from '@/hooks/useChains'
 import EthHashInfo from '@/components/common/EthHashInfo'
+import { trackEvent, OVERVIEW_EVENTS } from '@/services/analytics'
+import { useState, type ReactElement } from 'react'
+import SafeList from '@/components/sidebar/SafeList'
+import { Divider, Drawer, IconButton } from '@mui/material'
 
 const SafeAddress = (): ReactElement => {
   const currency = useAppSelector(selectCurrency)
@@ -22,9 +26,17 @@ const SafeAddress = (): ReactElement => {
   const chain = useCurrentChain()
   const settings = useAppSelector(selectSettings)
   const addressCopyText = settings.shortName.copy && chain ? `${chain.shortName}:${safeAddress}` : safeAddress
+  const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false)
+  const isSafeRoute = !!router.query?.safe
+
+  const onDrawerToggle = () => {
+    trackEvent({ ...OVERVIEW_EVENTS.SIDEBAR, label: isDrawerOpen ? 'Close' : 'Open' })
+    setIsDrawerOpen((prev) => !prev)
+  }
 
   return (
     <div className={css.container}>
+    <IconButton className={css.drawerButton} onClick={onDrawerToggle}>
       <div className={css.info}>
         <div className={css.safe}>
           <div>
@@ -46,6 +58,12 @@ const SafeAddress = (): ReactElement => {
           </div>
         </div>
       </div>
+    </IconButton>      
+      <Drawer variant="temporary" anchor="left" open={isDrawerOpen} onClose={onDrawerToggle}>
+        <div className={css.drawer}>
+          <SafeList closeDrawer={() => setIsDrawerOpen(false)} />
+        </div>
+      </Drawer>
     </div>
   )
 }
