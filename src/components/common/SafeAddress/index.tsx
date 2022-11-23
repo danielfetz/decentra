@@ -1,4 +1,4 @@
-import type { ReactElement } from 'react'
+import { useState, type ReactElement } from 'react'
 import Typography from '@mui/material/Typography'
 import Skeleton from '@mui/material/Skeleton'
 
@@ -14,7 +14,6 @@ import { selectSettings } from '@/store/settingsSlice'
 import { useCurrentChain } from '@/hooks/useChains'
 import EthHashInfo from '@/components/common/EthHashInfo'
 import { trackEvent, OVERVIEW_EVENTS } from '@/services/analytics'
-import { useState, type ReactElement } from 'react'
 import SafeList from '@/components/sidebar/SafeList'
 import { Divider, Drawer, IconButton } from '@mui/material'
 
