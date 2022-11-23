@@ -20,11 +20,17 @@
   justify-content: center;
 }
 
-.menuButton,
+.newtxbutton {
+  flex: 1;
+  border: none;
+  align-items: flex-start;
+}
+
 .logo {
   flex: 1;
   border: none;
   align-items: flex-start;
+  max-width: 100px;
 }
 
 .logo svg {
@@ -35,6 +41,9 @@
 
 .menuButton {
   display: none;
+  flex: 1;
+  border: none;
+  align-items: flex-start;
 }
 
 .networkSelector {
