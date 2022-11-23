@@ -141,7 +141,8 @@ const AppCardContainer = ({ url, children, variant }: AppCardContainerProps): Re
         height,
         aspectRatio,
         transition: 'background-color 0.3s ease-in-out, border 0.3s ease-in-out',
-        border: '1px solid transparent',
+        border: '1px solid var(--color-border-light)',
+        borderRadius: '8px',
         '&:hover': {
           backgroundColor: palette.background.light,
           border: `1px solid ${palette.secondary.light}`,
