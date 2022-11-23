@@ -49,8 +49,6 @@
   --space-10: 80px;
   --space-11: 88px;
   --space-12: 96px;
-  padding-left: 17px;
-  overflow: overlay;
 }
 
 [data-theme='dark'] {
@@ -90,7 +88,6 @@
   --color-logo-main: #ffffff;
   --color-logo-background: #303033;
   --color-static-main: #121312;
-  color-scheme: dark;
 }
 
 /* The same as above for the brief moment before JS loads */
@@ -132,6 +129,5 @@
     --color-logo-main: #ffffff;
     --color-logo-background: #303033;
     --color-static-main: #121312;
-    color-scheme: dark;
   }
 }
