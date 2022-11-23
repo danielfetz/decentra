@@ -6,6 +6,8 @@ import { useRouter } from 'next/router'
 import Sidebar from '@/components/sidebar/Sidebar'
 import Header from '@/components/common//Header'
 import css from './styles.module.css'
+import { navItems } from '@/components/sidebar/SidebarNavigation/config'
+import NavTabs from '@/components/common/NavTabs'
 import SafeLoadingError from '../SafeLoadingError'
 import Footer from '../Footer'
 import { AppRoutes } from '@/config/routes'
@@ -31,9 +33,6 @@ const PageLayout = ({ children }: { children: ReactElement }): ReactElement => {
         <Header onMenuToggle={onMenuToggle} />
       </header>
 
-      {/* Desktop sidebar */}
-      {!hideSidebar && <aside className={css.sidebar}>{sidebar}</aside>}
-
       {/* Mobile sidebar */}
       <Drawer variant="temporary" anchor="left" open={isMobileDrawerOpen} onClose={onMenuToggle}>
         {sidebar}
@@ -41,6 +40,7 @@ const PageLayout = ({ children }: { children: ReactElement }): ReactElement => {
 
       <div className={cn(css.main, hideSidebar && css.mainNoSidebar)}>
         <div className={css.content}>
+          <NavTabs tabs={navItems} />
           <SafeLoadingError>{children}</SafeLoadingError>
         </div>
 
