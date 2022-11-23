@@ -15,7 +15,7 @@ import { useCurrentChain } from '@/hooks/useChains'
 import EthHashInfo from '@/components/common/EthHashInfo'
 import { trackEvent, OVERVIEW_EVENTS } from '@/services/analytics'
 import SafeList from '@/components/sidebar/SafeList'
-import { Divider, Drawer, IconButton } from '@mui/material'
+import { Drawer, IconButton } from '@mui/material'
 
 const SafeAddress = (): ReactElement => {
   const currency = useAppSelector(selectCurrency)
@@ -33,36 +33,49 @@ const SafeAddress = (): ReactElement => {
   }
 
   return (
-    <div className={css.container}>
-    <IconButton className={css.drawerButton} onClick={onDrawerToggle}>
-      <div className={css.info}>
-        <div className={css.safe}>
-          <div>
-            {safeLoading ? (
-              <Skeleton variant="circular" width={18} height={18} />
-            ) : (
-              <SafeIcon address={safeAddress} threshold={threshold} owners={owners?.length} />
-            )}
-          </div>
+<div className={css.container}>
+  <IconButton className={css.drawerButton} onClick={onDrawerToggle}>
+    <div className={css.info}>
+      <div className={css.safe}>
+        <div>
+          {safeLoading ? (
+            <Skeleton variant="circular" width={18} height={18} />
+          ) : (
+            <SafeIcon
+              address={safeAddress}
+              threshold={threshold}
+              owners={owners?.length}
+            />
+          )}
+        </div>
 
-          <div className={css.address}>
-            {safeLoading ? (
-              <Typography variant="body2">
-                <Skeleton variant="text" width={86} />
-              </Typography>
-            ) : (
-              <EthHashInfo address={safeAddress} shortAddress showAvatar={false} />
-            )}
-          </div>
+        <div className={css.address}>
+          {safeLoading ? (
+            <Typography variant="body2">
+              <Skeleton variant="text" width={86} />
+            </Typography>
+          ) : (
+            <EthHashInfo
+              address={safeAddress}
+              shortAddress
+              showAvatar={false}
+            />
+          )}
         </div>
       </div>
-    </IconButton>      
-      <Drawer variant="temporary" anchor="left" open={isDrawerOpen} onClose={onDrawerToggle}>
-        <div className={css.drawer}>
-          <SafeList closeDrawer={() => setIsDrawerOpen(false)} />
-        </div>
-      </Drawer>
     </div>
+  </IconButton>
+  <Drawer
+    variant="temporary"
+    anchor="left"
+    open={isDrawerOpen}
+    onClose={onDrawerToggle}
+  >
+    <div className={css.drawer}>
+      <SafeList closeDrawer={() => setIsDrawerOpen(false)} />
+    </div>
+  </Drawer>
+</div>;
   )
 }
 
