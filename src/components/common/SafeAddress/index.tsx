@@ -75,7 +75,7 @@ const SafeAddress = (): ReactElement => {
       <SafeList closeDrawer={() => setIsDrawerOpen(false)} />
     </div>
   </Drawer>
-</div>;
+</div>
   )
 }
 
