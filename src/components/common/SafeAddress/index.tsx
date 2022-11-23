@@ -26,7 +26,6 @@ const SafeAddress = (): ReactElement => {
   const settings = useAppSelector(selectSettings)
   const addressCopyText = settings.shortName.copy && chain ? `${chain.shortName}:${safeAddress}` : safeAddress
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false)
-  const isSafeRoute = !!router.query?.safe
 
   const onDrawerToggle = () => {
     trackEvent({ ...OVERVIEW_EVENTS.SIDEBAR, label: isDrawerOpen ? 'Close' : 'Open' })
