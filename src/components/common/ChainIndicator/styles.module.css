@@ -6,6 +6,10 @@
   font-size: 12px;
 }
 
+.MuiSelect-select {
+padding-right: 28px;
+}
+
 .inlineIndicator {
   display: inline-block;
   min-width: 70px;
