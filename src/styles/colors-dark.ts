@@ -19,6 +19,7 @@ const darkPalette = {
     main: '#636669',
     light: '#1f1f23',
     background: '#121312',
+    header: '#ffffff0d'.
   },
   error: {
     dark: '#AC2C3B',
@@ -49,6 +50,7 @@ const darkPalette = {
     main: '#000000',
     paper: '#0e0e10',
     light: '#1B2A22',
+    header: '#27272a'
   },
   logo: {
     main: '#FFFFFF',
