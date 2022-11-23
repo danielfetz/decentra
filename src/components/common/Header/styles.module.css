@@ -7,13 +7,14 @@
   position: relative;
   border-radius: 0 !important;
   background-color: var(--color-background-main);
-  border-bottom: 1px solid var(--color-border-light);
+  max-width: 1120px;
+  margin: auto;
+  gap: 8px;
 }
 
 .element {
-  padding: 0 var(--space-2);
+  padding: 0;
   height: 100%;
-  border-right: 1px solid var(--color-border-light);
   display: flex;
   flex-direction: column;
   justify-content: center;
