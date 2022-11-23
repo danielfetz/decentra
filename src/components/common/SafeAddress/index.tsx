@@ -31,9 +31,12 @@ const SafeAddress = (): ReactElement => {
     trackEvent({ ...OVERVIEW_EVENTS.SIDEBAR, label: isDrawerOpen ? 'Close' : 'Open' })
     setIsDrawerOpen((prev) => !prev)
   }
+  
+  const ExpandIcon = open ? ExpandLessIcon : ExpandMoreIcon  
 
   return (
-    <div className={css.container}><IconButton className={css.drawerButton} onClick={onDrawerToggle}>
+    <div className={css.container}>
+      <IconButton className={css.drawerButton} onClick={onDrawerToggle}>
       <div className={css.info}>
         <div className={css.safe}>
           <div>
@@ -54,7 +57,9 @@ const SafeAddress = (): ReactElement => {
             )}
           </div>
         </div>
-      </div></IconButton>
+      </div>
+      <ExpandIcon color="border" />
+      </IconButton>
       <Drawer variant="temporary" anchor="left" open={isDrawerOpen} onClose={onDrawerToggle}>
         <div className={css.drawer}>
           <SafeList closeDrawer={() => setIsDrawerOpen(false)} />
