@@ -23,7 +23,7 @@ import Track from '@/components/common/Track'
 import { OVERVIEW_EVENTS } from '@/services/analytics/events/overview'
 import { SvgIcon } from '@mui/material'
 
-const SafeHeader = (): ReactElement => {
+const SafeAddress = (): ReactElement => {
   const currency = useAppSelector(selectCurrency)
   const { balances, loading: balancesLoading } = useBalances()
   const { safe, safeAddress, safeLoading } = useSafeInfo()
@@ -58,3 +58,5 @@ const SafeHeader = (): ReactElement => {
     </div>
   )
 }
+
+export default SafeAddress
