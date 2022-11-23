@@ -8,7 +8,6 @@ import ChainSwitcher from '@/components/common/ChainSwitcher'
 import ConnectWallet from '@/components/common/ConnectWallet'
 import NetworkSelector from '@/components/common/NetworkSelector'
 import SafeAddress from '@/components/common/SafeAddress'
-import SafeTokenWidget, { getSafeTokenAddress } from '@/components/common/SafeTokenWidget'
 import NotificationCenter from '@/components/notification-center/NotificationCenter'
 import NewTxButton from '@/components/sidebar/NewTxButton'
 import { AppRoutes } from '@/config/routes'
@@ -23,7 +22,6 @@ type HeaderProps = {
 const Header = ({ onMenuToggle }: HeaderProps): ReactElement => {
   const chainId = useChainId()
   const safeAddress = useSafeAddress()
-  const showSafeToken = safeAddress && !!getSafeTokenAddress(chainId)
   const router = useRouter()
 
   // Logo link: if on Dashboard, link to Welcome, otherwise to the root (which redirects to either Dashboard or Welcome)
@@ -56,12 +54,6 @@ const Header = ({ onMenuToggle }: HeaderProps): ReactElement => {
       <div className={classnames(css.element, css.hideMobile)}>
         <ChainSwitcher />
       </div>
-
-      {showSafeToken && (
-        <div className={classnames(css.element, css.hideMobile)}>
-          <SafeTokenWidget />
-        </div>
-      )}
 
       <div className={classnames(css.element, css.hideMobile)}>
         <NotificationCenter />
