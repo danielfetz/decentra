@@ -10,6 +10,7 @@ import NetworkSelector from '@/components/common/NetworkSelector'
 import SafeAddress from '@/components/common/SafeAddress'
 import SafeTokenWidget, { getSafeTokenAddress } from '@/components/common/SafeTokenWidget'
 import NotificationCenter from '@/components/notification-center/NotificationCenter'
+import NewTxButton from '@/components/sidebar/NewTxButton'
 import { AppRoutes } from '@/config/routes'
 import useChainId from '@/hooks/useChainId'
 import Link from 'next/link'
@@ -46,6 +47,10 @@ const Header = ({ onMenuToggle }: HeaderProps): ReactElement => {
 
       <div className={classnames(css.element, css.hideMobile)}>
         <SafeAddress />
+      </div>
+
+      <div className={classnames(css.element, css.hideMobile)}>
+        <NewTxButton />
       </div>
 
       <div className={classnames(css.element, css.hideMobile)}>
