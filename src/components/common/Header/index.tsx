@@ -47,7 +47,7 @@ const Header = ({ onMenuToggle }: HeaderProps): ReactElement => {
         <SafeAddress />
       </div>
 
-      <div className={classnames(css.element, css.hideMobile)}>
+      <div className={classnames(css.element, css.hideMobile, css.newtxbutton)}>
         <NewTxButton />
       </div>
 
