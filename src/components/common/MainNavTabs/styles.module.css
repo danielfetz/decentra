@@ -5,7 +5,8 @@
 }
 
 .tabs :global .MuiTabs-scroller {
-  max-width: 1120px;
+  max-width: 1152px;
+  padding: 0 16px;
   margin: auto;
   width: 100%
 }
