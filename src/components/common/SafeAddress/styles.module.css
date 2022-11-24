@@ -1,5 +1,10 @@
-.container {
-  padding: var(--space-2) var(--space-1);
+.drawerButton {
+    padding: 0 10px;
+    border-radius: 5px;
+    background-color: var(--color-background-header);
+    border: 1px solid var(--color-border-header);
+    height: 32px;
+    gap: var(--space-1);
 }
 
 .info {
@@ -11,29 +16,6 @@
   gap: 12px;
   text-align: left;
   align-items: center;
-}
-
-.iconButtons {
-  margin-top: 10px;
-  margin-bottom: 16px;
-  display: flex;
-  gap: 8px;
-}
-
-.iconButton {
-  border-radius: 4px;
-  padding: 6px;
-  background-color: var(--color-background-main);
-  width: 32px;
-  height: 32px;
-}
-
-.iconButton:hover {
-  background-color: var(--color-secondary-background);
-}
-
-.iconButton svg path {
-  fill: var(--color-primary-main);
 }
 
 .address {
