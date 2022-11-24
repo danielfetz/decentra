@@ -5,7 +5,3 @@
     border: 1px solid var(--color-border-header);
     border-radius: 5px;
 }
-
-.button :global .Mui-disabled {
-  background-color: var(--color-background-header);
-}
