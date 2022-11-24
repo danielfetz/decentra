@@ -7,10 +7,6 @@
     gap: var(--space-1);
 }
 
-.info {
-  padding: 0 var(--space-1);
-}
-
 .safe {
   display: flex;
   gap: 12px;
