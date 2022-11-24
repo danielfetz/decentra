@@ -10,7 +10,7 @@ const MainNavTabs = ({ tabs }: { tabs: NavItem[] }) => {
   const activeTab = tabs.map((tab) => tab.href).indexOf(router.pathname)
 
   return (
-    <Tabs value={activeTab} variant="scrollable" className={css.tabs}>
+    <Tabs value={activeTab} className={css.tabs}>
       {tabs.map((tab, idx) => {
         return (
           <Link key={tab.href} href={{ pathname: tab.href, query: { safe: router.query.safe } }} passHref>
