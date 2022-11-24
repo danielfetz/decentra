@@ -11,6 +11,10 @@
   width: 100%
 }
 
+.tabs :global .MuiTabs-scroller .MuiTabs-indicator {
+  background-color: white;
+}
+
 .tab {
   opacity: 1;
   padding: 0;
