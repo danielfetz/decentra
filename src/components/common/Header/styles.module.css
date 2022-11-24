@@ -11,6 +11,7 @@
   margin: auto;
   gap: 8px;
   padding: 0 16px;
+  z-index: 1201
 }
 
 .element {
