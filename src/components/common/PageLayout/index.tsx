@@ -16,6 +16,7 @@ const PageLayout = ({ children }: { children: ReactElement }): ReactElement => {
   const router = useRouter()
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState<boolean>(false)
   const hideSidebar = router.pathname === AppRoutes.share.safeApp
+  const isSafeRoute = !!router.query?.safe
 
   const onMenuToggle = (): void => {
     setIsMobileDrawerOpen((prev) => !prev)
@@ -40,7 +41,16 @@ const PageLayout = ({ children }: { children: ReactElement }): ReactElement => {
 
       <div className={cn(css.main, hideSidebar && css.mainNoSidebar)}>
         <div className={css.content}>
-          <MainNavTabs tabs={navItems} />
+          {isSafeRoute ? (
+          <>
+            <MainNavTabs tabs={navItems} />
+          </>
+        ) : (
+          <>
+              <div></div>
+          </>
+        )}
+          
           <SafeLoadingError>{children}</SafeLoadingError>
         </div>
 
