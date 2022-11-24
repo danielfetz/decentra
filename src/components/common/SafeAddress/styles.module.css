@@ -9,7 +9,7 @@
 
 .safe {
   display: flex;
-  gap: 12px;
+  gap: 8px;
   text-align: left;
   align-items: center;
 }
