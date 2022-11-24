@@ -41,7 +41,7 @@ button {
 }
 
 :root {
-  --header-height: 52px;
+  --header-height: 60px;
 }
 
 input::-webkit-outer-spin-button,
