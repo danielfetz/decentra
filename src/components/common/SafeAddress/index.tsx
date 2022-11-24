@@ -44,7 +44,7 @@ const SafeAddress = (): ReactElement => {
             {safeLoading ? (
               <Skeleton variant="circular" width={18} height={18} />
             ) : (
-              <Identicon address={safeAddress} />
+              <Identicon address={safeAddress} width={18} height {18} />
             )}
           </div>
 
