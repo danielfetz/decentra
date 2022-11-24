@@ -18,9 +18,6 @@ const WalletInfo = ({ wallet, chain }: { wallet: ConnectedWallet; chain: ChainIn
         </Suspense>
       </Box>
       <Box>
-        <Typography variant="caption" component="div" className={css.walletDetails}>
-          {wallet.label} @ {chain.chainName}
-        </Typography>
         <Typography variant="caption" fontWeight="bold">
           {wallet.ens ? (
             <div>{wallet.ens}</div>
@@ -30,7 +27,7 @@ const WalletInfo = ({ wallet, chain }: { wallet: ConnectedWallet; chain: ChainIn
               address={wallet.address}
               showName={false}
               showAvatar
-              avatarSize={12}
+              avatarSize={18}
             />
           )}
         </Typography>
