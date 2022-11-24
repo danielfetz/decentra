@@ -19,8 +19,7 @@ const MainNavTabs = ({ tabs }: { tabs: NavItem[] }) => {
               label={
                 <Typography
                   variant="body2"
-                  fontWeight={700}
-                  color={activeTab === idx ? 'primary' : 'primary.light'}
+                  color={activeTab === idx ? 'primary.text' : 'primary.light'}
                   className={css.label}
                 >
                   {tab.label}
