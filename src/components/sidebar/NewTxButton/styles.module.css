@@ -6,6 +6,6 @@
     border-radius: 5px;
 }
 
-.button-disabled {
+.button :global .Mui-disabled {
   background-color: var(--color-background-header);
 }
