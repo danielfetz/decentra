@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography'
 import Skeleton from '@mui/material/Skeleton'
 
 import useSafeInfo from '@/hooks/useSafeInfo'
-import SafeIcon from '@/components/common/SafeIcon'
+import Identicon from '@/components/common/Identicon'
 import useBalances from '@/hooks/useBalances'
 import { useAppSelector } from '@/store'
 import { selectCurrency } from '@/store/settingsSlice'
@@ -44,7 +44,7 @@ const SafeAddress = (): ReactElement => {
             {safeLoading ? (
               <Skeleton variant="circular" width={18} height={18} />
             ) : (
-              <SafeIcon address={safeAddress} />
+              <Identicon address={safeAddress} />
             )}
           </div>
 
