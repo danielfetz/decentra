@@ -22,9 +22,9 @@
 }
 
 .content main {
-  padding: 36px 0;
+  padding: 36px 16px;
   margin: 0 auto;
-  max-width: 1120px;
+  max-width: 1152px;
   width: 100%;
 }
 
@@ -45,11 +45,5 @@
 
   .sidebar {
     display: none;
-  }
-}
-
-@media (max-width: 600px) {
-  .main main {
-    padding: var(--space-2);
   }
 }
