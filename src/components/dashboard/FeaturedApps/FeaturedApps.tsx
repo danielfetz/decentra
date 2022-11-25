@@ -28,7 +28,7 @@ export const FeaturedApps = (): ReactElement | null => {
         <WidgetBody>
           <StyledGrid container>
               <StyledGridItem item xs md key="">
-                <NextLink passHref href={{AppRoutes.txbuilder}}>
+                <NextLink passHref href={{ pathname: AppRoutes.txbuilder }}>
                   <a>
                     <Card>
                       <Grid container alignItems="center" spacing={3}>
