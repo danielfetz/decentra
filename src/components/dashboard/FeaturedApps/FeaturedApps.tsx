@@ -21,6 +21,7 @@ const StyledGridItem = styled(Grid)`
 
 export const FeaturedApps = (): ReactElement | null => {
   const router = useRouter()
+  const { safe = '' } = router.query
 
   return (
     <Grid item xs={12} md>
@@ -28,7 +29,7 @@ export const FeaturedApps = (): ReactElement | null => {
         <WidgetBody>
           <StyledGrid container>
               <StyledGridItem item xs md key="">
-                <NextLink passHref href={{ pathname: AppRoutes.txbuilder }}>
+                <NextLink passHref href="/${safe}${AppRoutes.txbuilder}">
                   <a>
                     <Card>
                       <Grid container alignItems="center" spacing={3}>
