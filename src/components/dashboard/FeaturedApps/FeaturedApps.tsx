@@ -19,6 +19,9 @@ const StyledGridItem = styled(Grid)`
   min-width: 262px;
 `
 
+export const FeaturedApps = (): ReactElement | null => {
+  const router = useRouter()
+
   return (
     <Grid item xs={12} md>
       <WidgetContainer id="featured-safe-apps">
