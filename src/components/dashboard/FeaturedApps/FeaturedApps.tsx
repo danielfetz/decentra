@@ -28,7 +28,7 @@ export const FeaturedApps = (): ReactElement | null => {
         <WidgetBody>
           <StyledGrid container>
               <StyledGridItem item xs md key="">
-                <NextLink passHref href={{ pathname: AppRoutes.txbuilder, query: { ...router.query } }}>
+                <NextLink passHref href="/apps?appUrl=https%3A%2F%2Fapps.gnosis-safe.io%2Ftx-builder">
                   <a>
                     <Card>
                       <Grid container alignItems="center" spacing={3}>
