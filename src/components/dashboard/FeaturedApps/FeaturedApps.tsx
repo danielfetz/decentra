@@ -27,7 +27,7 @@ export const FeaturedApps = (): ReactElement | null => {
       <WidgetContainer id="featured-safe-apps">
         <WidgetBody>
           <StyledGrid container>
-              <StyledGridItem item xs md}>
+              <StyledGridItem item xs md key="">
                 <NextLink passHref href="https://decentra-66gs4svaa-danielfetz.vercel.app/eth:0x81058ff64a2D765E73fC04c6a19E051701D101C8/apps?appUrl=https%3A%2F%2Fapps.gnosis-safe.io%2Ftx-builder">
                   <a>
                     <Card>
