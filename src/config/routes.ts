@@ -7,7 +7,7 @@ export const AppRoutes = {
   import: '/import',
   home: '/home',
   apps: '/apps',
-  txbuilder: '?appUrl=https%3A%2F%2Fapps.gnosis-safe.io%2Ftx-builder',
+  txbuilder: '/apps/?appUrl=https%3A%2F%2Fapps.gnosis-safe.io%2Ftx-builder',
   addressBook: '/address-book',
   balances: {
     nfts: '/balances/nfts',
