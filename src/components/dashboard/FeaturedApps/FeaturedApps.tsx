@@ -5,6 +5,7 @@ import { Card, WidgetBody, WidgetContainer } from '../styled'
 import { useRouter } from 'next/router'
 import NextLink from 'next/link'
 import { AppRoutes } from '@/config/routes'
+import useSafeInfo from '@/hooks/useSafeInfo'
 
 const StyledImage = styled.img`
   width: 64px;
@@ -21,6 +22,12 @@ const StyledGridItem = styled(Grid)`
 
 export const FeaturedApps = (): ReactElement | null => {
   const router = useRouter()
+  const { safe } = useSafeInfo()
+  
+  const featuredLinks: UrlObject = {
+    pathname: AppRoutes.txbuilder,
+    query: { safe: router.query.safe },
+  }
 
   return (
     <Grid item xs={12} md>
@@ -28,7 +35,7 @@ export const FeaturedApps = (): ReactElement | null => {
         <WidgetBody>
           <StyledGrid container>
               <StyledGridItem item xs md key="">
-                <NextLink passHref href={{ pathname: AppRoutes.apps, query: { ...router.query, AppRoutes.txbuilder } }}>
+                <NextLink passHref href={featuredLinks}>
                   <a>
                     <Card>
                       <Grid container alignItems="center" spacing={3}>
