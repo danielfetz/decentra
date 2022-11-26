@@ -15,7 +15,7 @@ const SafeAppsDashboardSection = () => {
 
   return (
     <WidgetContainer>
-      <Grid container spacing={4}>
+      <Grid container spacing={3}>
         {rankedSafeApps.map((rankedSafeApp) => (
           <Grid key={rankedSafeApp.id} item xs={12} sm={6} md={4} xl={4}>
             <AppCard safeApp={rankedSafeApp} onPin={togglePin} pinned={pinnedSafeAppIds.has(rankedSafeApp.id)} />
