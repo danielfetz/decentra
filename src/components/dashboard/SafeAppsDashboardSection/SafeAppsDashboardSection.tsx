@@ -21,6 +21,7 @@ const SkeletonOverview = (
 
 const SafeAppsDashboardSection = () => {
   const { rankedSafeApps, pinnedSafeAppIds } = useSafeApps()
+  const { safe, safeLoading } = useSafeInfo()
 
   return (
     <WidgetContainer>
