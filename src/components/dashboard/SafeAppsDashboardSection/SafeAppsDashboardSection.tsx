@@ -52,7 +52,7 @@ const SafeAppsDashboardSection = () => {
                             Use {rankedSafeApp.name}
               </Link>
              </Card>
-            <NextLink passHref href={{ pathname: AppRoutes.apps, query: { ...router.query, appUrl: rankedSafeApp.url } }}>  
+            </NextLink>  
           </Grid>
         ))}
       </Grid>
