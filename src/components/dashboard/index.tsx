@@ -20,7 +20,7 @@ const Dashboard = (): ReactElement => {
         <PendingTxsList size={5} />
       </Grid>
       
-      <Grid item xs={12} md={12} lg={6}>
+      <Grid item xs={12}>
         <Balances />
       </Grid>
       
