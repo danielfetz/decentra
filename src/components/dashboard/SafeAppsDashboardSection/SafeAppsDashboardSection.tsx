@@ -1,17 +1,13 @@
 import { useRouter } from 'next/router'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
 
 import { WidgetContainer } from '../styled'
+import { AppCard } from '@/components/safe-apps/FeaturedAppCard'
 import { useSafeApps } from '@/hooks/safe-apps/useSafeApps'
-import { AppCard, AppCardContainer } from '@/components/safe-apps/FeaturedAppCard'
-import { AppRoutes } from '@/config/routes'
-import ExploreSafeAppsIcon from '@/public/images/apps/explore.svg'
 
 const SafeAppsDashboardSection = () => {
-  const { rankedSafeApps, togglePin, pinnedSafeAppIds } = useSafeApps()
+  const { rankedSafeApps, pinnedSafeAppIds } = useSafeApps()
 
   return (
     <WidgetContainer>
