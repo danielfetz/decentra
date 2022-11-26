@@ -1,3 +1,5 @@
+import type { ReactElement } from 'react'
+
 import { useRouter } from 'next/router'
 import { Box, Grid, Skeleton, Typography, Link } from '@mui/material'
 
@@ -28,7 +30,7 @@ const SkeletonOverview = (
   </Grid>
   )
 
-const SafeAppsDashboardSection = () => {
+const SafeAppsDashboardSection = (): ReactElement | null => {
   const { rankedSafeApps, pinnedSafeAppIds } = useSafeApps()
   const router = useRouter()
   const { safe, safeLoading } = useSafeInfo()
