@@ -29,9 +29,7 @@ export type SafeAppCardVariants = 'default' | 'compact'
 type AppCardProps = {
   safeApp: SafeAppData
   pinned?: boolean
-  onPin?: (appId: number) => void
   variant?: SafeAppCardVariants
-  onDelete?: (app: SafeAppData) => void
 }
 
 type CompactSafeAppCardProps = {
@@ -51,85 +49,13 @@ type AppCardContainerProps = {
 
 const enum AppCardVariantHeights {
   compact = '120px',
-  default = '200px',
+  default = '240px',
 }
 
 const enum AppCardVariantAspectRatio {
   compact = '1 / 1',
   default = 'auto',
 }
-
-const DeleteButton = ({ safeApp, onDelete }: { safeApp: SafeAppData; onDelete: (app: SafeAppData) => void }) => (
-  <IconButton
-    aria-label={`Delete ${safeApp.name}`}
-    size="small"
-    onClick={(event) => {
-      event.preventDefault()
-      event.stopPropagation()
-      onDelete(safeApp)
-    }}
-  >
-    <SvgIcon component={DeleteIcon} inheritViewBox fontSize="small" />
-  </IconButton>
-)
-
-const ShareButton = ({
-  className,
-  shareUrl,
-  safeApp,
-}: {
-  className?: string
-  shareUrl: string
-  safeApp: SafeAppData
-}): ReactElement => {
-  const handleCopy = useCallback(() => {
-    const isCustomApp = safeApp.id < 1
-
-    trackSafeAppEvent(SAFE_APPS_EVENTS.COPY_SHARE_URL, isCustomApp ? safeApp.url : safeApp.name)
-  }, [safeApp])
-
-  return (
-    <CopyButton
-      text={shareUrl}
-      initialToolTipText={`Copy share URL for ${safeApp.name}`}
-      className={className}
-      onCopy={handleCopy}
-    >
-      <SvgIcon component={ShareIcon} inheritViewBox color="border" fontSize="small" />
-    </CopyButton>
-  )
-}
-
-const PinButton = ({
-  pinned,
-  safeApp,
-  onPin,
-  sx,
-}: {
-  pinned: boolean
-  safeApp: SafeAppData
-  onPin: (id: SafeAppData['id']) => void
-  sx?: IconButtonTypeMap['props']['sx']
-}) => (
-  <IconButton
-    aria-label={`${pinned ? 'Unpin' : 'Pin'} ${safeApp.name}`}
-    size="small"
-    onClick={(event) => {
-      event.preventDefault()
-      event.stopPropagation()
-      onPin(safeApp.id)
-    }}
-    title={`${pinned ? 'Unpin' : 'Pin'} ${safeApp.name}`}
-    sx={sx}
-  >
-    <SvgIcon
-      component={pinned ? BookmarkedIcon : BookmarkIcon}
-      inheritViewBox
-      color={pinned ? 'primary' : undefined}
-      fontSize="small"
-    />
-  </IconButton>
-)
 
 const AppCardContainer = ({ url, children, variant }: AppCardContainerProps): ReactElement => {
   const height = variant === 'compact' ? AppCardVariantHeights.compact : AppCardVariantHeights.default
@@ -163,43 +89,6 @@ const AppCardContainer = ({ url, children, variant }: AppCardContainerProps): Re
 
   return card
 }
-
-const CompactAppCard = ({ url, safeApp, onPin, pinned, shareUrl }: CompactSafeAppCardProps): ReactElement => (
-  <div className={styles.compactContainer}>
-    <AppCardContainer url={url} variant="compact">
-      <div className={styles.compactCardContainer}>
-        {/* App logo */}
-        <Avatar
-          src={safeApp.iconUrl}
-          alt={`${safeApp.name} logo`}
-          variant="square"
-          sx={{
-            '.MuiAvatar-img': {
-              objectFit: 'contain',
-            },
-          }}
-        />
-
-        {/* TODO No share button per design. Only info button. Leaving the code for reusing the styles */}
-        {/* Share button */}
-        {/* <ShareButton className={styles.compactShareButton} shareUrl={shareUrl} safeApp={safeApp} /> */}
-
-        {/* Pin/unpin button */}
-        {onPin && (
-          <PinButton
-            pinned={Boolean(pinned)}
-            safeApp={safeApp}
-            onPin={onPin}
-            sx={{ position: 'absolute', top: 2, right: 2 }}
-          />
-        )}
-      </div>
-    </AppCardContainer>
-    <Typography gutterBottom variant="h5" className={styles.compactText}>
-      {safeApp.name}
-    </Typography>
-  </div>
-)
 
 const AppCard = ({ safeApp, pinned, onPin, onDelete, variant = 'default' }: AppCardProps): ReactElement => {
   const router = useRouter()
@@ -237,26 +126,14 @@ const AppCard = ({ safeApp, pinned, onPin, onDelete, variant = 'default' }: AppC
             }}
           />
         }
-        action={
-          <div className={styles.actionContainer}>
-            {/* Share button */}
-            <ShareButton shareUrl={shareUrl} safeApp={safeApp} />
-
-            {/* Pin/unpin button */}
-            {onPin && <PinButton pinned={Boolean(pinned)} safeApp={safeApp} onPin={onPin} />}
-
-            {/* Delete custom app button */}
-            {onDelete && <DeleteButton onDelete={onDelete} safeApp={safeApp} />}
-          </div>
-        }
       />
 
       <CardContent sx={{ paddingTop: 0 }}>
-        <Typography gutterBottom variant="h5">
-          {safeApp.name}
-        </Typography>
         <Typography className={styles.truncateDescription} variant="body2" color="text.secondary">
           {safeApp.description}
+        </Typography>
+        <Typography gutterBottom variant="h5">
+          Use {safeApp.name}
         </Typography>
       </CardContent>
     </AppCardContainer>
