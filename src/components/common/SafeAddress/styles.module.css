@@ -1,0 +1,22 @@
+.drawerButton {
+    padding: 0 10px;
+    border-radius: 5px;
+    background-color: var(--color-background-header);
+    border: 1px solid var(--color-border-header);
+    height: 32px;
+    gap: var(--space-1);
+}
+
+.safe {
+  display: flex;
+  gap: 8px;
+  text-align: left;
+  align-items: center;
+}
+
+.address {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 14px;
+}

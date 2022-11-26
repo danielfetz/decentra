@@ -8,10 +8,14 @@
 
 .inlineIndicator {
   display: inline-block;
-  min-width: 70px;
-  font-size: 11px;
+  font-size: 14px;
   line-height: normal;
   text-align: center;
-  border-radius: 4px;
-  padding: 4px 8px;
+  border-radius: 5px;
+  padding: 0 10px;
+  border: 1px solid var(--color-border-header);
+  height: 32px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
 }

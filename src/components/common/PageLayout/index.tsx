@@ -6,6 +6,8 @@ import { useRouter } from 'next/router'
 import Sidebar from '@/components/sidebar/Sidebar'
 import Header from '@/components/common//Header'
 import css from './styles.module.css'
+import { navItems } from '@/components/sidebar/SidebarNavigation/config'
+import MainNavTabs from '@/components/common/MainNavTabs'
 import SafeLoadingError from '../SafeLoadingError'
 import Footer from '../Footer'
 import { AppRoutes } from '@/config/routes'
@@ -14,6 +16,7 @@ const PageLayout = ({ children }: { children: ReactElement }): ReactElement => {
   const router = useRouter()
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState<boolean>(false)
   const hideSidebar = router.pathname === AppRoutes.share.safeApp
+  const isSafeRoute = !!router.query?.safe
 
   const onMenuToggle = (): void => {
     setIsMobileDrawerOpen((prev) => !prev)
@@ -31,9 +34,6 @@ const PageLayout = ({ children }: { children: ReactElement }): ReactElement => {
         <Header onMenuToggle={onMenuToggle} />
       </header>
 
-      {/* Desktop sidebar */}
-      {!hideSidebar && <aside className={css.sidebar}>{sidebar}</aside>}
-
       {/* Mobile sidebar */}
       <Drawer variant="temporary" anchor="left" open={isMobileDrawerOpen} onClose={onMenuToggle}>
         {sidebar}
@@ -41,6 +41,16 @@ const PageLayout = ({ children }: { children: ReactElement }): ReactElement => {
 
       <div className={cn(css.main, hideSidebar && css.mainNoSidebar)}>
         <div className={css.content}>
+          {isSafeRoute ? (
+          <>
+            <MainNavTabs tabs={navItems} />
+          </>
+        ) : (
+          <>
+              <div></div>
+          </>
+        )}
+          
           <SafeLoadingError>{children}</SafeLoadingError>
         </div>
 

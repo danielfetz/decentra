@@ -1,15 +1,9 @@
 .header {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  z-index: 1201;
+  background-color: var(--color-background-main);
 }
 
 .main {
   background-color: var(--color-background-main);
-  padding-left: 230px;
-  padding-top: var(--header-height);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,7 +22,10 @@
 }
 
 .content main {
-  padding: var(--space-3);
+  padding: 36px 16px;
+  margin: 0 auto;
+  max-width: 1152px;
+  width: 100%;
 }
 
 .sidebar {
@@ -48,11 +45,5 @@
 
   .sidebar {
     display: none;
-  }
-}
-
-@media (max-width: 600px) {
-  .main main {
-    padding: var(--space-2);
   }
 }

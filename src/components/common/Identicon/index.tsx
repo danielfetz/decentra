@@ -10,7 +10,7 @@ export interface IdenticonProps {
   size?: number
 }
 
-const Identicon = ({ address, size = 40 }: IdenticonProps): ReactElement => {
+const Identicon = ({ address, size = 18 }: IdenticonProps): ReactElement => {
   const style = useMemo<CSSProperties | null>(() => {
     try {
       const blockie = makeBlockie(address)
