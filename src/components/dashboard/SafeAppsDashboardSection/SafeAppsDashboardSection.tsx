@@ -4,6 +4,7 @@ import { Grid, Skeleton, Typography } from '@mui/material'
 import { Card, WidgetContainer } from '../styled'
 import { AppCard } from '@/components/safe-apps/FeaturedAppCard'
 import { useSafeApps } from '@/hooks/safe-apps/useSafeApps'
+import useSafeInfo from '@/hooks/useSafeInfo'
 
 const ValueSkeleton = () => <Skeleton variant="text" width={30} />
 
