@@ -6,7 +6,7 @@ import Button from '@mui/material/Button'
 
 import { WidgetContainer } from '../styled'
 import { useSafeApps } from '@/hooks/safe-apps/useSafeApps'
-import { AppCard, AppCardContainer } from '@/components/safe-apps/AppCard'
+import { AppCard, AppCardContainer } from '@/components/safe-apps/FeaturedAppCard'
 import { AppRoutes } from '@/config/routes'
 import ExploreSafeAppsIcon from '@/public/images/apps/explore.svg'
 
