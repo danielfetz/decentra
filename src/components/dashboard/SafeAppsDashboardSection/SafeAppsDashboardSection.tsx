@@ -41,7 +41,7 @@ const SafeAppsDashboardSection = () => {
       <Grid container spacing={3}>
         {rankedSafeApps.map((rankedSafeApp) => (
           <Grid key={rankedSafeApp.id} item xs={12} sm={6} md={3} xl={3}>
-            <NextLink passHref href={{ pathname: AppRoutes.apps, query: { ...router.query, appUrl: rankedSafeAPp.url } }}>
+            <NextLink passHref href={{ pathname: AppRoutes.apps, query: { ...router.query, appUrl: rankedSafeApp.url } }}>
               <Card>
               <StyledImage src={rankedSafeApp.iconUrl} alt={rankedSafeApp.name} />
                 <Box mb={1.01}>
