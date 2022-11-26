@@ -21,30 +21,9 @@ const SafeAppsDashboardSection = () => {
             <AppCard safeApp={rankedSafeApp} pinned={pinnedSafeAppIds.has(rankedSafeApp.id)} />
           </Grid>
         ))}
-
-        <Grid item xs={12} sm={6} md={3} xl={3}>
-          <ExploreSafeAppsCard />
-        </Grid>
       </Grid>
     </WidgetContainer>
   )
 }
 
 export default SafeAppsDashboardSection
-
-const ExploreSafeAppsCard = () => {
-  const router = useRouter()
-  const safeAppsLink = `${AppRoutes.apps}?safe=${router.query.safe}`
-
-  return (
-    <AppCardContainer url={safeAppsLink}>
-      <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" height="100%" gap={1}>
-        <ExploreSafeAppsIcon alt="Explore Safe Apps icon" />
-
-        <Button variant="contained" size="small">
-          Explore Safe Apps
-        </Button>
-      </Box>
-    </AppCardContainer>
-  )
-}
