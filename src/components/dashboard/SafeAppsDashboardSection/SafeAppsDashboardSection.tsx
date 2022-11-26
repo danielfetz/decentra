@@ -30,10 +30,12 @@ const SkeletonOverview = (
   </Grid>
   )
 
-const SafeAppsDashboardSection = (): ReactElement | null => {
-  const { rankedSafeApps, pinnedSafeAppIds } = useSafeApps()
+export const SafeAppsDashboardSection = (): ReactElement | null => {
+  const { rankedSafeAppsLoading, rankedSafeApps, pinnedSafeAppIds } = useSafeApps()
   const router = useRouter()
   const { safe, safeLoading } = useSafeInfo()
+  
+  if (!rankedSafeApps?.length && !rankedSafeAppsLoading) return null
 
   return (
     <WidgetContainer>
@@ -63,5 +65,3 @@ const SafeAppsDashboardSection = (): ReactElement | null => {
     </WidgetContainer>
   )
 }
-
-export default SafeAppsDashboardSection
