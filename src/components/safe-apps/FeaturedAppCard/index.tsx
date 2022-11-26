@@ -36,7 +36,6 @@ type CompactSafeAppCardProps = {
   safeApp: SafeAppData
   url: LinkProps['href']
   pinned?: boolean
-  onPin?: (appId: number) => void
   onShareClick?: (event: SyntheticEvent) => void
   shareUrl: string
 }
@@ -90,7 +89,7 @@ const AppCardContainer = ({ url, children, variant }: AppCardContainerProps): Re
   return card
 }
 
-const AppCard = ({ safeApp, pinned, onPin, onDelete, variant = 'default' }: AppCardProps): ReactElement => {
+const AppCard = ({ safeApp, pinned, variant = 'default' }: AppCardProps): ReactElement => {
   const router = useRouter()
   const currentChain = useCurrentChain()
 
