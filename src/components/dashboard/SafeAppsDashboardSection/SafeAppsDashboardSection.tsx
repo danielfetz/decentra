@@ -30,6 +30,7 @@ const SkeletonOverview = (
 
 const SafeAppsDashboardSection = () => {
   const { rankedSafeApps, pinnedSafeAppIds } = useSafeApps()
+  const router = useRouter()
   const { safe, safeLoading } = useSafeInfo()
 
   return (
