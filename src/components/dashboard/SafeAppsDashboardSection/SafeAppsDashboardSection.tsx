@@ -6,7 +6,6 @@ import { Card, WidgetContainer } from '../styled'
 import { useSafeApps } from '@/hooks/safe-apps/useSafeApps'
 import useSafeInfo from '@/hooks/useSafeInfo'
 
-import { useRouter } from 'next/router'
 import NextLink from 'next/link'
 import { AppRoutes } from '@/config/routes'
 
