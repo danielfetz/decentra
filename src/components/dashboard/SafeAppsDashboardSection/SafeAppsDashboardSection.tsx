@@ -5,26 +5,19 @@ import { Card, WidgetContainer } from '../styled'
 import { useSafeApps } from '@/hooks/safe-apps/useSafeApps'
 import useSafeInfo from '@/hooks/useSafeInfo'
 
+import NextLink from 'next/link'
+import { AppRoutes } from '@/config/routes'
+
+const StyledImage = styled.img`
+  width: 64px;
+  height: 64px;
+`
+
 const ValueSkeleton = () => <Skeleton variant="text" width={30} />
 
 const SkeletonOverview = (
   <Grid container>
     <Grid item xs={12} sm={6} md={3} xl={3}>
-      <Card>
-        <Typography variant="h5">
-                <Skeleton variant="text" height={28} />
-        </Typography>
-      </Card>
-      <Card>
-        <Typography variant="h5">
-                <Skeleton variant="text" height={28} />
-        </Typography>
-      </Card>
-      <Card>
-        <Typography variant="h5">
-                <Skeleton variant="text" height={28} />
-        </Typography>
-      </Card>
       <Card>
         <Typography variant="h5">
                 <Skeleton variant="text" height={28} />
@@ -46,8 +39,10 @@ const SafeAppsDashboardSection = () => {
       <Grid container spacing={3}>
         {rankedSafeApps.map((rankedSafeApp) => (
           <Grid key={rankedSafeApp.id} item xs={12} sm={6} md={3} xl={3}>
-            <Card>
-              <Box mb={1.01}>
+            <NextLink passHref href={{ pathname: AppRoutes.apps, query: { ...router.query, appUrl: app.url } }}>
+              <Card>
+              <StyledImage src={rankedSafeApp.iconUrl} alt={rankedSafeApp.name} />
+                <Box mb={1.01}>
               <Typography fontSize="lg">
                 {rankedSafeApp.description}
               </Typography>
@@ -56,6 +51,7 @@ const SafeAppsDashboardSection = () => {
                             Use {rankedSafeApp.name}
               </Link>
              </Card>
+            <NextLink passHref href={{ pathname: AppRoutes.apps, query: { ...router.query, appUrl: rankedSafeApp.url } }}>  
           </Grid>
         ))}
       </Grid>
