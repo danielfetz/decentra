@@ -6,7 +6,6 @@ import { Box, Grid, Typography, Link } from '@mui/material'
 import styled from '@emotion/styled'
 import { Card, WidgetContainer } from '../styled'
 import { useSafeApps } from '@/hooks/safe-apps/useSafeApps'
-import useSafeInfo from '@/hooks/useSafeInfo'
 
 import NextLink from 'next/link'
 import { AppRoutes } from '@/config/routes'
