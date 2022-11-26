@@ -9,10 +9,6 @@ const Dashboard = (): ReactElement => {
   return (
     <Grid container spacing={3}>
       <Grid item xs={12}>
-        <FeaturedApps />
-      </Grid>
-      
-      <Grid item xs={12}>
         <SafeAppsDashboardSection />
       </Grid>
       
