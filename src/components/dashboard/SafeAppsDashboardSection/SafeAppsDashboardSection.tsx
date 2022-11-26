@@ -1,8 +1,7 @@
 import { useRouter } from 'next/router'
-import { Grid, Skeleton, Typography } from '@mui/material'
+import { Box, Grid, Skeleton, Typography, Link } from '@mui/material'
 
 import { Card, WidgetContainer } from '../styled'
-import { AppCard } from '@/components/safe-apps/FeaturedAppCard'
 import { useSafeApps } from '@/hooks/safe-apps/useSafeApps'
 import useSafeInfo from '@/hooks/useSafeInfo'
 
@@ -11,6 +10,21 @@ const ValueSkeleton = () => <Skeleton variant="text" width={30} />
 const SkeletonOverview = (
   <Grid container>
     <Grid item xs={12} sm={6} md={3} xl={3}>
+      <Card>
+        <Typography variant="h5">
+                <Skeleton variant="text" height={28} />
+        </Typography>
+      </Card>
+      <Card>
+        <Typography variant="h5">
+                <Skeleton variant="text" height={28} />
+        </Typography>
+      </Card>
+      <Card>
+        <Typography variant="h5">
+                <Skeleton variant="text" height={28} />
+        </Typography>
+      </Card>
       <Card>
         <Typography variant="h5">
                 <Skeleton variant="text" height={28} />
@@ -33,9 +47,14 @@ const SafeAppsDashboardSection = () => {
         {rankedSafeApps.map((rankedSafeApp) => (
           <Grid key={rankedSafeApp.id} item xs={12} sm={6} md={3} xl={3}>
             <Card>
-              <Typography variant="h5">
-                Use {rankedSafeApp.name}
+              <Box mb={1.01}>
+              <Typography fontSize="lg">
+                {rankedSafeApp.description}
               </Typography>
+              </Box>
+              <Link color="primary.main" fontWeight="bold" component="span">
+                            Use {rankedSafeApp.name}
+              </Link>
              </Card>
           </Grid>
         ))}
