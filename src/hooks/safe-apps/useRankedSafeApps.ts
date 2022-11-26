@@ -4,7 +4,7 @@ import { rankSafeApps } from '@/services/safe-apps/track-app-usage-count'
 import { SafeAppsTag } from '@/config/constants'
 
 // number of ranked Safe Apps that we want to display
-const NUMBER_OF_SAFE_APPS = 3
+const NUMBER_OF_SAFE_APPS = 4
 
 const useRankedSafeApps = (safeApps: SafeAppData[], pinnedSafeApps: SafeAppData[]): SafeAppData[] => {
   return useMemo(() => {
@@ -13,9 +13,9 @@ const useRankedSafeApps = (safeApps: SafeAppData[], pinnedSafeApps: SafeAppData[
     const mostUsedApps = rankSafeApps(safeApps)
     const rankedPinnedApps = rankSafeApps(pinnedSafeApps)
     const randomApps = safeApps.slice().sort(() => Math.random() - 0.5)
-    const safeClaimingApp = safeApps?.filter((app) => app.tags?.includes(SafeAppsTag.DASHBOARD_FEATURED)) || []
+    const safeFeaturedApps = safeApps?.filter((app) => app.tags?.includes(SafeAppsTag.DASHBOARD_FEATURED)) || []
 
-    const allRankedApps = safeClaimingApp
+    const allRankedApps = safeFeaturedApps
       .concat(rankedPinnedApps, pinnedSafeApps, mostUsedApps, randomApps)
 
     // Use a Set to remove duplicates
