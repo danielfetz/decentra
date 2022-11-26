@@ -11,11 +11,6 @@ import IconButton from '@mui/material/IconButton'
 import type { IconButtonTypeMap } from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import type { SafeAppData } from '@gnosis.pm/safe-react-gateway-sdk'
-import ShareIcon from '@/public/images/common/share.svg'
-import CopyButton from '@/components/common/CopyButton'
-import BookmarkIcon from '@/public/images/apps/bookmark.svg'
-import BookmarkedIcon from '@/public/images/apps/bookmarked.svg'
-import DeleteIcon from '@/public/images/common/delete.svg'
 import { AppRoutes } from '@/config/routes'
 import styles from './styles.module.css'
 import { useCurrentChain } from '@/hooks/useChains'
@@ -83,18 +78,7 @@ const AppCard = ({ safeApp, pinned, variant = 'default' }: AppCardProps): ReactE
   const router = useRouter()
   const currentChain = useCurrentChain()
 
-  const shareUrlObj: UrlObject = {
-    protocol: typeof window !== 'undefined' ? window.location.protocol : '',
-    host: typeof window !== 'undefined' ? window.location.host : '',
-    pathname: AppRoutes.share.safeApp,
-    query: { appUrl: safeApp.url, chain: currentChain?.shortName },
-  }
-
-  const url: UrlObject = router.query.safe
-    ? { pathname: AppRoutes.apps, query: { safe: router.query.safe, appUrl: safeApp.url } }
-    : shareUrlObj
-
-  const shareUrl = resolveHref(router, shareUrlObj)
+  const url: UrlObject = { pathname: AppRoutes.apps, query: { safe: router.query.safe, appUrl: safeApp.url } }
 
   return (
     <AppCardContainer url={url}>
