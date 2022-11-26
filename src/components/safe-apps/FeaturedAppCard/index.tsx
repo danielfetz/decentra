@@ -24,20 +24,12 @@ import type { UrlObject } from 'url'
 import { resolveHref } from 'next/dist/shared/lib/router/router'
 import { SAFE_APPS_EVENTS, trackSafeAppEvent } from '@/services/analytics'
 
-export type SafeAppCardVariants = 'default' | 'compact'
+export type SafeAppCardVariants = 'default'
 
 type AppCardProps = {
   safeApp: SafeAppData
   pinned?: boolean
   variant?: SafeAppCardVariants
-}
-
-type CompactSafeAppCardProps = {
-  safeApp: SafeAppData
-  url: LinkProps['href']
-  pinned?: boolean
-  onShareClick?: (event: SyntheticEvent) => void
-  shareUrl: string
 }
 
 type AppCardContainerProps = {
@@ -47,18 +39,16 @@ type AppCardContainerProps = {
 }
 
 const enum AppCardVariantHeights {
-  compact = '120px',
   default = '240px',
 }
 
 const enum AppCardVariantAspectRatio {
-  compact = '1 / 1',
   default = 'auto',
 }
 
 const AppCardContainer = ({ url, children, variant }: AppCardContainerProps): ReactElement => {
-  const height = variant === 'compact' ? AppCardVariantHeights.compact : AppCardVariantHeights.default
-  const aspectRatio = variant === 'compact' ? AppCardVariantAspectRatio.compact : AppCardVariantAspectRatio.default
+  const height = AppCardVariantHeights.default
+  const aspectRatio = AppCardVariantAspectRatio.default
 
   const card = (
     <Card
@@ -105,10 +95,6 @@ const AppCard = ({ safeApp, pinned, variant = 'default' }: AppCardProps): ReactE
     : shareUrlObj
 
   const shareUrl = resolveHref(router, shareUrlObj)
-
-  if (variant === 'compact') {
-    return <CompactAppCard url={url} safeApp={safeApp} pinned={pinned} onPin={onPin} shareUrl={shareUrl} />
-  }
 
   return (
     <AppCardContainer url={url}>
