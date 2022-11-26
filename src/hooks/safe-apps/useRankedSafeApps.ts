@@ -12,7 +12,7 @@ const useRankedSafeApps = (safeApps: SafeAppData[], pinnedSafeApps: SafeAppData[
 
     const mostUsedApps = rankSafeApps(safeApps)
     const rankedPinnedApps = rankSafeApps(pinnedSafeApps)
-    const randomApps = safeApps.slice().sort(() => Math.random() - 0.5)
+    const randomApps = safeApps.slice().sort(() => Math.random() - 0.5) || []
 
     const allRankedApps = safeClaimingApp
       .concat(rankedPinnedApps, pinnedSafeApps, mostUsedApps, randomApps)
