@@ -17,12 +17,12 @@ const SafeAppsDashboardSection = () => {
     <WidgetContainer>
       <Grid container spacing={3}>
         {rankedSafeApps.map((rankedSafeApp) => (
-          <Grid key={rankedSafeApp.id} item xs={12} sm={6} md={4} xl={4}>
-            <AppCard safeApp={rankedSafeApp} onPin={togglePin} pinned={pinnedSafeAppIds.has(rankedSafeApp.id)} />
+          <Grid key={rankedSafeApp.id} item xs={12} sm={6} md={3} xl={3}>
+            <AppCard safeApp={rankedSafeApp} pinned={pinnedSafeAppIds.has(rankedSafeApp.id)} />
           </Grid>
         ))}
 
-        <Grid item xs={12} sm={6} md={4} xl={4}>
+        <Grid item xs={12} sm={6} md={3} xl={3}>
           <ExploreSafeAppsCard />
         </Grid>
       </Grid>
