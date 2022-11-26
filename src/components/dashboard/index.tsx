@@ -2,6 +2,7 @@ import type { ReactElement } from 'react'
 import { Grid } from '@mui/material'
 import PendingTxsList from '@/components/dashboard/PendingTxs/PendingTxsList'
 import Overview from '@/components/dashboard/Overview/Overview'
+import SafeAppsDashboardSection from '@/components/dashboard/SafeAppsDashboardSection/SafeAppsDashboardSection'
 import { FeaturedApps } from '@/components/dashboard/FeaturedApps/FeaturedApps'
 
 const Dashboard = (): ReactElement => {
