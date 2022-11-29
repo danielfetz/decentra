@@ -13,6 +13,7 @@ import { AppRoutes } from '@/config/routes'
 const StyledImage = styled.img`
   width: 64px;
   height: 64px;
+  margin-bottom: 8px;
 `
 export const SafeAppsDashboardSection = (): ReactElement | null => {
   const { rankedSafeApps, pinnedSafeAppIds } = useSafeApps()
