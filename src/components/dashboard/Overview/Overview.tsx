@@ -114,7 +114,9 @@ const Overview = (): ReactElement => {
           <Card>
             <Grid container pb={2}>
               <Grid item xs={2}>
-                <SafeIcon address={safeAddress} threshold={safe.threshold} owners={safe.owners.length} size={48} />
+                <Typography component="h2" variant="subtitle1" fontWeight={700} mb={2}>
+        Overview
+                </Typography>
               </Grid>
 
               <Grid item xs />
@@ -125,7 +127,7 @@ const Overview = (): ReactElement => {
             </Grid>
 
             <Box mt={2} mb={4}>
-              <EthHashInfo showAvatar={false} address={safeAddress} shortAddress={false} />
+              <EthHashInfo showAvatar={true} address={safeAddress} shortAddress={true} />
             </Box>
 
             <Grid container>
