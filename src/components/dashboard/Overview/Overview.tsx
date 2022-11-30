@@ -15,6 +15,7 @@ import useSafeAddress from '@/hooks/useSafeAddress'
 import type { UrlObject } from 'url'
 
 import { useAppSelector } from '@/store'
+import { selectSettings } from '@/store/settingsSlice'
 
 import { getBlockExplorerLink } from '@/utils/chains'
 import CopyButton from '@/components/common/CopyButton'
