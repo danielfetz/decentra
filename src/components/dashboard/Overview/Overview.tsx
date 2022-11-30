@@ -14,6 +14,12 @@ import { AppRoutes } from '@/config/routes'
 import useSafeAddress from '@/hooks/useSafeAddress'
 import type { UrlObject } from 'url'
 
+import { getBlockExplorerLink } from '@/utils/chains'
+import CopyButton from '@/components/common/CopyButton'
+import QrCodeButton from '../QrCodeButton'
+import Track from '@/components/common/Track'
+import { OVERVIEW_EVENTS } from '@/services/analytics/events/overview'
+
 const IdenticonContainer = styled.div`
   position: relative;
   margin-bottom: var(--space-2);
@@ -83,6 +89,10 @@ const Overview = (): ReactElement => {
   const { safe, safeLoading } = useSafeInfo()
   const chain = useCurrentChain()
   const { chainId } = chain || {}
+  
+  const addressCopyText = settings.shortName.copy && chain ? `${chain.shortName}:${safeAddress}` : safeAddress
+
+  const blockExplorerLink = chain ? getBlockExplorerLink(chain, safeAddress) : undefined
 
   return (
     <WidgetContainer>
@@ -115,9 +125,29 @@ const Overview = (): ReactElement => {
             
             <Box mt={2} mb={4}>
                 <Typography fontWeight={500} mb={2}>
-        This Safe address can only be used on {safe.chain}. The threshold for executing transactions is {safe.threshold}/{safe.owners.length}.
+        This Safe address can only be used on this chain. The threshold for executing transactions is {safe.threshold}/{safe.owners.length}.
                 </Typography>
             </Box>
+            
+        <Box mt={2} mb={4}>
+          <Track {...OVERVIEW_EVENTS.SHOW_QR}>
+            <QrCodeButton>
+              Open QR code
+            </QrCodeButton>
+          </Track>
+
+          <Track {...OVERVIEW_EVENTS.COPY_ADDRESS}>
+            <CopyButton text={addressCopyText} className={css.iconButton}>
+             Copy to clipboard
+            </CopyButton>
+          </Track>
+
+          <Track {...OVERVIEW_EVENTS.OPEN_EXPLORER}>
+            <a target="_blank" rel="noreferrer" href={blockExplorerLink?.href || '#'}>
+             {blockExplorerLink?.title || ''}
+            </a>
+          </Track>
+        </Box>
             
           </Card>
         )}
