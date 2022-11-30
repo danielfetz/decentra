@@ -121,7 +121,6 @@ const Overview = (): ReactElement => {
                 </Typography>
             </Box>
             
-            </Grid>
           </Card>
         )}
       </WidgetBody>
