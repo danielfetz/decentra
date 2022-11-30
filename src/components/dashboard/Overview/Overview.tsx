@@ -83,23 +83,8 @@ const Overview = (): ReactElement => {
   const router = useRouter()
   const safeAddress = useSafeAddress()
   const { safe, safeLoading } = useSafeInfo()
-  const { balances } = useBalances()
-  const [nfts] = useCollectibles()
   const chain = useCurrentChain()
   const { chainId } = chain || {}
-
-  const assetsLink: UrlObject = {
-    pathname: AppRoutes.balances.index,
-    query: { safe: router.query.safe },
-  }
-  const nftsLink: UrlObject = {
-    pathname: AppRoutes.balances.nfts,
-    query: { safe: router.query.safe },
-  }
-
-  // Native token is always returned even when its balance is 0
-  const tokenCount = useMemo(() => balances.items.filter((token) => token.balance !== '0').length, [balances])
-  const nftsCount = useMemo(() => (nfts ? `${nfts.next ? '>' : ''}${nfts.results.length}` : ''), [nfts])
 
   return (
     <WidgetContainer>
@@ -114,7 +99,7 @@ const Overview = (): ReactElement => {
           <Card>
             <Grid container pb={2}>
               <Grid item xs={2}>
-                <Typography component="h2" variant="subtitle1" fontWeight={700} mb={2}>
+                <Typography fontWeight={700} mb={2}>
         Overview
                 </Typography>
               </Grid>
@@ -129,42 +114,13 @@ const Overview = (): ReactElement => {
             <Box mt={2} mb={4}>
               <EthHashInfo showAvatar={true} address={safeAddress} shortAddress={true} />
             </Box>
-
-            <Grid container>
-              <Grid item xs={3}>
-                <Link href={assetsLink} passHref>
-                  <a>
-                    <Typography color="border.main" variant="body2">
-                      Tokens
-                    </Typography>
-                    <StyledText fontSize="lg">{tokenCount}</StyledText>
-                  </a>
-                </Link>
-              </Grid>
-
-              <Grid item xs={3}>
-                <Link href={nftsLink} passHref>
-                  <a>
-                    <Typography color="border.main" variant="body2">
-                      NFTs
-                    </Typography>
-                    <StyledText fontSize="lg">{nftsCount || <ValueSkeleton />}</StyledText>
-                  </a>
-                </Link>
-              </Grid>
-              <Grid item xs />
-
-              <Grid item>
-                <Box display="flex" height={1} alignItems="flex-end" justifyContent="flex-end">
-                  <Link href={assetsLink} passHref>
-                    <a>
-                      <Button size="medium" variant="contained" color="primary">
-                        View assets
-                      </Button>
-                    </a>
-                  </Link>
-                </Box>
-              </Grid>
+            
+            <Box mt={2} mb={4}>
+                <Typography fontWeight={500} mb={2}>
+        This Safe address can only be used on {chainId}. The threshold for executing transactions is {safe.threshold}/{safe.owners.length}.
+                </Typography>
+            </Box>
+            
             </Grid>
           </Card>
         )}
