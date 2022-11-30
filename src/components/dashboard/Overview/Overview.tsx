@@ -141,7 +141,7 @@ const Overview = (): ReactElement => {
           </Track>
 
           <Track {...OVERVIEW_EVENTS.COPY_ADDRESS}>
-            <CopyButton text={addressCopyText} className={css.iconButton}>
+            <CopyButton text={addressCopyText}>
              Copy to clipboard
             </CopyButton>
           </Track>
