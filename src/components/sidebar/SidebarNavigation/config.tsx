@@ -71,17 +71,6 @@ export const balancesNavItems = [
   },
 ]
 
-export const balancesHomeNavItems = [
-  {
-    label: 'Tokens',
-    href: AppRoutes.home.index,
-  },
-  {
-    label: 'NFTs',
-    href: AppRoutes.home.nfts,
-  },
-]
-
 export const settingsNavItems = [
   {
     label: 'Setup',
