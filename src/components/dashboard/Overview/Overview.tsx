@@ -14,6 +14,8 @@ import { AppRoutes } from '@/config/routes'
 import useSafeAddress from '@/hooks/useSafeAddress'
 import type { UrlObject } from 'url'
 
+import { useAppSelector } from '@/store'
+
 import { getBlockExplorerLink } from '@/utils/chains'
 import CopyButton from '@/components/common/CopyButton'
 import QrCodeButton from '@/components/sidebar/QrCodeButton'
@@ -89,6 +91,7 @@ const Overview = (): ReactElement => {
   const { safe, safeLoading } = useSafeInfo()
   const chain = useCurrentChain()
   const { chainId } = chain || {}
+  const settings = useAppSelector(selectSettings)
   
   const addressCopyText = settings.shortName.copy && chain ? `${chain.shortName}:${safeAddress}` : safeAddress
 
