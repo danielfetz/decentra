@@ -16,7 +16,7 @@ import type { UrlObject } from 'url'
 
 import { getBlockExplorerLink } from '@/utils/chains'
 import CopyButton from '@/components/common/CopyButton'
-import QrCodeButton from '../QrCodeButton'
+import QrCodeButton from '@/components/sidebar/QrCodeButton'
 import Track from '@/components/common/Track'
 import { OVERVIEW_EVENTS } from '@/services/analytics/events/overview'
 
