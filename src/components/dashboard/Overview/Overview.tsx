@@ -7,7 +7,6 @@ import { Box, Button, Grid, Skeleton, Typography } from '@mui/material'
 import { Card, WidgetBody, WidgetContainer } from '../styled'
 import useSafeInfo from '@/hooks/useSafeInfo'
 import { useCurrentChain } from '@/hooks/useChains'
-import SafeIcon from '@/components/common/SafeIcon'
 import ChainIndicator from '@/components/common/ChainIndicator'
 import EthHashInfo from '@/components/common/EthHashInfo'
 import { AppRoutes } from '@/config/routes'
@@ -100,10 +99,6 @@ const Overview = (): ReactElement => {
 
   return (
     <WidgetContainer>
-      <Typography component="h2" variant="subtitle1" fontWeight={700} mb={2}>
-        Overview
-      </Typography>
-
       <WidgetBody>
         {safeLoading ? (
           SkeletonOverview
