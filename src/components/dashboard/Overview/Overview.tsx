@@ -7,13 +7,11 @@ import { Box, Button, Grid, Skeleton, Typography } from '@mui/material'
 import { Card, WidgetBody, WidgetContainer } from '../styled'
 import useSafeInfo from '@/hooks/useSafeInfo'
 import { useCurrentChain } from '@/hooks/useChains'
-import useBalances from '@/hooks/useBalances'
 import SafeIcon from '@/components/common/SafeIcon'
 import ChainIndicator from '@/components/common/ChainIndicator'
 import EthHashInfo from '@/components/common/EthHashInfo'
 import { AppRoutes } from '@/config/routes'
 import useSafeAddress from '@/hooks/useSafeAddress'
-import useCollectibles from '@/hooks/useCollectibles'
 import type { UrlObject } from 'url'
 
 const IdenticonContainer = styled.div`
@@ -117,7 +115,7 @@ const Overview = (): ReactElement => {
             
             <Box mt={2} mb={4}>
                 <Typography fontWeight={500} mb={2}>
-        This Safe address can only be used on {chainId}. The threshold for executing transactions is {safe.threshold}/{safe.owners.length}.
+        This Safe address can only be used on {safe.chain}. The threshold for executing transactions is {safe.threshold}/{safe.owners.length}.
                 </Typography>
             </Box>
             
