@@ -67,7 +67,7 @@ const ReviewSafeAppsTx = ({
         {safeTx && (
           <>
             <InfoDetails title={getInteractionTitle(safeTx.data.value || '', chain)}>
-              <EthHashInfo address={safeTx.data.to} shortAddress={false} showCopyButton hasExplorer />
+              <EthHashInfo address={safeTx.data.to} shortAddress={true} showCopyButton hasExplorer />
             </InfoDetails>
 
             <Box pb={2}>
