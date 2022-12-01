@@ -30,7 +30,7 @@ export const ExpandableTransactionItem = ({
     <Accordion
       disableGutters
       elevation={0}
-      defaultExpanded=true
+      defaultExpanded = true
       className={classNames(css.accordion, { [css.batched]: isBatched })}
       data-testid={testId}
     >
