@@ -17,9 +17,9 @@ const darkPalette = {
   },
   border: {
     main: '#636669',
-    light: '#1f1f23',
+    light: '#30363d',
     background: '#121312',
-    header: '#ffffff0d',
+    header: '#30363d',
   },
   error: {
     dark: '#AC2C3B',
@@ -47,10 +47,10 @@ const darkPalette = {
   },
   background: {
     default: '#000000',
-    main: '#0d0e0f',
-    paper: '#1a1b1f',
+    main: '#0d1117',
+    paper: '#161b22',
     light: '#1B2A22',
-    header: '#27272a',
+    header: '#161b22',
   },
   logo: {
     main: '#FFFFFF',
