@@ -187,6 +187,7 @@ const initTheme = (darkMode: boolean) => {
         ],
         styleOverrides: {
           root: ({ theme }) => ({
+            background: theme.palette.background.main,
             transition: 'background 0.2s, border 0.2s',
             borderRadius: theme.shape.borderRadius,
             border: `1px solid ${theme.palette.border.light}`,
