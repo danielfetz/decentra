@@ -13,7 +13,7 @@ interface Props {
   defaultExpanded?: boolean
 }
 
-const Summary = ({ txDetails, defaultExpanded = true }: Props): ReactElement => {
+const Summary = ({ txDetails, defaultExpanded = false }: Props): ReactElement => {
   const [expanded, setExpanded] = useState<boolean>(defaultExpanded)
 
   const toggleExpanded = () => {
