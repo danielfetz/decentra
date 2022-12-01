@@ -200,17 +200,13 @@ const initTheme = (darkMode: boolean) => {
               borderColor: theme.palette.secondary.light,
             },
 
-            '&:hover > .MuiAccordionSummary-root': {
-              background: theme.palette.background.light,
-            },
-
             '&.Mui-expanded': {
               margin: 0,
-              borderColor: theme.palette.secondary.light,
+              borderColor: theme.palette.border.light,
             },
 
             '&.Mui-expanded > .MuiAccordionSummary-root': {
-              background: theme.palette.background.light,
+              background: theme.palette.background.paper,
             },
           }),
         },
