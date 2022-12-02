@@ -1,10 +1,12 @@
 import type { ReactElement } from 'react'
 import { Grid } from '@mui/material'
-import { SafeAppsDashboardSection } from '@/components/dashboard/SafeAppsDashboardSection/SafeAppsDashboardSection'
 import Overview from '@/components/dashboard/Overview/Overview'
+import DiscoverBanner from '@/components/dashboard/Banner/DiscoverBanner'
 
 import useTxQueue from '@/hooks/useTxQueue'
 import PaginatedTxns from '@/components/common/PaginatedTxns'
+
+import { SafeAppsDashboardSection } from '@/components/dashboard/SafeAppsDashboardSection/SafeAppsDashboardSection'
 
 const Dashboard = (): ReactElement => {
   return (
@@ -14,7 +16,7 @@ const Dashboard = (): ReactElement => {
       </Grid>
 
       <Grid item xs={12} md={12} lg={6}>
-          <Overview />
+          <DiscoverBanner />
           <PaginatedTxns useTxns={useTxQueue} />
       </Grid>
       
