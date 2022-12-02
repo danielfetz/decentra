@@ -15,16 +15,12 @@ const DiscoverBanner = (): ReactElement => {
     <WidgetContainer>
       <WidgetBody>
           <StyledCard>            
-            <Box mt={2} mb={4}>
-                <Typography fontWeight={500} mb={2}>
+                <h2>
         Discover a collaborative and social Safe interface
-                </Typography>
-            </Box> 
-            <Box mt={2} mb={4}>
+                </h2>
                 <Typography fontWeight={500} mb={2}>
 Your news feed helps you keep up with recent on repositories you watch or star and people.
                 </Typography>
-            </Box> 
           </StyledCard>
       </WidgetBody>
     </WidgetContainer>
