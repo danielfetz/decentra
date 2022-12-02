@@ -1,6 +1,7 @@
 import type { ReactElement } from 'react'
 import { Box, Typography } from '@mui/material'
 import { Card, WidgetBody, WidgetContainer } from '../styled'
+import styled from '@emotion/styled'
 
 const StyledCard = styled(Card)`
     background-image: url(https://github.githubassets.com/images/modules/memexes/projects-beta-banner-dark.png);
