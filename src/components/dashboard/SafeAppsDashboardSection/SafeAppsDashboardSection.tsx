@@ -22,7 +22,7 @@ export const SafeAppsDashboardSection = (): ReactElement | null => {
     <WidgetContainer>
       <Grid container spacing={3}>
         {rankedSafeApps.map((rankedSafeApp) => (
-          <Grid key={rankedSafeApp.id} item xs={12} sm={6} md={3} xl={3}>
+          <Grid key={rankedSafeApp.id} item xs={12} sm={12} md={12} xl={12}>
             <NextLink passHref href={{ pathname: AppRoutes.apps, query: { ...router.query, appUrl: rankedSafeApp.url } }}>
               <a>
               <Card>
