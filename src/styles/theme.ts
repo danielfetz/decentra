@@ -96,8 +96,8 @@ const initTheme = (darkMode: boolean) => {
         lineHeight: '22px',
       },
       body2: {
-        fontSize: '14px',
-        lineHeight: '20px',
+        fontSize: '15px',
+        lineHeight: '21px',
       },
       caption: {
         fontSize: '12px',
