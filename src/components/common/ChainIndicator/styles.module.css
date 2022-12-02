@@ -8,13 +8,13 @@
 
 .inlineIndicator {
   display: inline-block;
-  font-size: 14px;
+  font-size: 15px;
   line-height: normal;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 8px;
   padding: 0 10px;
   border: 1px solid var(--color-border-header);
-  height: 32px;
+  height: 35px;
   display: flex;
   align-items: center;
   font-weight: bold;
