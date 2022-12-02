@@ -2,7 +2,7 @@ import type { ReactElement } from 'react'
 import { Box, Typography } from '@mui/material'
 import { Card, WidgetBody, WidgetContainer } from '../styled'
 
-const Overview = (): ReactElement => {
+const DiscoverBanner = (): ReactElement => {
 
   return (
     <WidgetContainer>
@@ -19,10 +19,9 @@ Your news feed helps you keep up with recent on repositories you watch or star a
                 </Typography>
             </Box> 
           </Card>
-        )}
       </WidgetBody>
     </WidgetContainer>
   )
 }
 
-export default Overview
+export default DiscoverBanner
