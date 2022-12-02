@@ -14,6 +14,7 @@ const Dashboard = (): ReactElement => {
       </Grid>
 
       <Grid item xs={12} md={12} lg={6}>
+          <Overview />
           <PaginatedTxns useTxns={useTxQueue} />
       </Grid>
       
