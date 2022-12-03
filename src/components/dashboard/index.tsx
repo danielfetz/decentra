@@ -7,7 +7,7 @@ import useTxQueue from '@/hooks/useTxQueue'
 import PaginatedTxns from '@/components/common/PaginatedTxns'
 
 import { SafeAppsDashboardSection } from '@/components/dashboard/SafeAppsDashboardSection/SafeAppsDashboardSection'
-import FeaturedApps from '@/components/dashboard/FeaturedApps/FeaturedApps'
+import { FeaturedApps } from '@/components/dashboard/FeaturedApps/FeaturedApps'
 
 const Dashboard = (): ReactElement => {
   return (
