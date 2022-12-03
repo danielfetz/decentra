@@ -1,16 +1,10 @@
 import type { ReactElement } from 'react'
 import { useMemo, useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
 import Link from 'next/link'
 import styled from '@emotion/styled'
 import { Box, Button, Grid, Skeleton, Typography } from '@mui/material'
 import { Card, WidgetBody, WidgetContainer } from '../styled'
 import useSafeInfo from '@/hooks/useSafeInfo'
-import { useCurrentChain } from '@/hooks/useChains'
-import ChainIndicator from '@/components/common/ChainIndicator'
-import EthHashInfo from '@/components/common/EthHashInfo'
-import { AppRoutes } from '@/config/routes'
-import useSafeAddress from '@/hooks/useSafeAddress'
 import type { UrlObject } from 'url'
 
 import { useAppSelector } from '@/store'
@@ -85,8 +79,6 @@ const SkeletonOverview = (
 )
 
 const Balance = ({ currencySelect = false }: { currencySelect?: boolean }): ReactElement => {
-  const router = useRouter()
-  const safeAddress = useSafeAddress()
   const { safe, safeLoading } = useSafeInfo()
   const settings = useAppSelector(selectSettings)
 
