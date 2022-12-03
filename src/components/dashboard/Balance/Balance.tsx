@@ -19,6 +19,7 @@ import { selectSettings } from '@/store/settingsSlice'
 import { formatCurrency } from '@/utils/formatNumber'
 import useBalances from '@/hooks/useBalances'
 import { selectCurrency } from '@/store/settingsSlice'
+import CurrencySelect from '@/components/balances/CurrencySelect'
 
 const IdenticonContainer = styled.div`
   position: relative;
@@ -83,7 +84,7 @@ const SkeletonOverview = (
   </Card>
 )
 
-const Balance = (): ReactElement => {
+const Balance = ({ currencySelect = false }: { currencySelect?: boolean }): ReactElement => {
   const router = useRouter()
   const safeAddress = useSafeAddress()
   const { safe, safeLoading } = useSafeInfo()
@@ -115,14 +116,14 @@ const Balance = (): ReactElement => {
               <Grid item xs />
 
               <Grid item>
-            <Typography variant="body2" fontWeight={700}>
-              {fiatTotal}
-            </Typography>
+                      {currencySelect && <CurrencySelect />}
               </Grid>
             </Grid>
 
             <Box mt={2} mb={4}>
-              <EthHashInfo showAvatar={true} address={safeAddress} shortAddress={true} />
+<Typography variant="body2" fontWeight={700}>
+              {fiatTotal}
+            </Typography>
             </Box>
             
             <Box mt={2} mb={4}>
