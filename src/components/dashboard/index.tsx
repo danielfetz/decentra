@@ -1,6 +1,7 @@
 import type { ReactElement } from 'react'
 import { Grid } from '@mui/material'
 import Overview from '@/components/dashboard/Overview/Overview'
+import Balance from '@/components/dashboard/Balance/Balance'
 import DiscoverBanner from '@/components/dashboard/Banner/DiscoverBanner'
 
 import useTxQueue from '@/hooks/useTxQueue'
@@ -14,6 +15,7 @@ const Dashboard = (): ReactElement => {
     <Grid container spacing={3}>
       <Grid item xs={12} md={12} lg={3}>
         <Overview />
+        <Balance />
       </Grid>
 
       <Grid item xs={12} md={12} lg={6}>
