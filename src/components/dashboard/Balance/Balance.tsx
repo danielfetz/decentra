@@ -18,7 +18,6 @@ import { selectSettings } from '@/store/settingsSlice'
 
 import { formatCurrency } from '@/utils/formatNumber'
 import useBalances from '@/hooks/useBalances'
-import { useAppSelector } from '@/store'
 import { selectCurrency } from '@/store/settingsSlice'
 
 const IdenticonContainer = styled.div`
