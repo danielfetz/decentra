@@ -33,7 +33,7 @@ export const Value = ({ type, ...props }: ValueArrayProps): ReactElement => {
                 key={`${address}_${key}`}
                 address={address}
                 showAvatar={false}
-                shortAddress={false}
+                shortAddress={true}
                 showCopyButton
                 hasExplorer
               />
