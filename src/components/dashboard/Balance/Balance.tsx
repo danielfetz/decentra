@@ -78,7 +78,7 @@ const SkeletonOverview = (
   </Card>
 )
 
-const Balance = ({ currencySelect = false }: { currencySelect?: boolean }): ReactElement => {
+const Balance = ({ currencySelect = true }: { currencySelect?: boolean }): ReactElement => {
   const { safe, safeLoading } = useSafeInfo()
   const settings = useAppSelector(selectSettings)
 
