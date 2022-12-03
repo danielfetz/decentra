@@ -70,7 +70,7 @@ export const SingleTxDecoded = ({
               address={tx.to}
               name={name}
               customAvatar={avatarUrl}
-              shortAddress={false}
+              shortAddress={true}
               showCopyButton
               hasExplorer
             />
