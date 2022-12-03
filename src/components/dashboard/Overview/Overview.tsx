@@ -106,7 +106,7 @@ const Overview = (): ReactElement => {
           <Card>
             <Grid container pb={2}>
               <Grid item xs={2}>
-                <Typography fontWeight={700} mb={2}>
+                <Typography mb={2}>
         Overview
                 </Typography>
               </Grid>
@@ -124,7 +124,7 @@ const Overview = (): ReactElement => {
             
             <Box mt={2} mb={4}>
                 <Typography fontWeight={500} mb={2}>
-        This Safe address can only be used on this chain. The threshold for executing transactions is {safe.threshold}/{safe.owners.length}.
+        This Safe can only be used on this chain. The threshold for executing transactions is {safe.threshold}/{safe.owners.length}.
                 </Typography>
             </Box>
             
