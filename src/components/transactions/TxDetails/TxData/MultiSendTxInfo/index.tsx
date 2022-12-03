@@ -13,7 +13,7 @@ export const MultiSendTxInfo = ({ txInfo }: { txInfo: MultiSend }): ReactElement
           address={txInfo?.to.value || ''}
           name={txInfo?.to.name}
           customAvatar={txInfo?.to.logoUri}
-          shortAddress={false}
+          shortAddress={true}
           showCopyButton
           hasExplorer
         />
