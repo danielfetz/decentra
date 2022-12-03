@@ -5,6 +5,8 @@ import { Card, WidgetBody, WidgetContainer } from '../styled'
 import { useRouter } from 'next/router'
 import NextLink from 'next/link'
 import { AppRoutes } from '@/config/routes'
+import { SafeAppsTag } from '@/config/constants'
+import { useRemoteSafeApps } from '@/hooks/safe-apps/useRemoteSafeApps'
 
 const StyledImage = styled.img`
   width: 64px;
@@ -15,41 +17,45 @@ const StyledGrid = styled(Grid)`
   gap: 24px;
 `
 
-const StyledGridItem = styled(Grid)`
-  min-width: 262px;
-`
-
 export const FeaturedApps = (): ReactElement | null => {
   const router = useRouter()
+  const [featuredApps, _, remoteSafeAppsLoading] = useRemoteSafeApps(SafeAppsTag.DASHBOARD_FEATURED)
+
+  if (!featuredApps?.length && !remoteSafeAppsLoading) return null
 
   return (
     <Grid item xs={12} md>
       <WidgetContainer id="featured-safe-apps">
+        <Typography component="h2" variant="subtitle1" fontWeight={700} mb={2}>
+          Connect &amp; transact
+        </Typography>
         <WidgetBody>
           <StyledGrid container>
-              <StyledGridItem item xs md key="">
-                <NextLink passHref href={{ pathname: AppRoutes.apps, query: { ...router.query, appUrl: "https://apps.gnosis-safe.io/tx-builder" } }}>
+            {featuredApps?.map((app) => (
+              <StyledGridItem item xs md key={app.id}>
+                <NextLink passHref href={{ pathname: AppRoutes.apps, query: { ...router.query, appUrl: app.url } }}>
                   <a>
                     <Card>
                       <Grid container alignItems="center" spacing={3}>
                         <Grid item xs={12} md={3}>
-                          <StyledImage src="https://apps.gnosis-safe.io/tx-builder/tx-builder.png" alt="Transaction Builder" />
+                          <StyledImage src={app.iconUrl} alt={app.name} />
                         </Grid>
 
                         <Grid item xs={12} md={9}>
                           <Box mb={1.01}>
-                            <Typography fontSize="lg">Compose custom contract interactions and batch them into a single transaction</Typography>
+                            <Typography fontSize="lg">{app.description}</Typography>
                           </Box>
 
                           <Link color="primary.main" fontWeight="bold" component="span">
-                            Use Transaction Builder
+                            Use {app.name}
                           </Link>
                         </Grid>
                       </Grid>
                     </Card>
                   </a>
                 </NextLink>
-              </StyledGridItem>          
+              </StyledGridItem>
+            ))}
           </StyledGrid>
         </WidgetBody>
       </WidgetContainer>
