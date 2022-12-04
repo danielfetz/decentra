@@ -26,11 +26,11 @@ const DiscoverBanner = () => {
 Your news feed helps you keep up with recent on repositories you watch or star and people.
                 </Typography>
           </StyledCard>
-      </WidgetBody>
-    </WidgetContainer>
           <Typography fontWeight={500}>
            Transaction queue {(totalQueuedTxs)}
           </Typography>
+      </WidgetBody>
+    </WidgetContainer>
   )
 }
 
