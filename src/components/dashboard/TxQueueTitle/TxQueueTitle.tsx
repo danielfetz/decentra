@@ -11,7 +11,7 @@ const TxQueueTitle = (): ReactElement => {
   return (
     <WidgetContainer>
         <Typography component="h2" variant="subtitle1" fontWeight={700} mb={2}>
-          Transaction queue {totalQueuedTxs ? ` (${totalQueuedTxs})` : ''}
+          Transaction queue (${totalQueuedTxs})
         </Typography>
     </WidgetContainer>
   )
