@@ -27,10 +27,10 @@ Your news feed helps you keep up with recent on repositories you watch or star a
                 </Typography>
           </StyledCard>
       </WidgetBody>
+    </WidgetContainer>
           <Typography fontWeight={500}>
            Transaction queue {(totalQueuedTxs)}
           </Typography>
-    </WidgetContainer>
   )
 }
 
