@@ -11,8 +11,9 @@ const StyledCard = styled(Card)`
     box-shadow: 0 3px 6px #010409;
 `
 
+const totalQueuedTxs = getQueuedTransactionCount
+
 const DiscoverBanner = (): ReactElement => {
-  const totalQueuedTxs = getQueuedTransactionCount
 
   return (
     <WidgetContainer>
@@ -25,7 +26,7 @@ const DiscoverBanner = (): ReactElement => {
 Your news feed helps you keep up with recent on repositories you watch or star and people.
                 </Typography>
           </StyledCard>
-          <Typography>
+          <Typography fontWeight={500}>
            Transaction queue {(totalQueuedTxs)}
           </Typography>
       </WidgetBody>
