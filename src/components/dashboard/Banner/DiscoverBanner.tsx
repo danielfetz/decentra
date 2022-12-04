@@ -26,12 +26,10 @@ const DiscoverBanner = (): ReactElement => {
 Your news feed helps you keep up with recent on repositories you watch or star and people.
                 </Typography>
           </StyledCard>
-          <Box>
+      </WidgetBody>
           <Typography fontWeight={500}>
            Transaction queue {(totalQueuedTxs)}
           </Typography>
-          </Box>
-      </WidgetBody>
     </WidgetContainer>
   )
 }
