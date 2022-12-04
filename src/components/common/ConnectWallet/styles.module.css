@@ -9,10 +9,10 @@
   text-align: left;
   gap: var(--space-1);
   padding: 0 10px;
-  border-radius: 5px;
+  border-radius: 8px;
   background-color: var(--color-background-header);
   border: 1px solid var(--color-border-header);
-  height: 32px;
+  height: 35px;
 }
 
 .popoverContainer {

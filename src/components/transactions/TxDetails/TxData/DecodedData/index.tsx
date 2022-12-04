@@ -33,7 +33,7 @@ export const DecodedData = ({ txData, txInfo }: Props): ReactElement | null => {
           address={txData.to.value}
           name={isCustomTxInfo(txInfo) ? txInfo.to.name : undefined}
           customAvatar={isCustomTxInfo(txInfo) ? txInfo.to.logoUri : undefined}
-          shortAddress={false}
+          shortAddress={true}
           showCopyButton
           hasExplorer
         />

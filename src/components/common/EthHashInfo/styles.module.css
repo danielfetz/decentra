@@ -11,8 +11,8 @@
 
 .resizeAvatar,
 .resizeAvatar * {
-  width: 2.3em !important;
-  height: 2.3em !important;
+  width: 18px;
+  height: 18px;
 }
 
 .addressRow {

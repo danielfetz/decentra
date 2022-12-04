@@ -1,26 +1,19 @@
 import type { ReactElement } from 'react'
-import { useMemo } from 'react'
-import { useRouter } from 'next/router'
+import { useMemo, useEffect, useState } from 'react'
 import Link from 'next/link'
 import styled from '@emotion/styled'
 import { Box, Button, Grid, Skeleton, Typography } from '@mui/material'
 import { Card, WidgetBody, WidgetContainer } from '../styled'
 import useSafeInfo from '@/hooks/useSafeInfo'
-import { useCurrentChain } from '@/hooks/useChains'
-import ChainIndicator from '@/components/common/ChainIndicator'
-import EthHashInfo from '@/components/common/EthHashInfo'
-import { AppRoutes } from '@/config/routes'
-import useSafeAddress from '@/hooks/useSafeAddress'
 import type { UrlObject } from 'url'
 
 import { useAppSelector } from '@/store'
 import { selectSettings } from '@/store/settingsSlice'
 
-import { getBlockExplorerLink } from '@/utils/chains'
-import CopyButton from '@/components/common/CopyButton'
-import QrCodeButton from '@/components/sidebar/QrCodeButton'
-import Track from '@/components/common/Track'
-import { OVERVIEW_EVENTS } from '@/services/analytics/events/overview'
+import { formatCurrency } from '@/utils/formatNumber'
+import useBalances from '@/hooks/useBalances'
+import { selectCurrency } from '@/store/settingsSlice'
+import CurrencySelect from '@/components/balances/CurrencySelect'
 
 const IdenticonContainer = styled.div`
   position: relative;
@@ -85,18 +78,19 @@ const SkeletonOverview = (
   </Card>
 )
 
-const Overview = (): ReactElement => {
-  const router = useRouter()
-  const safeAddress = useSafeAddress()
+const Balance = ({ currencySelect = true }: { currencySelect?: boolean }): ReactElement => {
   const { safe, safeLoading } = useSafeInfo()
-  const chain = useCurrentChain()
-  const { chainId } = chain || {}
   const settings = useAppSelector(selectSettings)
+
+  const currency = useAppSelector(selectCurrency)
+  const { balances, loading: balancesLoading } = useBalances()
   
-  const addressCopyText = settings.shortName.copy && chain ? `${chain.shortName}:${safeAddress}` : safeAddress
+  const [fiatTotal, setFiatTotal] = useState<string>('')
 
-  const blockExplorerLink = chain ? getBlockExplorerLink(chain, safeAddress) : undefined
-
+  useEffect(() => {
+    setFiatTotal(balancesLoading ? '' : formatCurrency(balances.fiatTotal, currency))
+  }, [currency, balances.fiatTotal, balancesLoading])
+    
   return (
     <WidgetContainer>
       <WidgetBody>
@@ -107,46 +101,28 @@ const Overview = (): ReactElement => {
             <Grid container pb={2}>
               <Grid item xs={2}>
                 <Typography mb={2}>
-        Overview
+        Balance
                 </Typography>
               </Grid>
 
               <Grid item xs />
 
               <Grid item>
-                <ChainIndicator chainId={chainId} inline />
+                      {currencySelect && <CurrencySelect />}
               </Grid>
             </Grid>
 
             <Box mt={2} mb={4}>
-              <EthHashInfo showAvatar={true} address={safeAddress} shortAddress={true} />
+<Typography variant="body2" fontWeight={700}>
+              {fiatTotal}
+            </Typography>
             </Box>
             
             <Box mt={2} mb={4}>
                 <Typography fontWeight={500} mb={2}>
-        This Safe can only be used on this chain. The threshold for executing transactions is {safe.threshold}/{safe.owners.length}.
+Deposited balance is the overall sum of all the tokens deposited to your Safe. This balance may not be accurate as balance rate are not available for all tokens.
                 </Typography>
             </Box>
-            
-        <Box mt={2} mb={4}>
-          <Track {...OVERVIEW_EVENTS.SHOW_QR}>
-            <QrCodeButton>
-              Open QR code
-            </QrCodeButton>
-          </Track>
-
-          <Track {...OVERVIEW_EVENTS.COPY_ADDRESS}>
-            <CopyButton text={addressCopyText}>
-             Copy to clipboard
-            </CopyButton>
-          </Track>
-
-          <Track {...OVERVIEW_EVENTS.OPEN_EXPLORER}>
-            <a target="_blank" rel="noreferrer" href={blockExplorerLink?.href || '#'}>
-             {blockExplorerLink?.title || ''}
-            </a>
-          </Track>
-        </Box>
             
           </Card>
         )}
@@ -155,4 +131,4 @@ const Overview = (): ReactElement => {
   )
 }
 
-export default Overview
+export default Balance

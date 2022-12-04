@@ -1,7 +1,7 @@
 .button {
-    height: 32px;
+    height: 35px;
     width: auto;
     padding: 0 10px;
     border: 1px solid var(--color-border-header);
-    border-radius: 5px;
+    border-radius: 8px;
 }

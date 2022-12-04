@@ -57,7 +57,7 @@ const initTheme = (darkMode: boolean) => {
     },
     spacing: base,
     shape: {
-      borderRadius: '6px',
+      borderRadius: '8px',
     },
     shadows: [
       'none',
@@ -96,8 +96,8 @@ const initTheme = (darkMode: boolean) => {
         lineHeight: '22px',
       },
       body2: {
-        fontSize: '14px',
-        lineHeight: '20px',
+        fontSize: '15px',
+        lineHeight: '21px',
       },
       caption: {
         fontSize: '12px',
@@ -187,6 +187,7 @@ const initTheme = (darkMode: boolean) => {
         ],
         styleOverrides: {
           root: ({ theme }) => ({
+            background: theme.palette.background.main,
             transition: 'background 0.2s, border 0.2s',
             borderRadius: theme.shape.borderRadius,
             border: `1px solid ${theme.palette.border.light}`,
@@ -200,17 +201,13 @@ const initTheme = (darkMode: boolean) => {
               borderColor: theme.palette.secondary.light,
             },
 
-            '&:hover > .MuiAccordionSummary-root': {
-              background: theme.palette.background.light,
-            },
-
             '&.Mui-expanded': {
               margin: 0,
-              borderColor: theme.palette.secondary.light,
+              borderColor: theme.palette.border.light,
             },
 
             '&.Mui-expanded > .MuiAccordionSummary-root': {
-              background: theme.palette.background.light,
+              background: theme.palette.background.paper,
             },
           }),
         },
