@@ -1,4 +1,9 @@
+.header {
+  background-color: var(--color-background-main);
+}
+
 .main {
+  background-color: var(--color-background-main);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
