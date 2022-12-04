@@ -3,6 +3,8 @@ import { Box, Typography } from '@mui/material'
 import { Card, WidgetBody, WidgetContainer } from '../styled'
 import styled from '@emotion/styled'
 
+import { getQueuedTransactionCount } from '@/utils/transactions'
+
 const StyledCard = styled(Card)`
     background-image: url(https://github.githubassets.com/images/modules/memexes/projects-beta-banner-dark.png);
     background-size: cover;
@@ -10,6 +12,7 @@ const StyledCard = styled(Card)`
 `
 
 const DiscoverBanner = (): ReactElement => {
+  const totalQueuedTxs = getQueuedTransactionCount
 
   return (
     <WidgetContainer>
@@ -22,6 +25,9 @@ const DiscoverBanner = (): ReactElement => {
 Your news feed helps you keep up with recent on repositories you watch or star and people.
                 </Typography>
           </StyledCard>
+          <Typhography>
+           Transaction queue {(totalQueuedTxs)}
+          </Typography>
       </WidgetBody>
     </WidgetContainer>
   )
