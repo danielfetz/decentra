@@ -3,11 +3,8 @@ import { Typography } from '@mui/material'
 import { WidgetContainer } from '../styled'
 
 import { getQueuedTransactionCount } from '@/utils/transactions'
-import useTxQueue from '@/hooks/useTxQueue'
 
-const { page } = useTxQueue()
-
-const totalQueuedTxs = getQueuedTransactionCount(page)
+const totalQueuedTxs = getQueuedTransactionCount
 
 const TxQueueTitle = (): ReactElement => {
 
