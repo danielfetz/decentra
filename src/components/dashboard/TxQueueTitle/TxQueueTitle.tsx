@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react'
 import { Typography } from '@mui/material'
-import { Card, WidgetBody, WidgetContainer } from '../styled'
+import { WidgetContainer } from '../styled'
 
 import { getQueuedTransactionCount } from '@/utils/transactions'
 
@@ -10,11 +10,9 @@ const TxQueueTitle = (): ReactElement => {
 
   return (
     <WidgetContainer>
-      <WidgetBody>
-          <Typography>
-           Transaction queue {(totalQueuedTxs)}
-          </Typography>
-      </WidgetBody>
+        <Typography component="h2" variant="subtitle1" fontWeight={700} mb={2}>
+          Transaction queue {totalQueuedTxs ? ` (${totalQueuedTxs})` : ''}
+        </Typography>
     </WidgetContainer>
   )
 }
