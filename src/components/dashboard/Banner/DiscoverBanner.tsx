@@ -13,7 +13,7 @@ const StyledCard = styled(Card)`
 
 const totalQueuedTxs = getQueuedTransactionCount
 
-const DiscoverBanner = (): ReactElement => {
+const DiscoverBanner = () => {
 
   return (
     <WidgetContainer>
