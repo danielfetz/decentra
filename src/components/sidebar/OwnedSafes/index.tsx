@@ -7,11 +7,6 @@ import SafeListItem from '../SafeListItem'
 const OwnedSafes = (): ReactElement | null => {
   const chain = useCurrentChain()
   const allOwnedSafes = useOwnedSafes()
-  const ownedSafesOnChain = chain ? allOwnedSafes[chain.chainId] : undefined
-
-  if (!chain || !ownedSafesOnChain?.length) {
-    return null
-  }
 
   return (
     <>
@@ -20,7 +15,7 @@ const OwnedSafes = (): ReactElement | null => {
       </Typography>
 
       <List sx={{ py: 0 }}>
-        {ownedSafesOnChain?.map((address) => (
+        {allOwnedSafes?.map((address) => (
           <SafeListItem
             key={address}
             address={address}
