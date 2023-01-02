@@ -1,11 +1,9 @@
 import type { ReactElement } from 'react'
-import { useMemo, useEffect, useState } from 'react'
-import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
-import { Box, Button, Grid, Skeleton, Typography } from '@mui/material'
+import { Box, Grid, Skeleton, Typography } from '@mui/material'
 import { Card, WidgetBody, WidgetContainer } from '../styled'
 import useSafeInfo from '@/hooks/useSafeInfo'
-import type { UrlObject } from 'url'
 
 import { useAppSelector } from '@/store'
 import { selectSettings } from '@/store/settingsSlice'
