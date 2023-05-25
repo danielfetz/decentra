@@ -4,6 +4,7 @@ import { DesktopChat } from '@/components/chat/desktopChat'
 import { MobileChat } from '@/components/chat/mobileChat'
 import { AddFolderModal } from '@/components/chat/modals/AddFolderModal'
 import ViewSettingsModal from '@/components/chat/modals/ViewSettingsModal'
+import ViewCreateSafe from '@/components/chat/modals/CreateSafe'
 import WalletConnect from '@/components/chat/WalletConnect'
 import ConnectionCenter from '@/components/common/ConnectWallet/ConnectionCenter'
 import useConnectWallet from '@/components/common/ConnectWallet/useConnectWallet'
@@ -44,12 +45,8 @@ import Head from 'next/head'
 import React, { useState, useEffect, useCallback, useRef } from 'react'
 import useTxHistory from '@/hooks/useTxHistory'
 import FolderGroup from '@/components/folder-list/folderGroups'
-import { getSession, signOut } from 'next-auth/react'
 import Link from 'next/link'
-
-// const JoinNoSSR = dynamic(() => import('@/components/chat/join'), { ssr: false })
-
-// const CometChatLoginNoSSR = dynamic(() => import('@/components/chat/login'), { ssr: false })
+import { signOut, getSession } from 'next-auth/react'
 
 const drawerWidth = 360
 
@@ -129,6 +126,7 @@ const Chat: React.FC<{
   const isDarkMode = useDarkMode()
   const [folders, setFolders] = useState([])
   const [popup, togglePopup] = useState<boolean>(false)
+  const [createSafe, setCreateSafe] = useState<boolean>(false)
   const [settings, toggleSettings] = useState<boolean>(false)
   const [open, setOpen] = useState(true)
   const [value, setValue] = React.useState(0)
@@ -172,7 +170,6 @@ const Chat: React.FC<{
   useEffect(() => {
     const activeFolders = async () => {
       const items = JSON.parse(localStorage.getItem('folders')!)
-      // const myArray = items.split(",");
       if (items) {
         setFolders(items)
       }
@@ -322,6 +319,7 @@ const Chat: React.FC<{
     <>
       {popup && <AddFolderModal open={popup} onClose={() => togglePopup(!popup)} />}
       {settings && <ViewSettingsModal open={settings} onClose={() => toggleSettings(!settings)} />}
+      {createSafe && <ViewCreateSafe open={createSafe} onClose={() => setCreateSafe(!createSafe)} />}
       <Head>
         <title>Safe &mdash; Chat</title>
       </Head>
@@ -346,24 +344,19 @@ const Chat: React.FC<{
                 <IconButton aria-label="add folder" onClick={() => togglePopup(!popup)}>
                   <AddIcon />
                 </IconButton>
-                {/* <Link href={{ pathname: AppRoutes.settings.index, query: { safe: `${safeAddress}` } }}> */}
                 <IconButton aria-label="settings" onClick={() => toggleSettings(!settings)}>
                   <SettingsIcon />
                 </IconButton>
-                {/* </Link> */}
               </Box>
             </Toolbar>
             <Divider />
             <ChatNotifications />
             <Box sx={{ width: '100%', height: '100%' }}>
-              {/*@ts-ignore*/}
               <Tabs value={value} onChange={handleChange} aria-label="folder tabs">
                 <Tab label="All" {...a11yProps(0)} />
                 {folders.map((folder, i) => {
                   return <Tab label={folder} key={`${folder}-${i}`} />
                 })}
-                {/* <Tab label="Ricochet-related" {...a11yProps(1)} />
-                <Tab label="Company multisigs" {...a11yProps(2)} /> */}
               </Tabs>
               <TabPanel value={value} index={0}>
                 <FolderList resetGroup={resetGroup} />
@@ -375,6 +368,7 @@ const Chat: React.FC<{
                   </TabPanel>
                 )
               })}
+              <Button onClick={() => setCreateSafe(!createSafe)}>Add Safe</Button>
             </Box>
             <Divider />
             <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -399,7 +393,6 @@ const Chat: React.FC<{
                       <WalletConnect wallet={wallet} />
                     </Box>
                   </Box>
-                  {/* <Switch checked={isDarkMode} onChange={(_, checked) => dispatch(setDarkMode(checked))} /> */}
                   <FormControlLabel
                     control={
                       <IconButton onClick={() => dispatch(setDarkMode(!isDarkMode))}>

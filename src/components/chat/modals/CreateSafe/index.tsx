@@ -1,10 +1,7 @@
 import ModalDialog from '@/components/common/ModalDialog'
+import Open from '@/pages/new-safe/create'
+import Load from '@/pages/new-safe/load'
 import React, { useState } from 'react'
-import ModulesGroup from '@/components/settings/Modules'
-import SafeAppsPermissions from '@/components/settings/SafeAppsPermissions'
-import SpendingLimits from '@/components/settings/SpendingLimits'
-import DataManagement from '@/components/settings/DataManagement'
-import EnvironmentVariables from '@/components/settings/EnvironmentVariables'
 import {
   DialogContent,
   Tab,
@@ -12,8 +9,6 @@ import {
   Box,
   Typography
 } from '@mui/material'
-import AppearanceControl from '@/components/settings/AppearanceControl'
-import SetupControl from '@/components/settings/SetupControl'
 
 interface TabPanelProps {
   children?: React.ReactNode
@@ -56,34 +51,14 @@ const ViewCreateSafe: React.FC<{
     <ModalDialog open={open} dialogTitle="Add Safe" onClose={onClose} maxWidth="md">
       <DialogContent sx={{ maxHeight: '90vh', overflow: 'auto' }}>
         <Tabs value={tab} onChange={handleChange} aria-label="folder tabs">
-          <Tab label="Setup" />
-          <Tab label="Appearance" />
-          <Tab label="Modules" />
-          <Tab label="Spending limits" />
-          <Tab label="Safe Apps permissions" />
-          <Tab label="Data" />
-          <Tab label="Environment variables" />
+          <Tab label="Load" />
+          <Tab label="Create" />
         </Tabs>
-        <TabPanel value={tab} index={0}>
-          <SetupControl />
-        </TabPanel>
         <TabPanel value={tab} index={1}>
-          <AppearanceControl />
+          <Open />
         </TabPanel>
-        <TabPanel value={tab} index={2}>
-          <ModulesGroup />
-        </TabPanel>
-        <TabPanel value={tab} index={3}>
-          <SpendingLimits />
-        </TabPanel>
-        <TabPanel value={tab} index={4}>
-          <SafeAppsPermissions />
-        </TabPanel>
-        <TabPanel value={tab} index={5}>
-          <DataManagement />
-        </TabPanel>
-        <TabPanel value={tab} index={6}>
-          <EnvironmentVariables />
+        <TabPanel value={tab} index={0}>
+          <Load />
         </TabPanel>
       </DialogContent>
     </ModalDialog>
