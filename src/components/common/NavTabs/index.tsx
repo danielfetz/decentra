@@ -30,7 +30,7 @@ const NextLinkComposed = forwardRef<HTMLAnchorElement, Props>(function NextCompo
   )
 })
 
-const NavTabs = ({ tabs, setRoute }: { tabs: NavItem[], setRoute: any }) => {
+const NavTabs = ({ tabs, setRoute }: { tabs: NavItem[], setRoute?: any }) => {
   const router = useRouter()
   const [value, setValue] = useState(0);
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
