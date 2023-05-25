@@ -1,17 +1,17 @@
-import { useEffect } from 'react'
-import Head from 'next/head'
 import { FEATURES } from '@safe-global/safe-gateway-typescript-sdk'
-import { useRouter } from 'next/router'
 import type { NextPage } from 'next'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 import PaginatedMsgs from '@/components/safe-messages/PaginatedMsgs'
-import TxHeader from '@/components/transactions/TxHeader'
 import SignedMessagesHelpLink from '@/components/transactions/SignedMessagesHelpLink'
+import TxHeader from '@/components/transactions/TxHeader'
 import { AppRoutes } from '@/config/routes'
 import { useCurrentChain } from '@/hooks/useChains'
 import { hasFeature } from '@/utils/chains'
 
-const Messages: NextPage = () => {
+const Messages: NextPage<{ setRoute: any }> = ({ setRoute }) => {
   const chain = useCurrentChain()
   const router = useRouter()
 
@@ -29,7 +29,7 @@ const Messages: NextPage = () => {
         <title>{'Safe{Wallet} – Messages'}</title>
       </Head>
 
-      <TxHeader>
+      <TxHeader setRoute={setRoute}>
         <SignedMessagesHelpLink />
       </TxHeader>
 

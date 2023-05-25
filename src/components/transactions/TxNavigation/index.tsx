@@ -1,14 +1,14 @@
 import NavTabs from '@/components/common/NavTabs'
 import { transactionNavItems } from '@/components/sidebar/SidebarNavigation/config'
 import { useCurrentChain } from '@/hooks/useChains'
-import { hasFeature, FEATURES } from '@/utils/chains'
+import { FEATURES, hasFeature } from '@/utils/chains'
 
-const TxNavigation = () => {
+const TxNavigation = ({ setRoute }: { setRoute: any }) => {
   const chain = useCurrentChain()
   const isEIP1271 = chain && hasFeature(chain, FEATURES.EIP1271)
 
   return (
-    <NavTabs tabs={isEIP1271 ? transactionNavItems : transactionNavItems.filter((item) => item.label !== 'Messages')} />
+    <NavTabs tabs={isEIP1271 ? transactionNavItems : transactionNavItems.filter((item) => item.label !== 'Messages')} setRoute={setRoute} />
   )
 }
 
