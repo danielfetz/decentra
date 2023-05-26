@@ -48,10 +48,8 @@ export const ChatSection: React.FC<{
             alignItems: 'start',
             gap: '16px',
             p: 3,
-            bgcolor: 'background.paper',
           }}
         >
-          <Typography sx={{ fontWeight: 500 }}>Thursday, 9 March 2023</Typography>
           <List>
             {chatData &&
               chatData.map((chat, index) => {
@@ -61,18 +59,17 @@ export const ChatSection: React.FC<{
                       sx={{
                         display: 'flex',
                         alignItems: 'start',
-                        borderRadius: '4px',
                         p: 0,
-                        mb: 2,
-                        width: '100%',
+                        width: 'fit-content',
                       }}
                       key={index}
                       alignItems="flex-start"
                     >
-                      <ListItemAvatar sx={{ minWidth: 36, pr: '16px' }}>
-                        <Avatar sx={{ width: 36, height: 36 }} alt={chat?.data?.sender.uid || ''} />
+                      <ListItemAvatar sx={{ minWidth: 32, pr: '16px' }}>
+                        <Avatar sx={{ width: 32, height: 32 }} alt={chat?.data?.sender.uid || ''} />
                       </ListItemAvatar>
                       <ListItemText
+                        sx={{ background: 'rgb(155 155 155 / 11%)', padding: '12px 16px', borderRadius: '0 10px 10px 10px' }}            
                         primary={
                           <React.Fragment>
                             <Typography sx={{ display: 'inline', pr: '12px', fontWeight: 600 }} component="span">
@@ -95,7 +92,7 @@ export const ChatSection: React.FC<{
                   return (
                     <ListItem
                       key={index}
-                      sx={{ mb: 1, width: { sm: '100%', lg: 'calc(100vw - 768px)' } }}
+                      sx={{ pt: '6px', pb: '6px', width: { sm: '100%', lg: 'calc(100vw - 768px)' } }}
                       alignItems="flex-start"
                       disableGutters
                     >
@@ -129,17 +126,14 @@ export const ChatSection: React.FC<{
       <Box
         sx={{
           flexShrink: 0,
-          bgcolor: 'background.paper',
           position: 'sticky',
           bottom: 0,
           p: 2,
-          borderTop: '1px solid',
-          borderColor: grey[800],
           pt: 3,
         }}
       >
         {currentUser && group ? (
-          <Box sx={{ width: '100%', display: 'flex', gap: '16px', p: 3, pt: 0 }}>
+          <Box sx={{ width: '100%', display: 'flex', gap: '16px', p: 3, pt: 0, pb: '12px' }}>
             <TextField
               sx={{ flexGrow: 1 }}
               label="Type Something"
