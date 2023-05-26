@@ -127,12 +127,12 @@ export const ChatSection: React.FC<{
           flexShrink: 0,
           position: 'sticky',
           bottom: 0,
-          p: 2,
-          pt: 3,
+          p: '0px 24px 12px 24px',
+          background: 'var(--color-background-lightcolor)'
         }}
       >
         {currentUser && group ? (
-          <Box sx={{ width: '100%', display: 'flex', gap: '16px', p: 3, pt: 0, pb: '12px' }}>
+          <Box sx={{ width: '100%', display: 'flex', gap: '16px' }}>
             <TextField
               sx={{ flexGrow: 1 }}
               label="Type Something"
