@@ -58,6 +58,7 @@ const Header = ({ onMenuToggle }: HeaderProps): ReactElement => {
 
       <div className={classnames(css.element)}>
                   <FormControlLabel
+                    sx= {{ margin: 0 }}
                     control={
                       <IconButton onClick={() => dispatch(setDarkMode(!isDarkMode))}>
                         {isDarkMode ? <WbSunnyIcon /> : <ModeNightIcon />}
