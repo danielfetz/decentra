@@ -98,7 +98,7 @@ const FolderGroup: React.FC<{
           </Button>
         </Box>
       </Box>
-      <List sx={{ p: '0px'>
+      <List sx={{ p: '0px' }}>
         {safes.map((folder, index) => (
           <Link href={{ pathname: AppRoutes.home, query: { safe: `${folder}` } }} key={`${folder}-${index}`} passHref>
             <ListItemButton
