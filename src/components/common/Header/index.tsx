@@ -1,19 +1,22 @@
 import type { Dispatch, SetStateAction } from 'react'
 import { type ReactElement } from 'react'
 import { useRouter } from 'next/router'
-import { IconButton, Paper } from '@mui/material'
+import { IconButton, Paper, FormControlLabel } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import classnames from 'classnames'
 import css from './styles.module.css'
 import ConnectWallet from '@/components/common/ConnectWallet'
-import NetworkSelector from '@/components/common/NetworkSelector'
-import SafeTokenWidget, { getSafeTokenAddress } from '@/components/common/SafeTokenWidget'
 import NotificationCenter from '@/components/notification-center/NotificationCenter'
 import { AppRoutes } from '@/config/routes'
 import useChainId from '@/hooks/useChainId'
-import SafeLogo from '@/public/images/logo.svg'
 import Link from 'next/link'
-import useSafeAddress from '@/hooks/useSafeAddress'
+
+import useSafeInfo from '@/hooks/useSafeInfo'
+import { setDarkMode } from '@/store/settingsSlice'
+import WbSunnyIcon from '@mui/icons-material/WbSunny'
+import ModeNightIcon from '@mui/icons-material/ModeNight'
+import { useAppDispatch } from '@/store'
+import { useDarkMode } from '@/hooks/useDarkMode'
 
 type HeaderProps = {
   onMenuToggle?: Dispatch<SetStateAction<boolean>>
@@ -21,9 +24,10 @@ type HeaderProps = {
 
 const Header = ({ onMenuToggle }: HeaderProps): ReactElement => {
   const chainId = useChainId()
-  const safeAddress = useSafeAddress()
-  const showSafeToken = safeAddress && !!getSafeTokenAddress(chainId)
+  const { safe, safeAddress } = useSafeInfo()
   const router = useRouter()
+  const dispatch = useAppDispatch()
+  const isDarkMode = useDarkMode()
 
   // Logo link: if on Dashboard, link to Welcome, otherwise to the root (which redirects to either Dashboard or Welcome)
   const logoHref = router.pathname === AppRoutes.home ? AppRoutes.welcome : AppRoutes.index
@@ -46,28 +50,30 @@ const Header = ({ onMenuToggle }: HeaderProps): ReactElement => {
 
       <div className={classnames(css.element, css.hideMobile, css.logo)}>
         <Link href={logoHref} passHref>
-          <a>
-            <SafeLogo alt="Safe logo" />
-          </a>
+          <b>
+            Decentra&#123;Pro&#125;
+          </b>
         </Link>
       </div>
 
-      {showSafeToken && (
-        <div className={classnames(css.element, css.hideMobile)}>
-          <SafeTokenWidget />
-        </div>
-      )}
-
+      <div className={classnames(css.element)}>
+                  <FormControlLabel
+                    sx= {{ margin: 0 }}
+                    control={
+                      <IconButton onClick={() => dispatch(setDarkMode(!isDarkMode))}>
+                        {isDarkMode ? <WbSunnyIcon /> : <ModeNightIcon />}
+                      </IconButton>
+                    }
+                    label=""
+                  />
+      </div>
+      
       <div className={classnames(css.element, css.hideMobile)}>
         <NotificationCenter />
       </div>
 
       <div className={classnames(css.element, css.connectWallet)}>
         <ConnectWallet />
-      </div>
-
-      <div className={classnames(css.element, css.networkSelector)}>
-        <NetworkSelector />
       </div>
     </Paper>
   )

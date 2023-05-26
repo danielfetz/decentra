@@ -19,7 +19,7 @@ const TransactionHistory = () => {
       {transactionsOpen && (
         <ViewTransactionsModal open={transactionsOpen} onClose={() => toggleTransactionsOpen(!transactionsOpen)} />
       )}
-      <Box sx={{ p: 2 }}>
+      <Box sx={{ p: 3 }}>
         <Box sx={{ display: 'flex', gap: '5px', pb: 2 }}>
           <Typography sx={{ fontWeight: 600 }}>Transaction History</Typography>
           <Chip label={`${txs?.length}`} size="small" />

@@ -58,6 +58,10 @@
   --onboard-wallet-button-background-active: var(--color-background-light);
   /* Needs to be brighter than var(--color-primary-main) to compensate for shadow blur */
   --onboard-wallet-button-box-shadow-hover: 0 0 2px #00fd00;
+  
+  --color-background-lightcolor: #f4f4f4;
+  --color-background-papercolor: #ffffff;
+  --color-shadow-paper: rgba(0, 0, 0, 0.08) 0px 0.75rem 1.5rem;
 
   /* Fonts */
   --onboard-font-family-normal: DM Sans, sans-serif;
@@ -74,6 +78,12 @@
   /* Z-index */
   --onboard-modal-z-index: 1301;
   --onboard-account-select-modal-z-index: 1301;
+}
+
+[data-theme='dark'] {
+  --color-background-lightcolor: #1b1d21;
+  --color-background-papercolor: #212327;
+  --color-shadow-paper: rgb(17 17 17 / 60%) 0px 0.25rem 1rem;
 }
 
 #walletconnect-qrcode-modal {
