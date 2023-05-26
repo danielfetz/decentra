@@ -3,12 +3,12 @@ import { transactionNavItems } from '@/components/sidebar/SidebarNavigation/conf
 import { useCurrentChain } from '@/hooks/useChains'
 import { FEATURES, hasFeature } from '@/utils/chains'
 
-const TxNavigation = ({ setRoute }: { setRoute: any }) => {
+const TxNavigation = () => {
   const chain = useCurrentChain()
   const isEIP1271 = chain && hasFeature(chain, FEATURES.EIP1271)
 
   return (
-    <NavTabs tabs={isEIP1271 ? transactionNavItems : transactionNavItems.filter((item) => item.label !== 'Messages')} setRoute={setRoute} />
+    <NavTabs tabs={isEIP1271 ? transactionNavItems : transactionNavItems.filter((item) => item.label !== 'Messages')} />
   )
 }
 

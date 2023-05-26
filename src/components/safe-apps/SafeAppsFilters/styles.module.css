@@ -7,6 +7,15 @@
   padding: var(--space-1) 0 var(--space-1) 0;
 }
 
+.filterContainerModal {
+  background-color: var(--color-background-main);
+  z-index: 2;
+  position: sticky !important;
+  top: 0;
+
+  padding: var(--space-1) 0 var(--space-1) 0;
+}
+
 .optimizedWithBatchLabel {
   font-size: 12px;
   color: var(--color-text-primary);

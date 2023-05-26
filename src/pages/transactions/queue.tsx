@@ -8,7 +8,7 @@ import { Box } from '@mui/material'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-const Queue: NextPage<{ setRoute: any }> = ({ setRoute }) => {
+const Queue: NextPage<{ showTabs: boolean }> = ({ showTabs = true }) => {
   const hasPending = useHasPendingTxs()
 
   return (
@@ -18,9 +18,12 @@ const Queue: NextPage<{ setRoute: any }> = ({ setRoute }) => {
       </Head>
 
       <BatchExecuteHoverProvider>
-        <TxHeader setRoute={setRoute}>
-          <BatchExecuteButton />
-        </TxHeader>
+        {
+          showTabs &&
+          <TxHeader>
+            <BatchExecuteButton />
+          </TxHeader>
+        }
 
         <main>
           <Box mb={4}>

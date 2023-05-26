@@ -1,24 +1,24 @@
-import Paper from '@mui/material/Paper'
-import Grid from '@mui/material/Grid'
-import FormControl from '@mui/material/FormControl'
-import RadioGroup from '@mui/material/RadioGroup'
-import FormLabel from '@mui/material/FormLabel'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import Radio from '@mui/material/Radio'
 import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
-import { isBefore, isAfter, startOfDay } from 'date-fns'
-import { Controller, FormProvider, useForm, useFormState, type DefaultValues } from 'react-hook-form'
+import FormControl from '@mui/material/FormControl'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import FormLabel from '@mui/material/FormLabel'
+import Grid from '@mui/material/Grid'
+import Paper from '@mui/material/Paper'
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import { isAfter, isBefore, startOfDay } from 'date-fns'
 import { useMemo, type ReactElement } from 'react'
+import { Controller, FormProvider, useForm, useFormState, type DefaultValues } from 'react-hook-form'
 
 import AddressBookInput from '@/components/common/AddressBookInput'
 import DatePickerInput from '@/components/common/DatePickerInput'
-import { validateAmount } from '@/utils/validation'
+import NumberField from '@/components/common/NumberField'
+import { useCurrentChain } from '@/hooks/useChains'
 import { trackEvent } from '@/services/analytics'
 import { TX_LIST_EVENTS } from '@/services/analytics/events/txList'
-import { txFilter, useTxFilter, TxFilterType, type TxFilter } from '@/utils/tx-history-filter'
-import { useCurrentChain } from '@/hooks/useChains'
-import NumberField from '@/components/common/NumberField'
+import { txFilter, TxFilterType, useTxFilter, type TxFilter } from '@/utils/tx-history-filter'
+import { validateAmount } from '@/utils/validation'
 
 import css from './styles.module.css'
 
@@ -58,13 +58,13 @@ const defaultValues: DefaultValues<TxFilterFormState> = {
 const getInitialFormValues = (filter: TxFilter | null): DefaultValues<TxFilterFormState> => {
   return filter
     ? {
-        ...defaultValues,
-        ...txFilter.formatFormData(filter),
-      }
+      ...defaultValues,
+      ...txFilter.formatFormData(filter),
+    }
     : defaultValues
 }
 
-const TxFilterForm = ({ toggleFilter }: { toggleFilter: () => void }): ReactElement => {
+const TxFilterForm = ({ toggleFilter, modal }: { toggleFilter: () => void, modal?: boolean }): ReactElement => {
   const [filter, setFilter] = useTxFilter()
   const chain = useCurrentChain()
 
@@ -116,7 +116,7 @@ const TxFilterForm = ({ toggleFilter }: { toggleFilter: () => void }): ReactElem
   }
 
   return (
-    <Paper elevation={0} variant="outlined" className={css.filterWrapper}>
+    <Paper elevation={0} variant="outlined" className={modal ? css.filterWrapperModal : css.filterWrapper}>
       <FormProvider {...formMethods}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container>

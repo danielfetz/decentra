@@ -1,19 +1,19 @@
-import { useCallback } from 'react'
 import type { SafeAppData } from '@safe-global/safe-gateway-typescript-sdk'
 import classnames from 'classnames'
+import { useCallback } from 'react'
 
-import SafeAppsFilters from '@/components/safe-apps/SafeAppsFilters'
-import SafeAppCard, { GRID_VIEW_MODE } from '@/components/safe-apps/SafeAppCard'
-import type { SafeAppsViewMode } from '@/components/safe-apps/SafeAppCard'
 import AddCustomSafeAppCard from '@/components/safe-apps/AddCustomSafeAppCard'
+import type { SafeAppsViewMode } from '@/components/safe-apps/SafeAppCard'
+import SafeAppCard, { GRID_VIEW_MODE } from '@/components/safe-apps/SafeAppCard'
 import SafeAppPreviewDrawer from '@/components/safe-apps/SafeAppPreviewDrawer'
+import SafeAppsFilters from '@/components/safe-apps/SafeAppsFilters'
 import SafeAppsListHeader from '@/components/safe-apps/SafeAppsListHeader'
 import SafeAppsZeroResultsPlaceholder from '@/components/safe-apps/SafeAppsZeroResultsPlaceholder'
-import useSafeAppsFilters from '@/hooks/safe-apps/useSafeAppsFilters'
 import useSafeAppPreviewDrawer from '@/hooks/safe-apps/useSafeAppPreviewDrawer'
-import css from './styles.module.css'
-import { Skeleton } from '@mui/material'
+import useSafeAppsFilters from '@/hooks/safe-apps/useSafeAppsFilters'
 import useLocalStorage from '@/services/local-storage/useLocalStorage'
+import { Skeleton } from '@mui/material'
+import css from './styles.module.css'
 
 type SafeAppListProps = {
   safeAppsList: SafeAppData[]
@@ -35,7 +35,8 @@ const SafeAppList = ({
   showFilters,
   addCustomApp,
   removeCustomApp,
-}: SafeAppListProps) => {
+  modal
+}: SafeAppListProps & { modal?: boolean }) => {
   const [safeAppsViewMode = GRID_VIEW_MODE, setSafeAppsViewMode] = useLocalStorage<SafeAppsViewMode>(VIEW_MODE_KEY)
   const { isPreviewDrawerOpen, previewDrawerApp, openPreviewDrawer, closePreviewDrawer } = useSafeAppPreviewDrawer()
 
@@ -60,6 +61,7 @@ const SafeAppList = ({
       {/* Safe Apps Filters */}
       {showFilters && (
         <SafeAppsFilters
+          modal={modal}
           onChangeQuery={setQuery}
           onChangeFilterCategory={setSelectedCategories}
           onChangeOptimizedWithBatch={setOptimizedWithBatchFilter}
@@ -67,9 +69,9 @@ const SafeAppList = ({
           safeAppsList={safeAppsList}
         />
       )}
-
       {/* Safe Apps List Header */}
       <SafeAppsListHeader
+        modal={true}
         amount={filteredApps.length}
         safeAppsViewMode={safeAppsViewMode}
         setSafeAppsViewMode={setSafeAppsViewMode}

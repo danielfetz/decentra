@@ -4,14 +4,14 @@ import PageHeader from '@/components/common/PageHeader'
 import css from '@/components/common/PageHeader/styles.module.css'
 import TxNavigation from '@/components/transactions/TxNavigation'
 
-const TxHeader = ({ children, setRoute }: { children?: ReactNode, setRoute: any }): ReactElement => {
+const TxHeader = ({ children }: { children?: ReactNode }): ReactElement => {
   return (
     <PageHeader
-      title="Transactions"
+      title={"Transactions"}
       action={
         <div className={css.pageHeader}>
           <div className={css.navWrapper}>
-            <TxNavigation setRoute={setRoute} />
+            <TxNavigation />
           </div>
           {children && <div className={css.actionsWrapper}>{children}</div>}
         </div>
