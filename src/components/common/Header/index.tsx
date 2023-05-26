@@ -9,7 +9,6 @@ import ConnectWallet from '@/components/common/ConnectWallet'
 import NotificationCenter from '@/components/notification-center/NotificationCenter'
 import { AppRoutes } from '@/config/routes'
 import useChainId from '@/hooks/useChainId'
-import SafeLogo from '@/public/images/logo.svg'
 import Link from 'next/link'
 
 import useSafeInfo from '@/hooks/useSafeInfo'
