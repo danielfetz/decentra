@@ -7,10 +7,8 @@
 }
 
 .main {
-  background-color: var(--color-background-main);
   padding-left: 230px;
-  padding-top: var(--header-height);
-  min-height: 100vh;
+  margin-top: var(--header-height);
   display: flex;
   flex-direction: column;
 }
@@ -21,10 +19,6 @@
 
 .mainNoSidebar {
   padding-left: 0;
-}
-
-.mainNoHeader {
-  padding-top: 0;
 }
 
 .content {
