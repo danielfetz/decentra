@@ -412,7 +412,7 @@ const Chat: React.FC<{
             </Toolbar>
           </Drawer>
         </Hidden>
-        <Main open={open} sx={{ flexGrow: 1, bgcolor: 'background.paper' }}>
+        <Main open={open} sx={{ flexGrow: 1, bgcolor: 'var(--color-background-lightcolor)' }}>
           <Box display="flex">
             <Box flexGrow={1}>
               <Toolbar
