@@ -435,7 +435,7 @@ const Chat: React.FC<{
               flexShrink: 0,
               '& .MuiDrawer-paper': {
                 width: drawerWidth,
-                bgcolor: 'ar(--color-background-papercolor)',
+                bgcolor: 'var(--color-background-papercolor)',
                 boxSizing: 'border-box',
                 height: 'calc(100vh - var(--header-height) - 24px)',
                 top: 'var(--header-height)',
