@@ -1,29 +1,21 @@
-import ChatNotifications from '@/components/chat/chatNotifications'
 import { ChatOverview } from '@/components/chat/chatOverview'
 import { DesktopChat } from '@/components/chat/desktopChat'
 import { MobileChat } from '@/components/chat/mobileChat'
 import { AddFolderModal } from '@/components/chat/modals/AddFolderModal'
 import ViewSettingsModal from '@/components/chat/modals/ViewSettingsModal'
 import ViewCreateSafe from '@/components/chat/modals/CreateSafe'
-import WalletConnect from '@/components/chat/WalletConnect'
 import ConnectionCenter from '@/components/common/ConnectWallet/ConnectionCenter'
 import useConnectWallet from '@/components/common/ConnectWallet/useConnectWallet'
 import { FolderList } from '@/components/folder-list'
 import { AppRoutes } from '@/config/routes'
-import { useDarkMode } from '@/hooks/useDarkMode'
 import useSafeInfo from '@/hooks/useSafeInfo'
 import useTxQueue from '@/hooks/useTxQueue'
 import useWallet from '@/hooks/wallets/useWallet'
-import { useAppDispatch } from '@/store'
-import { setDarkMode } from '@/store/settingsSlice'
 import ellipsisAddress from '@/utils/ellipsisAddress'
 import { ArrowBackIos } from '@mui/icons-material'
 import AddIcon from '@mui/icons-material/Add'
-import CloseIcon from '@mui/icons-material/Close'
-import ModeNightIcon from '@mui/icons-material/ModeNight'
 import SettingsIcon from '@mui/icons-material/Settings'
 import ViewSidebarIcon from '@mui/icons-material/ViewSidebar'
-import WbSunnyIcon from '@mui/icons-material/WbSunny'
 import {
   Avatar,
   Box,
@@ -31,7 +23,6 @@ import {
   Container,
   Divider,
   Drawer,
-  FormControlLabel,
   Hidden,
   IconButton,
   Tab,
@@ -39,7 +30,6 @@ import {
   Toolbar,
   Typography
 } from '@mui/material'
-import { grey } from '@mui/material/colors'
 import { styled } from '@mui/material/styles'
 import Head from 'next/head'
 import React, { useState, useEffect, useCallback, useRef } from 'react'
@@ -47,6 +37,8 @@ import useTxHistory from '@/hooks/useTxHistory'
 import FolderGroup from '@/components/folder-list/folderGroups'
 import { getSession, signOut } from 'next-auth/react'
 import Link from 'next/link'
+
+import css from './styles.module.css'
 
 const drawerWidth = 360
 
@@ -86,7 +78,7 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 1.5 }}>
+        <Box>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -122,8 +114,6 @@ export async function getServerSideProps(context: any) {
 const Chat: React.FC<{
   user: any
 }> = ({ user }) => {
-  const dispatch = useAppDispatch()
-  const isDarkMode = useDarkMode()
   const [folders, setFolders] = useState([])
   const [popup, togglePopup] = useState<boolean>(false)
   const [createSafe, setCreateSafe] = useState<boolean>(false)
@@ -321,41 +311,43 @@ const Chat: React.FC<{
       {settings && <ViewSettingsModal open={settings} onClose={() => toggleSettings(!settings)} />}
       {createSafe && <ViewCreateSafe open={createSafe} onClose={() => setCreateSafe(!createSafe)} />}
       <Head>
-        <title>Safe &mdash; Chat</title>
+        <title>Decentra &mdash; Chat</title>
       </Head>
       <Box sx={{ display: 'flex' }}>
         <Hidden mdDown>
           <Drawer
             sx={{
-              width: drawerWidth,
+              width: 287,
               flexShrink: 0,
               '& .MuiDrawer-paper': {
-                width: drawerWidth,
-                bgcolor: 'background.default',
+                width: 287,
+                bgcolor: 'var(--color-background-lightcolor)',
                 boxSizing: 'border-box',
+                height: 'calc(100vh - var(--header-height))',
+                top: 'var(--header-height)',
+                borderRadius: '0',
+                borderRight: '1px solid var(--color-border-light)',
               },
             }}
             variant="permanent"
             anchor="left"
           >
             <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Typography sx={{ fontWeight: 600 }}>Decentra</Typography>
+              <Box>
+              <Typography sx={{ color: '#757575', fontSize: 12, fontWeight: 600 }}>VIEW AS:</Typography>
+              <Typography sx={{ fontWeight: 600 }}>{ellipsisAddress(`${wallet.address}`)}</Typography>
+              </Box>
               <Box display="flex" alignItems="center" gap="10px">
-                <IconButton aria-label="add folder" onClick={() => togglePopup(!popup)}>
+                <IconButton sx={{ border: '1px solid var(--color-border-light)', borderRadius: '6px', width: '32px', height: '32px' }} aria-label="add folder" onClick={() => togglePopup(!popup)}>
                   <AddIcon />
-                </IconButton>
-                <IconButton aria-label="settings" onClick={() => toggleSettings(!settings)}>
-                  <SettingsIcon />
                 </IconButton>
               </Box>
             </Toolbar>
-            <Divider />
-            <ChatNotifications />
             <Box sx={{ width: '100%', height: '100%' }}>
-              <Tabs value={value} onChange={handleChange} aria-label="folder tabs">
-                <Tab label="All" {...a11yProps(0)} />
+              <Tabs sx={{ padding: '0 16px', borderBottom: '1px solid var(--color-border-light)' }} value={value} onChange={handleChange} aria-label="folder tabs">
+                <Tab className={css.tab} label="All" {...a11yProps(0)} />
                 {folders.map((folder, i) => {
-                  return <Tab label={folder} key={`${folder}-${i}`} />
+                  return <Tab className={css.tab} label={folder} key={`${folder}-${i}`} />
                 })}
               </Tabs>
               <TabPanel value={value} index={0}>
@@ -370,49 +362,9 @@ const Chat: React.FC<{
               })}
               <Button onClick={() => setCreateSafe(!createSafe)}>Add Safe</Button>
             </Box>
-            <Divider />
-            <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              {wallet ? (
-                <Box
-                  sx={{
-                    width: '100%',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    gap: '16px',
-                  }}
-                >
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '16px',
-                    }}
-                  >
-                    <Box>
-                      <WalletConnect wallet={wallet} />
-                    </Box>
-                  </Box>
-                  <FormControlLabel
-                    control={
-                      <IconButton onClick={() => dispatch(setDarkMode(!isDarkMode))}>
-                        {isDarkMode ? <WbSunnyIcon /> : <ModeNightIcon />}
-                      </IconButton>
-                    }
-                    label=""
-                  />
-                </Box>
-              ) : (
-                <Button onClick={connectWallet}>
-                  <Typography sx={{ color: grey[600] }} paragraph>
-                    Connect Wallet
-                  </Typography>
-                </Button>
-              )}
-            </Toolbar>
           </Drawer>
         </Hidden>
-        <Main open={open} sx={{ flexGrow: 1, bgcolor: 'background.paper' }}>
+        <Main open={open} sx={{ flexGrow: 1, bgcolor: 'var(--color-background-lightcolor)' }}>
           <Box display="flex">
             <Box flexGrow={1}>
               <Toolbar
@@ -420,11 +372,11 @@ const Chat: React.FC<{
                   display: 'flex',
                   position: 'sticky',
                   zIndex: 1,
-                  top: 0,
+                  top: 'var(--header-height)',
                   px: 3,
                   justifyContent: 'space-between',
                   alignItems: 'center',
-                  bgcolor: 'background.paper',
+                  bgcolor: 'var(--color-background-lightcolor)',
                 }}
               >
                 <Box sx={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', gap: '14px' }}>
@@ -433,14 +385,19 @@ const Chat: React.FC<{
                       <ArrowBackIos />
                     </IconButton>
                   </Link>
-                  <Avatar sx={{ height: 36, width: 36, borderRadius: '6px' }} alt="Decentra" />
+                  <Avatar sx={{ height: 32, width: 32, borderRadius: '6px' }} alt="Decentra" />
                   <Typography sx={{ fontWeight: 600 }}>{ellipsisAddress(`${safeAddress}`)}</Typography>
                 </Box>
+                <Box>
+                <IconButton aria-label="settings" onClick={() => toggleSettings(!settings)}>
+                  <SettingsIcon />
+                </IconButton>
                 <Hidden mdDown>
                   <IconButton onClick={toggleDrawer(!open)}>
-                    {open ? <CloseIcon aria-label="close sidebar" /> : <ViewSidebarIcon aria-label="show sidebar" />}
+                    {open ? <ViewSidebarIcon sx={{ background: 'rgba(0, 0, 0, 0.04)', borderRadius: '6px', width: '32px', height: '32px', px: '6px' }} aria-label="close sidebar" /> : <ViewSidebarIcon aria-label="show sidebar" />}
                   </IconButton>
                 </Hidden>
+                </Box>
               </Toolbar>
               <Divider />
               <MobileChat
@@ -478,25 +435,20 @@ const Chat: React.FC<{
               flexShrink: 0,
               '& .MuiDrawer-paper': {
                 width: drawerWidth,
-                bgcolor: 'background.paper',
+                bgcolor: 'var(--color-background-papercolor)',
                 boxSizing: 'border-box',
+                height: 'calc(100vh - var(--header-height) - 24px)',
+                top: 'var(--header-height)',
+                margin: '12px 0',
+                boxShadow: 'var(--color-shadow-paper)',
+                borderRadius: '10px 0 0 10px',
+                border: '0px',
               },
             }}
             variant="persistent"
             anchor="right"
             open={open}
           >
-            <Toolbar
-              sx={{
-                position: 'sticky',
-                zIndex: 1,
-                top: 0,
-                bgcolor: 'background.paper',
-              }}
-            >
-              <Typography sx={{ fontWeight: 600 }}>Overview</Typography>
-            </Toolbar>
-            <Divider />
             <ChatOverview owners={owners} />
           </Drawer>
         </Hidden>

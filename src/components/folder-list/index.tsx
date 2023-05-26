@@ -58,11 +58,11 @@ export const FolderList: React.FC<{
     return safe.slice(safe.lastIndexOf(':') + 1) === safeAddress
   }
   return (
-    <List>
+    <List sx={{ padding: '0px' }}>
       {safeFolder.map((safe, index) => (
         <Link href={{ pathname: AppRoutes.chat, query: { safe: `${safe}` } }} key={`${safe}-${index}`} passHref>
           <ListItemButton
-            sx={{ borderRadius: '6px' }}
+            sx={{ padding: '8px 24px', minHeight: '69px', borderBottom: '1px solid var(--color-border-light)' }}
             //key={folder.name}
             key={safe}
             selected={matchSafe(safe)}
@@ -72,7 +72,7 @@ export const FolderList: React.FC<{
               {folder.badge ? <BadgeAvatar name={folder.name} /> : <Avatar alt={folder.name} />}
             </ListItemAvatar> */}
             <ListItemAvatar>
-              <Avatar sx={{ height: 32, width: 32 }} alt={safe} />
+              <Avatar sx={{ height: 32, width: 32, borderRadius: '6px' }} alt={safe} />
             </ListItemAvatar>
             <ListItemText
               primary={<Typography sx={{ fontWeight: 500 }}>{ellipsisAddress(safe)}</Typography>}

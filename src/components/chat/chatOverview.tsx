@@ -33,7 +33,11 @@ export const ChatOverview: React.FC<{
       )}
       {assetsOpen && <ViewAssetsModal open={assetsOpen} onClose={() => toggleAssetsOpen(!assetsOpen)} />}
       {appsOpen && <ViewAppsModal open={appsOpen} onClose={() => toggleAppsOpen(!appsOpen)} />}
-      <Box sx={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', gap: '40px', pt: 2, px: 3 }}>
+      <Box sx={{ px: 3, pt: 3, pb: 1 }}>
+        <Typography sx={{ fontWeight: 600}} paragraph>
+          Overview
+        </Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', gap: '40px', pt: 1 }}>
         <Typography sx={{ color: grey[600] }}>Network</Typography>
         <Typography>
           {safe?.chainId === '137'
@@ -47,13 +51,14 @@ export const ChatOverview: React.FC<{
             : ''}
         </Typography>
       </Box>
-      <Box sx={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', gap: '40px', pt: 2, px: 3 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', gap: '40px', pt: 2 }}>
         <Typography sx={{ color: grey[600] }} paragraph>
           Address
         </Typography>
         <Typography paragraph noWrap>
           {ellipsisAddress(`${safeAddress}`)}
         </Typography>
+      </Box>
       </Box>
       <Divider />
       <Members members={owners} />
@@ -103,7 +108,7 @@ export const ChatOverview: React.FC<{
           display: 'flex',
           flexDirection: 'column',
           gap: 2,
-          bgcolor: 'background.paper',
+          bgcolor: 'var(--color-background-papercolor)',
           borderTop: '1px solid var(--color-border-light)',
         }}
       >
