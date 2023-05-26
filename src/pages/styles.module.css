@@ -7,6 +7,14 @@
   transition: padding 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
 }
 
+.tab {
+  padding: 12px 0px;
+  min-width: auto;
+  text-transform: initial;
+  margin: 0 8px;
+  font-size: 15px;
+}
+
 @media (min-width: 901px) {
   .mainview {
     height: 100%;
