@@ -91,7 +91,7 @@ export const ChatSection: React.FC<{
                   return (
                     <ListItem
                       key={index}
-                      sx={{ pt: '6px', pb: '6px', width: { sm: '100%', lg: 'calc(100vw - 768px)' } }}
+                      sx={{ pt: '6px', pb: '6px', width: { sm: '100%', lg: 'calc(100vw - 695px)' } }}
                       alignItems="flex-start"
                       disableGutters
                     >
@@ -150,7 +150,7 @@ export const ChatSection: React.FC<{
         ) : (
           <Box
             sx={{
-              width: { sm: '100%', lg: 'calc(100vw - 768px)' },
+              width: { sm: '100%', lg: 'calc(100vw - 695px)' },
               border: '1px solid var(--color-border-light)',
               borderRadius: '6px',
               p: 3,
