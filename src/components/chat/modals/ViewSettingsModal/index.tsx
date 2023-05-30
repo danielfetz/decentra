@@ -53,9 +53,9 @@ const ViewCreateSafe: React.FC<{
   }
 
   return (
-    <ModalDialog open={open} dialogTitle="Add Safe" onClose={onClose} maxWidth="md">
+    <ModalDialog open={open} dialogTitle="Settings" onClose={onClose} maxWidth="md">
       <DialogContent sx={{ maxHeight: '90vh', overflow: 'auto' }}>
-        <Tabs value={tab} onChange={handleChange} aria-label="folder tabs">
+        <Tabs value={tab} onChange={handleChange} aria-label="folder tabs" variant="scrollable" scrollButtons="auto">
           <Tab label="Setup" />
           <Tab label="Appearance" />
           <Tab label="Modules" />
@@ -64,6 +64,7 @@ const ViewCreateSafe: React.FC<{
           <Tab label="Data" />
           <Tab label="Environment variables" />
         </Tabs>
+      
         <TabPanel value={tab} index={0}>
           <SetupControl />
         </TabPanel>
