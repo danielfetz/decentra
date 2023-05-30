@@ -5,7 +5,6 @@ import { AddFolderModal } from '@/components/chat/modals/AddFolderModal'
 import ViewSettingsModal from '@/components/chat/modals/ViewSettingsModal'
 import ViewCreateSafe from '@/components/chat/modals/CreateSafe'
 import ConnectionCenter from '@/components/common/ConnectWallet/ConnectionCenter'
-import useConnectWallet from '@/components/common/ConnectWallet/useConnectWallet'
 import { FolderList } from '@/components/folder-list'
 import { AppRoutes } from '@/config/routes'
 import useSafeInfo from '@/hooks/useSafeInfo'
@@ -100,7 +99,7 @@ export async function getServerSideProps(context: any) {
   if (!session) {
     return {
       redirect: {
-        destination: `/auth?${path[1]}`,
+        destination: `/welcome?${path[1]}`,
         permanent: false,
       },
     }
@@ -123,7 +122,6 @@ const Chat: React.FC<{
   const wallet = useWallet()
   const [message, setMessage] = useState('')
   const [messages, setMessages] = useState([''])
-  const connectWallet = useConnectWallet()
   const [chatData, setChatData] = useState<any[]>([''])
   const txHistory = useTxHistory()
   const txQueue = useTxQueue()
