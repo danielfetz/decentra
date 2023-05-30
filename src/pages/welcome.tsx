@@ -71,7 +71,7 @@ const Welcome: NextPage = () => {
       </Container>
     )
 
-  if (!auth) {
+  if (!auth && wallet?.address) {
     return (
       <Box
         sx={{
