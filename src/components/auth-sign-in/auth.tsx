@@ -1,6 +1,7 @@
-import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
-import { useAccount, useConnect, useSignMessage, useDisconnect } from 'wagmi'
 import { useAuthRequestChallengeEvm } from '@moralisweb3/next'
+import { Box, Button, Typography } from '@mui/material'
+import { useAccount, useConnect, useDisconnect, useSignMessage } from 'wagmi'
+import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 
 function SignIn() {
   const { connectAsync } = useConnect()
@@ -30,10 +31,10 @@ function SignIn() {
   }
 
   return (
-    <div>
-      <h3>Web3 Authentication</h3>
-      <button onClick={handleAuth}>Authenticate via Metamask</button>
-    </div>
+    <Box p={3}>
+      <Typography variant='h3' pb={3}>Web3 Authentication</Typography>
+      <Button variant="contained" onClick={handleAuth}>Authenticate via Metamask</Button>
+    </Box>
   )
 }
 

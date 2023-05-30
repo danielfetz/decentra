@@ -1,8 +1,8 @@
-import React, { forwardRef } from 'react'
-import NextLink, { type LinkProps as NextLinkProps } from 'next/link'
-import { Tab, Tabs, Typography, type TabProps } from '@mui/material'
-import { useRouter } from 'next/router'
 import type { NavItem } from '@/components/sidebar/SidebarNavigation/config'
+import { Tab, Tabs, Typography, type TabProps } from '@mui/material'
+import NextLink, { type LinkProps as NextLinkProps } from 'next/link'
+import { useRouter } from 'next/router'
+import { forwardRef } from 'react'
 import css from './styles.module.css'
 
 type Props = TabProps & NextLinkProps
@@ -30,7 +30,7 @@ const NextLinkComposed = forwardRef<HTMLAnchorElement, Props>(function NextCompo
   )
 })
 
-const NavTabs = ({ tabs }: { tabs: NavItem[] }) => {
+const NavTabs = ({ tabs, setRoute }: { tabs: NavItem[], setRoute?: any }) => {
   const router = useRouter()
   const activeTab = tabs.map((tab) => tab.href).indexOf(router.pathname)
 

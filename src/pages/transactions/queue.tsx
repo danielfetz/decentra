@@ -1,14 +1,14 @@
+import PaginatedTxns from '@/components/common/PaginatedTxns'
+import BatchExecuteButton from '@/components/transactions/BatchExecuteButton'
+import { BatchExecuteHoverProvider } from '@/components/transactions/BatchExecuteButton/BatchExecuteHoverProvider'
+import TxHeader from '@/components/transactions/TxHeader'
+import { useHasPendingTxs, usePendingTxsQueue } from '@/hooks/usePendingTxs'
+import useTxQueue from '@/hooks/useTxQueue'
+import { Box } from '@mui/material'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import useTxQueue from '@/hooks/useTxQueue'
-import PaginatedTxns from '@/components/common/PaginatedTxns'
-import TxHeader from '@/components/transactions/TxHeader'
-import BatchExecuteButton from '@/components/transactions/BatchExecuteButton'
-import { Box } from '@mui/material'
-import { BatchExecuteHoverProvider } from '@/components/transactions/BatchExecuteButton/BatchExecuteHoverProvider'
-import { useHasPendingTxs, usePendingTxsQueue } from '@/hooks/usePendingTxs'
 
-const Queue: NextPage = () => {
+const Queue: NextPage<{ showTabs: boolean }> = ({ showTabs = true }) => {
   const hasPending = useHasPendingTxs()
 
   return (
@@ -18,9 +18,12 @@ const Queue: NextPage = () => {
       </Head>
 
       <BatchExecuteHoverProvider>
-        <TxHeader>
-          <BatchExecuteButton />
-        </TxHeader>
+        {
+          showTabs &&
+          <TxHeader>
+            <BatchExecuteButton />
+          </TxHeader>
+        }
 
         <main>
           <Box mb={4}>

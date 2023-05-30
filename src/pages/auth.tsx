@@ -1,9 +1,10 @@
-import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
-import { signIn } from 'next-auth/react'
-import { useAccount, useConnect, useSignMessage, useDisconnect } from 'wagmi'
-import { useRouter } from 'next/router'
 import { useAuthRequestChallengeEvm } from '@moralisweb3/next'
+import { Box, Button, Typography } from '@mui/material'
+import { signIn } from 'next-auth/react'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { useAccount, useConnect, useDisconnect, useSignMessage } from 'wagmi'
+import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 
 const Auth = () => {
   const router = useRouter()
@@ -49,10 +50,10 @@ const Auth = () => {
 
   if (!auth) {
     return (
-      <div>
-        <h3>Web3 Authentication</h3>
-        <button onClick={handleAuth}>Authenticate via Metamask</button>
-      </div>
+      <Box p={3}>
+        <Typography variant='h3' pb={3}>Web3 Authentication</Typography>
+        <Button variant="contained" onClick={handleAuth}>Authenticate via Metamask</Button>
+      </Box>
     )
   }
 }
