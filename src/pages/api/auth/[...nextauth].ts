@@ -17,3 +17,12 @@ export default NextAuth({
     },
   },
 })
+
+//store authentication in state to avoid unnecessary re-renders/re-directs
+
+/* localStorage.setItem('accessToken', auth.data?.authenticate.accessToken);
+      localStorage.setItem(
+        'refreshToken',
+        auth.data?.authenticate.refreshToken
+      );
+ */

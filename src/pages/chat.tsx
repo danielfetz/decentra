@@ -213,7 +213,6 @@ const Chat: React.FC<{
       if (tx.type === 'LABEL' || tx.type === 'CONFLICT_HEADER') {
         return
       }
-      console.log(tx, 'tester');
       allData.push({
         data: tx,
         timestamp: tx.transaction.timestamp,

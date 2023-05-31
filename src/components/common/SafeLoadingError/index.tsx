@@ -7,7 +7,6 @@ import Link from 'next/link'
 
 const SafeLoadingError = ({ children }: { children: ReactNode }): ReactElement => {
   const { safeError } = useSafeInfo()
-
   if (!safeError) return <>{children}</>
 
   return (
