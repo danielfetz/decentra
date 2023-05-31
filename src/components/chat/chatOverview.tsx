@@ -14,6 +14,7 @@ import TransactionQueue from '../common/TransactionQueue'
 import TokenTransferModal from '../tx/modals/TokenTransferModal'
 import ViewAppsModal from './modals/ViewAppsModal'
 import ViewAssetsModal from './modals/ViewAssetsModal'
+import { ChangeThresholdDialog } from '@/components/settings/owner/ChangeThresholdDialog'
 
 export const ChatOverview: React.FC<{
   owners: any[]
@@ -57,6 +58,14 @@ export const ChatOverview: React.FC<{
         </Typography>
         <Typography paragraph noWrap>
           {ellipsisAddress(`${safeAddress}`)}
+        </Typography>
+      </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '40px', pt: 2 }}>
+        <Typography sx={{ color: grey[600] }} paragraph>
+          Threshold
+        </Typography>
+        <Typography paragraph noWrap>
+          <b>{threshold}</b> out of <b>{owners}</b> {owners > 1 && <ChangeThresholdDialog />}
         </Typography>
       </Box>
       </Box>
