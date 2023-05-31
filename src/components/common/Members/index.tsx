@@ -15,8 +15,8 @@ const Members: React.FC<TypeMembers> = ({ members }) => {
         <Typography sx={{ fontWeight: 600 }}>Members</Typography>
         <AddOwner />
       </Box>
+      <OwnerList />
       <List sx={{ px: 1, pb: 2 }}>
-        <OwnerList />
                 {members.map((member, index) => (
            <ListItem key={member.value}>
              <ListItemAvatar sx={{ minWidth: 35 }}>
