@@ -1,6 +1,6 @@
 import { AddOwner } from '@/components/chat/AddOwner'
 import ellipsisAddress from '@/utils/ellipsisAddress'
-import { Box, List, Typography } from '@mui/material'
+import { Avatar, Box, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material'
 import React from 'react'
 import OwnerList from '@/components/settings/owner/OwnerList/index.tsx'
 
@@ -17,6 +17,14 @@ const Members: React.FC<TypeMembers> = ({ members }) => {
       </Box>
       <List sx={{ px: 1, pb: 2 }}>
         <OwnerList />
+                {members.map((member, index) => (
+           <ListItem key={member.value}>
+             <ListItemAvatar sx={{ minWidth: 35 }}>
+               <Avatar sx={{ width: 24, height: 24 }} alt={member.value} />
+             </ListItemAvatar>
+             <ListItemText primary={ellipsisAddress(`${member.value}`)} />
+           </ListItem>
+         ))}
       </List>
     </>
   )
