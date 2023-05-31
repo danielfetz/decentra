@@ -68,9 +68,7 @@ export const ChatOverview: React.FC<{
         <Typography sx={{ color: grey[600] }} paragraph>
           Threshold
         </Typography>
-        <Typography paragraph noWrap>
-          <RequiredConfirmation threshold={threshold} owners={ownerLength} />
-        </Typography>
+        <RequiredConfirmation threshold={threshold} owners={ownerLength} />
       </Box>
       </Box>
       <Divider />
