@@ -26,8 +26,6 @@ export const ChatOverview: React.FC<{
   const [assetsOpen, toggleAssetsOpen] = useState<boolean>(false)
   const [appsOpen, toggleAppsOpen] = useState<boolean>(false)
   
-  const RequiredConfirmation = ({ threshold, owners }: { threshold: number; owners: number })
-
   return (
     <>
       {tokenTransfer && (
