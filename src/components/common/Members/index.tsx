@@ -2,7 +2,7 @@ import { AddOwner } from '@/components/chat/AddOwner'
 import ellipsisAddress from '@/utils/ellipsisAddress'
 import { Avatar, Box, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material'
 import React from 'react'
-import OwnerList from '@/components/settings/owner/OwnerList/index.tsx'
+import OwnerList from '@/components/settings/owner/OwnerList/index'
 
 interface TypeMembers {
   members: any[]
