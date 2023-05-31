@@ -111,8 +111,9 @@ const WebCoreApp = ({
       <WagmiConfig client={client}>
         <SessionProvider session={pageProps.session} refetchInterval={0}>
           <Head>
-            <title key="default-title">{'Safe{Wallet}'}</title>
+            <title key="default-title">{'Decentra{Pro}'}</title>
             <MetaTags prefetchUrl={GATEWAY_URL} />
+            <script defer data-domain="decentra.so" src="https://plausible.io/js/script.js"></script>
           </Head>
 
           <CacheProvider value={emotionCache}>
