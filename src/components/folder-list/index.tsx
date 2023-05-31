@@ -17,30 +17,19 @@ export const FolderList: React.FC<{
   const ownedSafes = useOwnedSafes()
   const history = useRouter()
   const [safeFolder, setSafeFolder] = useState([''])
-  const [selectedIndex, setSelectedIndex] = useState<any>()
-  const { safe, safeAddress } = useSafeInfo()
+  const { safeAddress } = useSafeInfo()
 
   //TODO: can be signficantly refactored
   useEffect(() => {
     if (ownedSafes) {
       let folderList: string[] = []
-      console.log(ownedSafes, 'see')
-      const polygonSafes = ownedSafes[137]
-      const optimismSafes = ownedSafes[5]
-      const ethSafes = ownedSafes[1]
-      const gnosisSafes = ownedSafes[100]
-      if (gnosisSafes) {
-        gnosisSafes.forEach((safe) => folderList.push(`gno:${safe}`))
-      }
-      if (polygonSafes) {
-        polygonSafes.forEach((safe) => folderList.push(`matic:${safe}`))
-      }
-      if (optimismSafes) {
-        optimismSafes.forEach((safe) => folderList.push(`oeth:${safe}`))
-      }
-      if (ethSafes) {
-        ethSafes.forEach((safe) => folderList.push(`eth:${safe}`))
-      }
+      //getting pre-fix for all networks and creating links
+      ownedSafes[42161]?.forEach((safe) => folderList.push(`arbi:${safe}`))
+      ownedSafes[56]?.forEach((safe) => folderList.push(`bnb:${safe}`))
+      ownedSafes[100]?.forEach((safe) => folderList.push(`gno:${safe}`))
+      ownedSafes[137]?.forEach((safe) => folderList.push(`matic:${safe}`))
+      ownedSafes[10]?.forEach((safe) => folderList.push(`oeth:${safe}`))
+      ownedSafes[1]?.forEach((safe) => folderList.push(`eth:${safe}`))
       if (!folderList) {
         return
       }
@@ -50,7 +39,6 @@ export const FolderList: React.FC<{
 
   const handleListItemClick = (folder: string, index: number) => {
     resetGroup()
-    setSelectedIndex(folder)
     history.push(`${folder}/new-chat`)
   }
 

@@ -5,7 +5,6 @@ import { AddFolderModal } from '@/components/chat/modals/AddFolderModal'
 import ViewSettingsModal from '@/components/chat/modals/ViewSettingsModal'
 import ViewCreateSafe from '@/components/chat/modals/CreateSafe'
 import ConnectionCenter from '@/components/common/ConnectWallet/ConnectionCenter'
-import useConnectWallet from '@/components/common/ConnectWallet/useConnectWallet'
 import { FolderList } from '@/components/folder-list'
 import { AppRoutes } from '@/config/routes'
 import useSafeInfo from '@/hooks/useSafeInfo'
@@ -100,7 +99,7 @@ export async function getServerSideProps(context: any) {
   if (!session) {
     return {
       redirect: {
-        destination: `/auth?${path[1]}`,
+        destination: path[1] ? `/welcome?${path[1]}` : '/welcome',
         permanent: false,
       },
     }
@@ -114,23 +113,26 @@ export async function getServerSideProps(context: any) {
 const Chat: React.FC<{
   user: any
 }> = ({ user }) => {
+  //folders and folder control
+  const [group, setGroup] = useState<any>()
   const [folders, setFolders] = useState([])
   const [popup, togglePopup] = useState<boolean>(false)
+  //modals and modal control
   const [createSafe, setCreateSafe] = useState<boolean>(false)
   const [settings, toggleSettings] = useState<boolean>(false)
   const [open, setOpen] = useState(true)
   const [value, setValue] = React.useState(0)
-  const wallet = useWallet()
+  //Chat
   const [message, setMessage] = useState('')
   const [messages, setMessages] = useState([''])
-  const connectWallet = useConnectWallet()
   const [chatData, setChatData] = useState<any[]>([''])
+  //transactions
   const txHistory = useTxHistory()
   const txQueue = useTxQueue()
-  const [group, setGroup] = useState<any>()
+  //user and safe
+  const wallet = useWallet()
   const [currentUser, setCurrentUser] = useState<any>()
   const { safe, safeAddress } = useSafeInfo()
-  const [ownerStatus, setOwnerStatus] = useState<boolean>()
   const bottom = useRef<HTMLDivElement>(null)
   const owners = safe?.owners || ['']
   const ownerArray = owners.map((owner) => owner.value)
@@ -170,18 +172,6 @@ const Chat: React.FC<{
       window.removeEventListener('storage', activeFolders)
     }
   }, [])
-
-  useEffect(() => {
-    let isOwnerArr: any[] = []
-    if (owners && wallet?.address) {
-      owners.map((owner) => {
-        if (owner.value == wallet.address) {
-          isOwnerArr.push(wallet.address)
-        }
-      })
-      isOwnerArr.length > 0 ? setOwnerStatus(true) : setOwnerStatus(false)
-    }
-  }, [owners, wallet])
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue)
@@ -223,7 +213,6 @@ const Chat: React.FC<{
       if (tx.type === 'LABEL' || tx.type === 'CONFLICT_HEADER') {
         return
       }
-      console.log(tx, 'tester');
       allData.push({
         data: tx,
         timestamp: tx.transaction.timestamp,
@@ -263,7 +252,7 @@ const Chat: React.FC<{
     scrollToBottom()
   }, [chatData])
 
-  if (!wallet?.address)
+  if (!wallet?.address || !user)
     return (
       <Container fixed sx={{ height: '100vh', width: '100vw' }}>
         <Box
@@ -283,7 +272,7 @@ const Chat: React.FC<{
       </Container>
     )
 
-  if (!ownerArray.includes(wallet?.address!))
+  if (ownerArray.length && !ownerArray.includes(wallet?.address!))
     return (
       <Container fixed sx={{ height: '100vh', width: '100vw' }}>
         <Box
@@ -298,7 +287,7 @@ const Chat: React.FC<{
           }}
         >
           <Typography variant="h4">You are not a signer on this safe.</Typography>
-          <Link href={{ pathname: AppRoutes.home, query: { safe: `${safeAddress}` } }}>
+          <Link href={{ pathname: AppRoutes.chat }}>
             <Button variant="contained">Go Back</Button>
           </Link>
         </Box>
