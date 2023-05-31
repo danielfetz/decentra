@@ -14,15 +14,19 @@ import TransactionQueue from '../common/TransactionQueue'
 import TokenTransferModal from '../tx/modals/TokenTransferModal'
 import ViewAppsModal from './modals/ViewAppsModal'
 import ViewAssetsModal from './modals/ViewAssetsModal'
-import { ChangeThresholdDialog } from '@/components/settings/owner/ChangeThresholdDialog'
+import { RequiredConfirmation } from '@/components/settings/RequiredConfirmations'
 
 export const ChatOverview: React.FC<{
   owners: any[]
 }> = ({ owners }) => {
   const { safe, safeAddress } = useSafeInfo()
+  const ownerLength = safe.owners.length
+  const threshold = safe.threshold
   const [tokenTransfer, toggleTokenTransfer] = useState<boolean>(false)
   const [assetsOpen, toggleAssetsOpen] = useState<boolean>(false)
   const [appsOpen, toggleAppsOpen] = useState<boolean>(false)
+  
+  const RequiredConfirmation = ({ threshold, owners }: { threshold: number; owners: number })
 
   return (
     <>
@@ -65,7 +69,7 @@ export const ChatOverview: React.FC<{
           Threshold
         </Typography>
         <Typography paragraph noWrap>
-          <b>{threshold}</b> out of <b>{owners}</b> {owners > 1 && <ChangeThresholdDialog />}
+          <RequiredConfirmation threshold={threshold} owners={ownerLength} />
         </Typography>
       </Box>
       </Box>
