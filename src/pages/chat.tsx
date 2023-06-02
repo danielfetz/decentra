@@ -85,6 +85,7 @@ function TabPanel(props: TabPanelProps) {
   )
 }
 
+//wtf is this lol
 function a11yProps(index: number) {
   return {
     id: `simple-tab-${index}`,
@@ -92,6 +93,7 @@ function a11yProps(index: number) {
   }
 }
 
+//Get auth session, if not reroute
 export async function getServerSideProps(context: any) {
   const session = await getSession(context)
   const path = context.req.url.split('?')
@@ -136,7 +138,6 @@ const Chat: React.FC<{
   const bottom = useRef<HTMLDivElement>(null)
   const owners = safe?.owners || ['']
   const ownerArray = owners.map((owner) => owner.value)
-
   const resetGroup = () => {
     setGroup('')
   }
@@ -250,7 +251,7 @@ const Chat: React.FC<{
 
   useEffect(() => {
     scrollToBottom()
-  }, [chatData])
+  }, [chatData, messages])
 
   if (!wallet?.address || !user)
     return (
@@ -268,28 +269,6 @@ const Chat: React.FC<{
         >
           <Typography variant="h4">You are not connected.</Typography>
           <ConnectionCenter />
-        </Box>
-      </Container>
-    )
-
-  if (ownerArray.length && !ownerArray.includes(wallet?.address!))
-    return (
-      <Container fixed sx={{ height: '100vh', width: '100vw' }}>
-        <Box
-          sx={{
-            height: '100%',
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 3,
-          }}
-        >
-          <Typography variant="h4">You are not a signer on this safe.</Typography>
-          <Link href={{ pathname: AppRoutes.chat }}>
-            <Button variant="contained">Go Back</Button>
-          </Link>
         </Box>
       </Container>
     )
@@ -327,7 +306,11 @@ const Chat: React.FC<{
               <Typography sx={{ fontWeight: 600 }}>{ellipsisAddress(`${wallet.address}`)}</Typography>
               </Box>
               <Box display="flex" alignItems="center" gap="10px">
-                <IconButton sx={{ border: '1px solid var(--color-border-light)', borderRadius: '6px', width: '32px', height: '32px' }} aria-label="add folder" onClick={() => togglePopup(!popup)}>
+                <IconButton
+                  sx={{ border: '1px solid var(--color-border-light)', borderRadius: '6px', width: '32px', height: '32px' }}
+                  aria-label="add folder"
+                  onClick={() => togglePopup(!popup)}
+                >
                   <AddIcon />
                 </IconButton>
               </Box>
@@ -340,12 +323,12 @@ const Chat: React.FC<{
                 })}
               </Tabs>
               <TabPanel value={value} index={0}>
-                <FolderList resetGroup={resetGroup} />
+              <FolderList resetGroup={resetGroup} />
               </TabPanel>
               {folders.map((folder, i) => {
                 return (
                   <TabPanel value={value} index={i + 1} key={`${folder}-${i}`}>
-                    <FolderGroup group={folder} />
+                    <FolderGroup group={folder} currentSafe={safeAddress} />
                   </TabPanel>
                 )
               })}
@@ -389,31 +372,55 @@ const Chat: React.FC<{
                 </Box>
               </Toolbar>
               <Divider />
-              <MobileChat
-                message={message}
-                setMessage={setMessage}
-                messages={messages}
-                setMessages={setMessages}
-                bottom={bottom}
-                chatData={chatData}
-                group={group}
-                owners={owners}
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-                setGroup={setGroup}
-              />
-              <DesktopChat
-                setGroup={setGroup}
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-                message={message}
-                setMessage={setMessage}
-                messages={messages}
-                setMessages={setMessages}
-                group={group}
-                bottom={bottom}
-                chatData={chatData}
-              />
+              {
+                (ownerArray.length && !ownerArray.includes(wallet?.address!)) ? 
+                <Container fixed sx={{ height: '100vh', width: '100vw' }}>
+                  <Box
+                    sx={{
+                      height: '100%',
+                      width: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: 3,
+                    }}
+                  >
+                    <Typography variant="h4">
+                      You are not a signer on this safe.
+                    </Typography>
+                  </Box>
+                </Container>
+                :
+                <>
+                  <MobileChat
+                    message={message}
+                    setMessage={setMessage}
+                    messages={messages}
+                    setMessages={setMessages}
+                    bottom={bottom}
+                    chatData={chatData}
+                    group={group}
+                    owners={owners}
+                    currentUser={currentUser}
+                    setCurrentUser={setCurrentUser}
+                    setGroup={setGroup}
+                  />
+                  <DesktopChat
+                    setGroup={setGroup}
+                    currentUser={currentUser}
+                    setCurrentUser={setCurrentUser}
+                    message={message}
+                    setMessage={setMessage}
+                    messages={messages}
+                    setMessages={setMessages}
+                    group={group}
+                    bottom={bottom}
+                    chatData={chatData}
+                  />
+                </>
+              }
+            
             </Box>
           </Box>
         </Main>

@@ -1,4 +1,4 @@
-import { Box, Button, ListItemButton, TextField, Typography } from '@mui/material'
+import { ListItemButton, Typography } from '@mui/material'
 import Avatar from '@mui/material/Avatar'
 import List from '@mui/material/List'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
@@ -9,95 +9,43 @@ import { useEffect, useState } from 'react'
 import ellipsisAddress from '../../utils/ellipsisAddress'
 import { useRouter } from 'next/router'
 
-//@ts-ignore
 const FolderGroup: React.FC<{
-  group: any
-}> = ({ group }) => {
-  const [safeAddress, setSafeAddress] = useState<string>('')
+  group: any,
+  currentSafe: string
+}> = ({ group, currentSafe }) => {
   const [safes, setSafes] = useState<string[]>([''])
   const [selectedIndex, setSelectedIndex] = useState<string | number>('')
   const history = useRouter()
 
   window?.addEventListener('storage', () => {
     const items = JSON.parse(localStorage.getItem(group)!)
-    // const myArray = items.split(",");
     if (items) {
       setSafes(items)
     }
   })
 
   useEffect(() => {
-    const activeGroups = async () => {
+    const activeFolders = async () => {
       const items = JSON.parse(localStorage.getItem(group)!)
       // const myArray = items.split(",");
       if (items) {
         setSafes(items)
       }
     }
-    activeGroups()
-    window.addEventListener('storage', activeGroups)
+    activeFolders()
+    window.addEventListener('storage', activeFolders)
     return () => {
-      window.removeEventListener('storage', activeGroups)
+      window.removeEventListener('storage', activeFolders)
     }
   }, [localStorage.getItem(group)])
 
-  const addSafeToFolder = async () => {
-    const safes = JSON.parse(localStorage.getItem(group)!)
-    if (safes) {
-      localStorage.setItem(group, JSON.stringify([...safes, safeAddress]))
-    } else {
-      localStorage.setItem(group, JSON.stringify([safeAddress]))
-    }
-    window.dispatchEvent(new Event('storage'))
-  }
-
-  const deleteSafeFromFolder = async () => {
-    const safes = JSON.parse(localStorage.getItem(group)!)
-    const updated = safes.filter((address: string) => address !== safeAddress)
-    if (updated) {
-      localStorage.setItem(group, JSON.stringify(updated))
-    } else {
-      localStorage.setItem(group, JSON.stringify([safeAddress]))
-    }
-    window.dispatchEvent(new Event('storage'))
-  }
-
-  const handleSetSafeAddress = (address: string) => {
-    setSafeAddress(address)
-  }
-
-  const deleteFolder = async () => {
-    console.log(group)
-    await localStorage.removeItem(group)
-    window.dispatchEvent(new Event('storage'))
-  }
-
   const handleListItemClick = (folder: string, index: number) => {
-    console.log(folder, history)
     setSelectedIndex(index)
     history.push(`${folder}/new-chat`)
   }
   //TODO
   return (
     <>
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        <TextField
-          size="small"
-          variant="outlined"
-          label="add safe to folder"
-          value={safeAddress}
-          onChange={(e) => handleSetSafeAddress(e.target.value)}
-          fullWidth
-        />
-        <Box sx={{ display: 'flex', gap: '16px' }}>
-          <Button size="small" variant="contained" sx={{ width: '50%' }} onClick={addSafeToFolder}>
-            Add
-          </Button>
-          <Button size="small" variant="outlined" sx={{ width: '50%' }} onClick={deleteSafeFromFolder}>
-            Delete
-          </Button>
-        </Box>
-      </Box>
       <List>
         {safes.map((folder, index) => (
           <Link href={{ pathname: AppRoutes.home, query: { safe: `${folder}` } }} key={`${folder}-${index}`} passHref>
@@ -105,7 +53,7 @@ const FolderGroup: React.FC<{
               sx={{ borderRadius: '6px' }}
               //key={folder.name}
               key={folder}
-              selected={selectedIndex === index}
+              selected={currentSafe === folder.split(':')[1]}
               onClick={() => handleListItemClick(folder, index)}
             >
               <ListItemAvatar>
