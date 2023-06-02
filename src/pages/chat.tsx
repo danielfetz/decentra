@@ -85,6 +85,7 @@ function TabPanel(props: TabPanelProps) {
   )
 }
 
+//wtf is this lol
 function a11yProps(index: number) {
   return {
     id: `simple-tab-${index}`,
@@ -92,6 +93,7 @@ function a11yProps(index: number) {
   }
 }
 
+//Get auth session, if not reroute
 export async function getServerSideProps(context: any) {
   const session = await getSession(context)
   const path = context.req.url.split('?')
@@ -136,7 +138,6 @@ const Chat: React.FC<{
   const bottom = useRef<HTMLDivElement>(null)
   const owners = safe?.owners || ['']
   const ownerArray = owners.map((owner) => owner.value)
-
   const resetGroup = () => {
     setGroup('')
   }
@@ -250,7 +251,7 @@ const Chat: React.FC<{
 
   useEffect(() => {
     scrollToBottom()
-  }, [chatData])
+  }, [chatData, messages])
 
   if (!wallet?.address || !user)
     return (
@@ -305,7 +306,11 @@ const Chat: React.FC<{
               <Typography sx={{ fontWeight: 600 }}>{ellipsisAddress(`${wallet.address}`)}</Typography>
               </Box>
               <Box display="flex" alignItems="center" gap="10px">
-                <IconButton sx={{ border: '1px solid var(--color-border-light)', borderRadius: '6px', width: '32px', height: '32px' }} aria-label="add folder" onClick={() => togglePopup(!popup)}>
+                <IconButton
+                  sx={{ border: '1px solid var(--color-border-light)', borderRadius: '6px', width: '32px', height: '32px' }}
+                  aria-label="add folder"
+                  onClick={() => togglePopup(!popup)}
+                >
                   <AddIcon />
                 </IconButton>
               </Box>
@@ -318,12 +323,12 @@ const Chat: React.FC<{
                 })}
               </Tabs>
               <TabPanel value={value} index={0}>
-                <FolderList resetGroup={resetGroup} />
+              <FolderList resetGroup={resetGroup} />
               </TabPanel>
               {folders.map((folder, i) => {
                 return (
                   <TabPanel value={value} index={i + 1} key={`${folder}-${i}`}>
-                    <FolderGroup group={folder} />
+                    <FolderGroup group={folder} currentSafe={safeAddress} />
                   </TabPanel>
                 )
               })}
