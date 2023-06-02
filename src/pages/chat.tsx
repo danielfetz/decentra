@@ -272,28 +272,6 @@ const Chat: React.FC<{
       </Container>
     )
 
-  if (ownerArray.length && !ownerArray.includes(wallet?.address!))
-    return (
-      <Container fixed sx={{ height: '100vh', width: '100vw' }}>
-        <Box
-          sx={{
-            height: '100%',
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 3,
-          }}
-        >
-          <Typography variant="h4">You are not a signer on this safe.</Typography>
-          <Link href={{ pathname: AppRoutes.chat }}>
-            <Button variant="contained">Go Back</Button>
-          </Link>
-        </Box>
-      </Container>
-    )
-
   return (
     <>
       {popup && <AddFolderModal open={popup} onClose={() => togglePopup(!popup)} />}
@@ -389,31 +367,55 @@ const Chat: React.FC<{
                 </Box>
               </Toolbar>
               <Divider />
-              <MobileChat
-                message={message}
-                setMessage={setMessage}
-                messages={messages}
-                setMessages={setMessages}
-                bottom={bottom}
-                chatData={chatData}
-                group={group}
-                owners={owners}
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-                setGroup={setGroup}
-              />
-              <DesktopChat
-                setGroup={setGroup}
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-                message={message}
-                setMessage={setMessage}
-                messages={messages}
-                setMessages={setMessages}
-                group={group}
-                bottom={bottom}
-                chatData={chatData}
-              />
+              {
+                (ownerArray.length && !ownerArray.includes(wallet?.address!)) ? 
+                <Container fixed sx={{ height: '100vh', width: '100vw' }}>
+                  <Box
+                    sx={{
+                      height: '100%',
+                      width: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: 3,
+                    }}
+                  >
+                    <Typography variant="h4">
+                      You are not a signer on this safe.
+                    </Typography>
+                  </Box>
+                </Container>
+                :
+                <>
+                  <MobileChat
+                    message={message}
+                    setMessage={setMessage}
+                    messages={messages}
+                    setMessages={setMessages}
+                    bottom={bottom}
+                    chatData={chatData}
+                    group={group}
+                    owners={owners}
+                    currentUser={currentUser}
+                    setCurrentUser={setCurrentUser}
+                    setGroup={setGroup}
+                  />
+                  <DesktopChat
+                    setGroup={setGroup}
+                    currentUser={currentUser}
+                    setCurrentUser={setCurrentUser}
+                    message={message}
+                    setMessage={setMessage}
+                    messages={messages}
+                    setMessages={setMessages}
+                    group={group}
+                    bottom={bottom}
+                    chatData={chatData}
+                  />
+                </>
+              }
+            
             </Box>
           </Box>
         </Main>

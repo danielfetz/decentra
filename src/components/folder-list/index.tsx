@@ -66,6 +66,7 @@ export const FolderList: React.FC<{
               primary={<Typography sx={{ fontWeight: 500 }}>{ellipsisAddress(safe)}</Typography>}
               //secondary={<Typography sx={{ color: grey[600] }}>{ellipsisAddress(folder.address)}</Typography>}
             />
+            
           </ListItemButton>
         </Link>
       ))}
