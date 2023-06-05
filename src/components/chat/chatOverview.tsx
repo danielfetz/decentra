@@ -54,14 +54,14 @@ export const ChatOverview: React.FC<{
       {assetsOpen && <ViewAssetsModal open={assetsOpen} onClose={() => toggleAssetsOpen(!assetsOpen)} />}
       {appsOpen && <ViewAppsModal open={appsOpen} onClose={() => toggleAppsOpen(!appsOpen)} />}
       <Box sx={{ px: 3, pt: 3, pb: 1 }}>
-        <Typography sx={{ fontWeight: 600}} paragraph>
+        <Typography sx={{ fontWeight: 600, mb: 3}}>
           Overview
         </Typography>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '40px' }}>
         <Typography sx={{ color: grey[600] }}>
           Address
         </Typography>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
         <Typography noWrap>
           {ellipsisAddress(`${safeAddress}`)}
         </Typography>
