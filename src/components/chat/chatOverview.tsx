@@ -16,6 +16,7 @@ import ViewAppsModal from './modals/ViewAppsModal'
 import ViewAssetsModal from './modals/ViewAssetsModal'
 import { ThresholdOverview } from '@/components/chat/threshold'
 
+import { useAppSelector } from '@/store'
 import IconButton from '@mui/material/IconButton'
 import Tooltip from '@mui/material/Tooltip'
 import QrIconBold from '@/public/images/sidebar/qr-bold.svg'
@@ -34,6 +35,7 @@ export const ChatOverview: React.FC<{
   const [tokenTransfer, toggleTokenTransfer] = useState<boolean>(false)
   const [assetsOpen, toggleAssetsOpen] = useState<boolean>(false)
   const [appsOpen, toggleAppsOpen] = useState<boolean>(false)
+  const settings = useAppSelector(selectSettings)
   const addressCopyText = settings.shortName.copy && chain ? `${chain.shortName}:${safeAddress}` : safeAddress
   const blockExplorerLink = chain ? getBlockExplorerLink(chain, safeAddress) : undefined
   
