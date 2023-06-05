@@ -14,7 +14,7 @@ import TransactionQueue from '../common/TransactionQueue'
 import TokenTransferModal from '../tx/modals/TokenTransferModal'
 import ViewAppsModal from './modals/ViewAppsModal'
 import ViewAssetsModal from './modals/ViewAssetsModal'
-import { RequiredConfirmation } from '@/components/settings/RequiredConfirmations'
+import { ThresholdOverview } from '@/components/chat/threshold'
 
 export const ChatOverview: React.FC<{
   owners: any[]
@@ -40,6 +40,14 @@ export const ChatOverview: React.FC<{
         <Typography sx={{ fontWeight: 600}} paragraph>
           Overview
         </Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '40px', pt: 2 }}>
+        <Typography sx={{ color: grey[600] }} paragraph>
+          Address
+        </Typography>
+        <Typography paragraph noWrap>
+          {ellipsisAddress(`${safeAddress}`)}
+        </Typography>
+      </Box>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '40px', pt: 1 }}>
         <Typography sx={{ color: grey[600] }}>Network</Typography>
         <Typography>
@@ -56,17 +64,9 @@ export const ChatOverview: React.FC<{
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '40px', pt: 2 }}>
         <Typography sx={{ color: grey[600] }} paragraph>
-          Address
-        </Typography>
-        <Typography paragraph noWrap>
-          {ellipsisAddress(`${safeAddress}`)}
-        </Typography>
-      </Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '40px', pt: 2 }}>
-        <Typography sx={{ color: grey[600] }} paragraph>
           Threshold
         </Typography>
-        <RequiredConfirmation threshold={threshold} owners={ownerLength} />
+        <ThresholdOverview threshold={threshold} owners={ownerLength} />
       </Box>
       </Box>
       <Divider />
