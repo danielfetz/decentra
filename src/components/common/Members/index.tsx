@@ -1,7 +1,7 @@
 import { AddOwner } from '@/components/chat/AddOwner'
 import { Box, Typography } from '@mui/material'
 import React from 'react'
-import { ownerlistoverview } from '@/components/chat/ownerlistoverview'
+import { OwnerListOverview } from '@/components/chat/OwnerListOverview'
 
 interface TypeMembers {
   members: any[]
@@ -14,7 +14,7 @@ const Members: React.FC<TypeMembers> = ({ members }) => {
         <Typography sx={{ fontWeight: 600 }}>Members</Typography>
         <AddOwner />
       </Box>
-      <ownerlistoverview />
+      <OwnerListOverview />
     </>
   )
 }
