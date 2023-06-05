@@ -10,11 +10,6 @@ import EnhancedTable from '@/components/common/EnhancedTable'
 
 import tableCss from '@/components/common/EnhancedTable/styles.module.css'
 
-const headCells = [
-  { id: 'owner', label: 'Name' },
-  { id: 'actions', label: '', sticky: true },
-]
-
 export const OwnerListOverview = () => {
   const addressBook = useAddressBook()
   const { safe } = useSafeInfo()
@@ -50,7 +45,7 @@ export const OwnerListOverview = () => {
     <Box padding="16px 24px">
       <Grid container spacing={3}>
         <Grid item xs>
-          <EnhancedTable rows={rows} headCells={headCells} />
+          <EnhancedTable rows={rows} />
         </Grid>
       </Grid>
     </Box>
