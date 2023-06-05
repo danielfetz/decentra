@@ -61,7 +61,7 @@ export const ChatOverview: React.FC<{
         <Typography sx={{ color: grey[600] }} paragraph>
           Address
         </Typography>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
         <Typography paragraph noWrap>
           {ellipsisAddress(`${safeAddress}`)}
         </Typography>
