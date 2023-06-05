@@ -1,19 +1,6 @@
 @import url(./vars.css);
 @import url(./onboard.css);
-
- @font-face {
-   font-family: 'Inter';
-   font-display: swap;
-   font-weight: 400;
-   src: url('/fonts/Inter-Regular.woff2') format('woff2');
- }
-
- @font-face {
-   font-family: 'Inter';
-   font-display: swap;
-   font-weight: bold;
-   src: url('/fonts/Inter-Bold.woff2') format('woff2');
- }
+@import url(../../node_modules/@safe-global/safe-react-components/dist/fonts.css);
 
 html,
 body {
