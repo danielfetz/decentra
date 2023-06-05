@@ -84,3 +84,23 @@
   border: 1px solid var(--color-border-light);
   background: transparent;
 }
+
+.iconButtons {
+  margin-top: 10px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iconButton {
+  border-radius: 4px;
+  padding: 6px;
+  background-color: var(--color-background-main);
+  width: 32px;
+  height: 32px;
+}
+
+.iconButton:hover {
+  background-color: var(--color-secondary-background);
+}
