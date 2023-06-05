@@ -15,7 +15,7 @@ const headCells = [
   { id: 'actions', label: '', sticky: true },
 ]
 
-export const ownerlistoverview = () => {
+export const OwnerListOverview = () => {
   const addressBook = useAddressBook()
   const { safe } = useSafeInfo()
 
