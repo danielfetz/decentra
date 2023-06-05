@@ -23,7 +23,7 @@ import CopyIconBold from '@/public/images/sidebar/copy-bold.svg'
 import LinkIconBold from '@/public/images/sidebar/link-bold.svg'
 import { getBlockExplorerLink } from '@/utils/chains'
 import CopyButton from '@/components/common/CopyButton'
-import QrCodeButton from '../QrCodeButton'
+import QrCodeButton from '@/components/sidebar/QrCodeButton'
 
 export const ChatOverview: React.FC<{
   owners: any[]
