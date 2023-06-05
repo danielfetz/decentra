@@ -17,6 +17,7 @@ import ViewAssetsModal from './modals/ViewAssetsModal'
 import { ThresholdOverview } from '@/components/chat/threshold'
 
 import { useAppSelector } from '@/store'
+import { selectSettings } from '@/store/settingsSlice'
 import IconButton from '@mui/material/IconButton'
 import Tooltip from '@mui/material/Tooltip'
 import QrIconBold from '@/public/images/sidebar/qr-bold.svg'
