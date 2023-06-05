@@ -10,7 +10,7 @@ import EnhancedTable from '@/components/common/EnhancedTable'
 
 import tableCss from '@/components/common/EnhancedTable/styles.module.css'
 
-onst headCells = [
+const headCells = [
    { id: 'owner', label: 'Name' },
    { id: 'actions', label: '', sticky: true },
  ]
