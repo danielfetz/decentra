@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material'
 
 export const ThresholdOverview = ({ threshold, owners }: { threshold: number; owners: number }) => {
   return (
-    <Box>
+    <Box sx={{ display: 'flex' }}>
           <Typography>
             <b>{threshold}</b> out of <b>{owners}</b> members
           </Typography>
