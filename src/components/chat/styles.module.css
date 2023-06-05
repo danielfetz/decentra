@@ -92,10 +92,6 @@
 
 .iconButton {
   padding: 6px;
-  width: 32px;
-  height: 32px;
-}
-
-.iconButton:hover {
-  background-color: var(--color-secondary-background);
+  width: 24px;
+  height: 24px;
 }
