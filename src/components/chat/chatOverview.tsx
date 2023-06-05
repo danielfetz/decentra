@@ -16,6 +16,15 @@ import ViewAppsModal from './modals/ViewAppsModal'
 import ViewAssetsModal from './modals/ViewAssetsModal'
 import { ThresholdOverview } from '@/components/chat/threshold'
 
+import IconButton from '@mui/material/IconButton'
+import Tooltip from '@mui/material/Tooltip'
+import QrIconBold from '@/public/images/sidebar/qr-bold.svg'
+import CopyIconBold from '@/public/images/sidebar/copy-bold.svg'
+import LinkIconBold from '@/public/images/sidebar/link-bold.svg'
+import { getBlockExplorerLink } from '@/utils/chains'
+import CopyButton from '@/components/common/CopyButton'
+import QrCodeButton from '../QrCodeButton'
+
 export const ChatOverview: React.FC<{
   owners: any[]
 }> = ({ owners }) => {
@@ -25,6 +34,9 @@ export const ChatOverview: React.FC<{
   const [tokenTransfer, toggleTokenTransfer] = useState<boolean>(false)
   const [assetsOpen, toggleAssetsOpen] = useState<boolean>(false)
   const [appsOpen, toggleAppsOpen] = useState<boolean>(false)
+  const addressCopyText = settings.shortName.copy && chain ? `${chain.shortName}:${safeAddress}` : safeAddress
+  const blockExplorerLink = chain ? getBlockExplorerLink(chain, safeAddress) : undefined
+  
   
   return (
     <>
@@ -47,6 +59,30 @@ export const ChatOverview: React.FC<{
         <Typography paragraph noWrap>
           {ellipsisAddress(`${safeAddress}`)}
         </Typography>
+         <div className={css.iconButtons}>
+            <QrCodeButton>
+              <Tooltip title="Open QR code" placement="top">
+                <IconButton className={css.iconButton}>
+                  <SvgIcon component={QrIconBold} inheritViewBox color="primary" fontSize="small" />
+                </IconButton>
+              </Tooltip>
+            </QrCodeButton>
+
+            <CopyButton text={addressCopyText} className={css.iconButton}>
+              <SvgIcon component={CopyIconBold} inheritViewBox color="primary" fontSize="small" />
+            </CopyButton>
+
+            <Tooltip title={blockExplorerLink?.title || ''} placement="top">
+              <IconButton
+                className={css.iconButton}
+                target="_blank"
+                rel="noreferrer"
+                href={blockExplorerLink?.href || ''}
+              >
+                <SvgIcon component={LinkIconBold} inheritViewBox fontSize="small" color="primary" />
+              </IconButton>
+            </Tooltip>
+        </div>  
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '40px', pt: 1 }}>
         <Typography sx={{ color: grey[600] }}>Network</Typography>
