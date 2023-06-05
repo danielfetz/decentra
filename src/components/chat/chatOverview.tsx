@@ -57,7 +57,7 @@ export const ChatOverview: React.FC<{
         <Typography sx={{ fontWeight: 600}} paragraph>
           Overview
         </Typography>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '40px', pt: 2 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '40px' }}>
         <Typography sx={{ color: grey[600] }} paragraph>
           Address
         </Typography>
@@ -91,7 +91,7 @@ export const ChatOverview: React.FC<{
         </div>  
       </Box>
       </Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '40px', pt: 1 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '40px', pt: '10px' }}>
         <Typography sx={{ color: grey[600] }}>Network</Typography>
         <Typography>
           {safe?.chainId === '137'
