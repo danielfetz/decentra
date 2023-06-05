@@ -323,7 +323,7 @@ const Chat: React.FC<{
                 })}
               </Tabs>
               <TabPanel value={value} index={0}>
-              <FolderList resetGroup={resetGroup} />
+              <FolderList resetGroup={resetGroup} key={wallet?.chainId} />
               </TabPanel>
               {folders.map((folder, i) => {
                 return (
