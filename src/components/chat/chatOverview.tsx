@@ -18,6 +18,7 @@ import { ThresholdOverview } from '@/components/chat/threshold'
 
 import { useAppSelector } from '@/store'
 import { selectSettings } from '@/store/settingsSlice'
+import { useCurrentChain } from '@/hooks/useChains'
 import IconButton from '@mui/material/IconButton'
 import Tooltip from '@mui/material/Tooltip'
 import QrIconBold from '@/public/images/sidebar/qr-bold.svg'
@@ -37,6 +38,7 @@ export const ChatOverview: React.FC<{
   const [assetsOpen, toggleAssetsOpen] = useState<boolean>(false)
   const [appsOpen, toggleAppsOpen] = useState<boolean>(false)
   const settings = useAppSelector(selectSettings)
+  const chain = useCurrentChain()
   const addressCopyText = settings.shortName.copy && chain ? `${chain.shortName}:${safeAddress}` : safeAddress
   const blockExplorerLink = chain ? getBlockExplorerLink(chain, safeAddress) : undefined
   
