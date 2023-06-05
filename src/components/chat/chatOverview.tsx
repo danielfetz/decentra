@@ -58,11 +58,11 @@ export const ChatOverview: React.FC<{
           Overview
         </Typography>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '40px' }}>
-        <Typography sx={{ color: grey[600] }} paragraph>
+        <Typography sx={{ color: grey[600] }}>
           Address
         </Typography>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-        <Typography paragraph noWrap>
+        <Typography noWrap>
           {ellipsisAddress(`${safeAddress}`)}
         </Typography>
          <div className={css.iconButtons}>
