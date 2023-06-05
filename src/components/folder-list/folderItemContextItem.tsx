@@ -50,7 +50,9 @@ const FolderListContextMenu = ({
 
   useEffect(() => {
     const getFolders = async () => {
-      const items = await JSON.parse(localStorage.getItem('folders') || '')
+      let items
+      const folders = localStorage.getItem('folders')
+      if (folders) items = await JSON.parse(folders)
       if (items) setFolders(items)
     }
     getFolders()
