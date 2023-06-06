@@ -23,61 +23,54 @@ export const useSafeKit = (): any => {
 
       console.log('ethadapter', ethAdapter)
 
-    const safeServiceOptimism = new SafeApiKit({
-      txServiceUrl: 'https://safe-transaction-optimism.safe.global/',
-      //@ts-ignore
-      ethAdapter
-    })
-    const safeServiceMainnet = new SafeApiKit({
-      txServiceUrl: 'https://safe-transaction-mainnet.safe.global/',
-      //@ts-ignore
-      ethAdapter
-    })
-    const safeServicePolygon = new SafeApiKit({
-      txServiceUrl: 'https://safe-transaction-polygon.safe.global/',
-      //@ts-ignore
-      ethAdapter
-    })
-    const safeServiceGnosis = new SafeApiKit({
-      txServiceUrl: 'https://safe-transaction-gnosis-chain.safe.global/',
-      //@ts-ignore
-      ethAdapter
-    })
-    const safeServiceArbitrum = new SafeApiKit({
-      txServiceUrl: 'https://safe-transaction-arbitrum.safe.global/',
-      //@ts-ignore
-      ethAdapter
-    })
-    const safeServiceBinance = new SafeApiKit({
-      txServiceUrl: 'https://safe-transaction-bsc.safe.global/',
-      //@ts-ignore
-      ethAdapter
-    })
-
     const serviceArray = [
       {
         prefix: 'oeth:',
-        service: safeServiceOptimism,
+        service: new SafeApiKit({
+          txServiceUrl: 'https://safe-transaction-optimism.safe.global/',
+          //@ts-ignore
+          ethAdapter
+        })
       },
       {
         prefix: 'matic:',
-        service: safeServicePolygon,
+        service: new SafeApiKit({
+          txServiceUrl: 'https://safe-transaction-polygon.safe.global/',
+          //@ts-ignore
+          ethAdapter
+        })
       },
       {
         prefix: 'eth:',
-        service: safeServiceMainnet,
+        service: new SafeApiKit({
+          txServiceUrl: 'https://safe-transaction-mainnet.safe.global/',
+          //@ts-ignore
+          ethAdapter
+        })
       },
       {
         prefix: 'gno:',
-        service: safeServiceGnosis,
+        service: new SafeApiKit({
+          txServiceUrl: 'https://safe-transaction-gnosis-chain.safe.global/',
+          //@ts-ignore
+          ethAdapter
+        })
       },
       {
         prefix: 'bnb:',
-        service: safeServiceBinance,
+        service:  new SafeApiKit({
+          txServiceUrl: 'https://safe-transaction-bsc.safe.global/',
+          //@ts-ignore
+          ethAdapter
+        })
       },
       {
         prefix: 'arb:',
-        service: safeServiceArbitrum,
+        service: new SafeApiKit({
+          txServiceUrl: 'https://safe-transaction-arbitrum.safe.global/',
+          //@ts-ignore
+          ethAdapter
+        })
       },
     ]
 
