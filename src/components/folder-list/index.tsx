@@ -12,10 +12,13 @@ import useOwnedSafes from '@/hooks/useOwnedSafes'
 import { useRouter } from 'next/router'
 import useSafeInfo from '@/hooks/useSafeInfo'
 import FolderListContextMenu from './folderItemContextItem'
+import { useSafeKit } from '@/hooks/useSafeKit'
 
 export const FolderList: React.FC<{
   resetGroup: () => void
 }> = ({ resetGroup }) => {
+  const kit = useSafeKit()
+  console.log(kit)
   const ownedSafes = useOwnedSafes()
   const history = useRouter()
   const [safeFolder, setSafeFolder] = useState([''])
