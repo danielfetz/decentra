@@ -417,6 +417,7 @@ const Chat: React.FC<{
                     group={group}
                     bottom={bottom}
                     chatData={chatData}
+                    safe={safeAddress}
                   />
                 </>
               }

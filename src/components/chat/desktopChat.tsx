@@ -13,12 +13,12 @@ export const DesktopChat: React.FC<{
   setMessages: any
   bottom: any
   group: any
-}> = ({ chatData, message, setMessage, messages, setMessages, bottom, setCurrentUser, currentUser, setGroup, group}) => {
-  console.log(group, 'test 2', chatData)
+  safe: string
+}> = ({ chatData, message, setMessage, messages, setMessages, bottom, setCurrentUser, currentUser, setGroup, group, safe }) => {
   return (
     <Hidden mdDown>
       {
-        group && chatData ? (
+        safe && chatData ? (
           <ChatSection
             currentUser={currentUser}
             setCurrentUser={setCurrentUser}
