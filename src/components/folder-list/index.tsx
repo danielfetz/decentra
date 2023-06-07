@@ -19,7 +19,7 @@ export const FolderList: React.FC<{
   const allOwnedSafes = useAllOwnedSafes()
   console.log(allOwnedSafes)
   const history = useRouter()
-  const [safeFolder, setSafeFolder] = useState([''])
+  const [safeFolder, setSafeFolder] = useState<string[]>([])
   const { safeAddress } = useSafeInfo()
   //TODO: can be signficantly refactored
   useEffect(() => {
@@ -49,7 +49,7 @@ export const FolderList: React.FC<{
   }
   return (
     <List sx={{ padding: '0px' }}>
-      {safeFolder.map((safe, index) => (
+      {safeFolder?.map((safe, index) => (
         <ListItem
           key={`safe-${index}`}
           disablePadding

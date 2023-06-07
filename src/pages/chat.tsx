@@ -358,7 +358,7 @@ const Chat: React.FC<{
                     </IconButton>
                   </Link>
                   <Avatar sx={{ height: 32, width: 32, borderRadius: '6px' }} alt="Decentra" />
-                  <Typography sx={{ fontWeight: 600 }}>{ellipsisAddress(`${safeAddress}`)}</Typography>
+                  <Typography sx={{ fontWeight: 600 }}>{safeAddress ? ellipsisAddress(`${safeAddress}`) : ''}</Typography>
                 </Box>
                 <Box>
                 <IconButton aria-label="settings" onClick={() => toggleSettings(!settings)}>
