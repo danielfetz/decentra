@@ -26,7 +26,7 @@ export const FolderList: React.FC<{
     if (allOwnedSafes?.size) {
       let folderList: string[] = []
       //getting pre-fix for all networks and creating links
-      allOwnedSafes.get(42161)?.forEach((safe: string) => folderList.push(`arbi:${safe}`))
+      allOwnedSafes.get(42161)?.forEach((safe: string) => folderList.push(`arb1:${safe}`))
       allOwnedSafes.get(56)?.forEach((safe: string) => folderList.push(`bnb:${safe}`))
       allOwnedSafes.get(100)?.forEach((safe: string) => folderList.push(`gno:${safe}`))
       allOwnedSafes.get(137)?.forEach((safe: string) => folderList.push(`matic:${safe}`))
