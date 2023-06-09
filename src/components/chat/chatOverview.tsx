@@ -53,7 +53,7 @@ export const ChatOverview: React.FC<{
       )}
       {assetsOpen && <ViewAssetsModal open={assetsOpen} onClose={() => toggleAssetsOpen(!assetsOpen)} />}
       {appsOpen && <ViewAppsModal open={appsOpen} onClose={() => toggleAppsOpen(!appsOpen)} />}
-      <Box sx={{ px: 3, pt: 3, pb: 1 }}>
+      <Box sx={{ p: 3 }}>
         <Typography sx={{ fontWeight: 600, mb: 3}}>
           Overview
         </Typography>
@@ -91,7 +91,7 @@ export const ChatOverview: React.FC<{
         </div>  
       </Box>
       </Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '40px', pt: 2 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '40px', pt: '17px' }}>
         <Typography sx={{ color: grey[600] }}>Network</Typography>
         <Typography>
           {safe?.chainId === '137'
@@ -105,8 +105,8 @@ export const ChatOverview: React.FC<{
             : ''}
         </Typography>
       </Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '40px', pt: 2 }}>
-        <Typography sx={{ color: grey[600] }} paragraph>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '40px', pt: '20px' }}>
+        <Typography sx={{ color: grey[600] }}>
           Threshold
         </Typography>
         <ThresholdOverview threshold={threshold} owners={ownerLength} />
