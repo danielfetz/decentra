@@ -22,8 +22,8 @@ import { useCurrentChain } from '@/hooks/useChains'
 import IconButton from '@mui/material/IconButton'
 import Tooltip from '@mui/material/Tooltip'
 import QrIconBold from '@/public/images/sidebar/qr-bold.svg'
-import CopyIconBold from '@/public/images/sidebar/copy-bold.svg'
-import LinkIconBold from '@/public/images/sidebar/link-bold.svg'
+import CopyIcon from '@/public/images/common/copy.svg'
+import LinkIcon from '@/public/images/common/link.svg'
 import { getBlockExplorerLink } from '@/utils/chains'
 import CopyButton from '@/components/common/CopyButton'
 import QrCodeButton from '@/components/sidebar/QrCodeButton'
@@ -75,7 +75,7 @@ export const ChatOverview: React.FC<{
             </QrCodeButton>
 
             <CopyButton text={addressCopyText} className={css.iconButton}>
-              <SvgIcon component={CopyIconBold} inheritViewBox color="primary" fontSize="small" />
+              <SvgIcon component={CopyIcon} inheritViewBox fontSize="small" />
             </CopyButton>
 
             <Tooltip title={blockExplorerLink?.title || ''} placement="top">
@@ -85,7 +85,7 @@ export const ChatOverview: React.FC<{
                 rel="noreferrer"
                 href={blockExplorerLink?.href || ''}
               >
-                <SvgIcon component={LinkIconBold} inheritViewBox fontSize="small" color="primary" />
+                <SvgIcon component={LinkIcon} inheritViewBox fontSize="small" />
               </IconButton>
             </Tooltip>
         </div>  
