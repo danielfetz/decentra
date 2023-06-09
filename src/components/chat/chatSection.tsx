@@ -46,7 +46,7 @@ export const ChatSection: React.FC<{
             justifyContent: 'start',
             alignItems: 'start',
             gap: '16px',
-            p: '8px 24px',
+            p: '0 24px',
           }}
         >
           <List>
