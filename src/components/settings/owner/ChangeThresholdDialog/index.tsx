@@ -9,6 +9,7 @@ import useAsync from '@/hooks/useAsync'
 
 import EditIcon from '@/public/images/common/edit.svg'
 import { IconButton, SvgIcon } from '@mui/material'
+import Tooltip from '@mui/material/Tooltip'
 
 import SignOrExecuteForm from '@/components/tx/SignOrExecuteForm'
 import type { TxStepperProps } from '@/components/tx/TxStepper/useTxStepper'
@@ -65,13 +66,15 @@ export const ChangeThresholdDialogEditIcon = () => {
   const initialModalData: ChangeThresholdData = { threshold: safe.threshold || 1 }
 
   return (
-    <Box paddingTop={2}>
+    <Box>
       <CheckWallet>
         {(isOk) => (
           <Track {...SETTINGS_EVENTS.SETUP.CHANGE_THRESHOLD}>
+           <Tooltip title="Change threshold" placement="top"> 
             <IconButton onClick={() => setOpen(true)}>
               <SvgIcon component={EditIcon} inheritViewBox color="border" fontSize="small" />
             </IconButton>
+           </Tooltip>  
           </Track>
         )}
       </CheckWallet>
