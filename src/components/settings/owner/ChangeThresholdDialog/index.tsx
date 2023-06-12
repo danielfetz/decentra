@@ -8,7 +8,7 @@ import useSafeInfo from '@/hooks/useSafeInfo'
 import useAsync from '@/hooks/useAsync'
 
 import EditIcon from '@/public/images/common/edit.svg'
-import { IconButton } from '@mui/material'
+import { IconButton, SvgIcon } from '@mui/material'
 
 import SignOrExecuteForm from '@/components/tx/SignOrExecuteForm'
 import type { TxStepperProps } from '@/components/tx/TxStepper/useTxStepper'
