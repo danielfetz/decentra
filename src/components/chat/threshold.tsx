@@ -5,7 +5,7 @@ export const ThresholdOverview = ({ threshold, owners }: { threshold: number; ow
   return (
     <Box sx={{ display: 'flex' }}>
           <Typography>
-            <b>{threshold}</b> out of <b>{owners}</b> members
+            {threshold} out of {owners} members
           </Typography>
 
           {owners > 1 && <ChangeThresholdDialog />}
