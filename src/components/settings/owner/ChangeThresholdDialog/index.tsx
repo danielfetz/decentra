@@ -7,6 +7,9 @@ import useSafeInfo from '@/hooks/useSafeInfo'
 
 import useAsync from '@/hooks/useAsync'
 
+import EditIcon from '@/public/images/common/edit.svg'
+import { IconButton } from '@mui/material'
+
 import SignOrExecuteForm from '@/components/tx/SignOrExecuteForm'
 import type { TxStepperProps } from '@/components/tx/TxStepper/useTxStepper'
 import type { SafeTransaction } from '@safe-global/safe-core-sdk-types'
@@ -43,6 +46,32 @@ export const ChangeThresholdDialog = () => {
             <Button onClick={() => setOpen(true)} variant="contained" disabled={!isOk}>
               Change
             </Button>
+          </Track>
+        )}
+      </CheckWallet>
+
+      {open && <TxModal onClose={handleClose} steps={ChangeThresholdSteps} initialData={[initialModalData]} />}
+    </Box>
+  )
+}
+
+export const ChangeThresholdDialogEditIcon = () => {
+  const [open, setOpen] = useState(false)
+
+  const { safe } = useSafeInfo()
+
+  const handleClose = () => setOpen(false)
+
+  const initialModalData: ChangeThresholdData = { threshold: safe.threshold || 1 }
+
+  return (
+    <Box paddingTop={2}>
+      <CheckWallet>
+        {(isOk) => (
+          <Track {...SETTINGS_EVENTS.SETUP.CHANGE_THRESHOLD}>
+            <IconButton onClick={() => setOpen(true)} variant="contained" disabled={!isOk}>
+              <SvgIcon component={EditIcon} inheritViewBox color="border" fontSize="small" />
+            </IconButton>
           </Track>
         )}
       </CheckWallet>
