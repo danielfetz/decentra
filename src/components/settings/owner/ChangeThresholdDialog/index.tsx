@@ -69,7 +69,7 @@ export const ChangeThresholdDialogEditIcon = () => {
       <CheckWallet>
         {(isOk) => (
           <Track {...SETTINGS_EVENTS.SETUP.CHANGE_THRESHOLD}>
-            <IconButton onClick={() => setOpen(true)} variant="contained" disabled={!isOk}>
+            <IconButton onClick={() => setOpen(true)}>
               <SvgIcon component={EditIcon} inheritViewBox color="border" fontSize="small" />
             </IconButton>
           </Track>
