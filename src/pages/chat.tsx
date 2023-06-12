@@ -366,6 +366,7 @@ const Chat: React.FC<{
                   justifyContent: 'space-between',
                   alignItems: 'center',
                   bgcolor: 'var(--color-background-lightcolor)',
+                  borderBottom: '1px solid var(--color-border-light)',
                 }}
               >
                 <Box sx={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', gap: '14px' }}>
@@ -388,7 +389,6 @@ const Chat: React.FC<{
                 </Hidden>
                 </Box>
               </Toolbar>
-              <Divider />
               <MobileChat
                 message={message}
                 setMessage={setMessage}
