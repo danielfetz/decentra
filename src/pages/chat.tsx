@@ -38,6 +38,7 @@ import { getSession, signOut } from 'next-auth/react'
 import Link from 'next/link'
 
 import css from './styles.module.css'
+import { useRouter } from 'next/router'
 
 const drawerWidth = 360
 
@@ -115,6 +116,7 @@ export async function getServerSideProps(context: any) {
 const Chat: React.FC<{
   user: any
 }> = ({ user }) => {
+  const router = useRouter()
   //folders and folder control
   const [group, setGroup] = useState<any>()
   const [folders, setFolders] = useState([])
@@ -153,10 +155,12 @@ const Chat: React.FC<{
   }, [])
 
   useEffect(() => {
-    const userAuth = JSON.stringify(user, null, 2)
     if (user.address !== wallet?.address) {
       //@ts-ignore
       signOut({ redirect: '/auth' })
+    }
+    if (router.asPath.includes('chain')) {
+      setCreateSafe(true)
     }
   }, [])
 
