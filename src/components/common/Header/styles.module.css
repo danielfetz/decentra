@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  justify-content: space-between;
   align-items: center;
   position: relative;
   border-radius: 0 !important;
@@ -18,8 +19,7 @@
   justify-content: center;
 }
 
-.menuButton,
-.logo {
+.menuButton {
   flex: 1;
   border: none;
   align-items: flex-start;
@@ -33,6 +33,8 @@
 }
 
 .logo {
+  border: none;
+  align-items: flex-start;
   padding: 16px 16px 16px 24px;
 }
 

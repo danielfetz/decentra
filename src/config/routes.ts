@@ -5,6 +5,7 @@ export const AppRoutes = {
   chat: '/chat',
   terms: '/terms',
   privacy: '/privacy',
+  wallet: '/wallet',
   licenses: '/licenses',
   index: '/',
   imprint: '/imprint',
